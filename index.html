@@ -57,11 +57,15 @@
         .nav-links a { color: var(--text2); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
         .nav-links a:hover { color: var(--gold); }
         .nav-cta {
-            padding: 10px 24px; border-radius: 8px; font-weight: 600; font-size: 14px;
-            background: linear-gradient(135deg, var(--gold), var(--gold2)); color: var(--bg);
-            text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
+            padding: 8px 16px; border-radius: 8px; font-weight: 600; font-size: 13px;
+            text-decoration: none; transition: all 0.2s;
+            display: inline-flex; align-items: center; gap: 6px;
         }
-        .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(212,168,67,0.3); }
+        .nav-cta img { width: 18px; height: 18px; border-radius: 4px; }
+        .nav-cta.tinyman { background: linear-gradient(135deg, var(--gold), var(--gold2)); color: var(--bg); }
+        .nav-cta.vestige { background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; }
+        .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+        .nav-buttons { display: flex; gap: 8px; }
 
         /* Hero */
         .hero {
@@ -237,7 +241,10 @@
                 <a href="#features">Features</a>
                 <a href="#buy">How to Buy</a>
             </div>
-            <a href="https://app.tinyman.org/#/swap?asset_in=0&asset_out=3581842047" target="_blank" class="nav-cta">Buy $AETF</a>
+            <div class="nav-buttons">
+                <a href="https://app.tinyman.org/#/swap?asset_in=0&asset_out=3581842047" target="_blank" class="nav-cta tinyman"><img src="img/tinyman.png" alt="">Tinyman</a>
+                <a href="https://vestige.fi/asset/3581842047" target="_blank" class="nav-cta vestige"><img src="img/vestige.png" alt="">Vestige</a>
+            </div>
         </div>
     </nav>
 
@@ -263,8 +270,8 @@
             <h1>The First <span>Diversified ETF</span> on Algorand</h1>
             <p>One token. Five assets. Fully backed on-chain by USDC, Gold, Silver, HOG, and xALGO. Downside protection meets market upside.</p>
             <div class="hero-buttons">
-                <a href="https://app.tinyman.org/#/swap?asset_in=0&asset_out=3581842047" target="_blank" class="btn-primary">Buy on Tinyman</a>
-                <a href="https://vestige.fi/asset/3581842047" target="_blank" class="btn-primary" style="background:linear-gradient(135deg,#6366f1,#8b5cf6)">Buy on Vestige</a>
+                <a href="https://app.tinyman.org/#/swap?asset_in=0&asset_out=3581842047" target="_blank" class="btn-primary" style="display:inline-flex;align-items:center;gap:8px;"><img src="img/tinyman.png" alt="" style="width:20px;height:20px;border-radius:4px;">Buy on Tinyman</a>
+                <a href="https://vestige.fi/asset/3581842047" target="_blank" class="btn-primary" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);display:inline-flex;align-items:center;gap:8px;"><img src="img/vestige.png" alt="" style="width:20px;height:20px;border-radius:4px;">Buy on Vestige</a>
                 <a href="#basket" class="btn-secondary">Learn More</a>
             </div>
             <div class="contract-box" onclick="navigator.clipboard.writeText('3581842047');this.querySelector('.copy').textContent='Copied!'">
