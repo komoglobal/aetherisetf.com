@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aetheris ETF — Diversified Basket Token on Algorand</title>
+    <meta name="description" content="AETF is a diversified ETF backed by real-world and digital assets on Algorand. Auto-rebalancing for downside protection and market upside.">
+    <meta property="og:title" content="Aetheris ETF ($AETF)">
+    <meta property="og:description" content="Diversified basket token on Algorand. Backed by USDC, Gold, Silver, HOG, and xALGO.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@AetherisETF">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #060a14;
+            --bg2: #0d1220;
+            --bg3: #141c30;
+            --border: #1e2d4a;
+            --text: #f0f4ff;
+            --text2: #8899bb;
+            --text3: #556688;
+            --gold: #d4a843;
+            --gold2: #f0d078;
+            --green: #34d399;
+            --blue: #60a5fa;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+        /* Nav */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 100;
+            background: rgba(6,10,20,0.85); backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 0;
+        }
+        .nav-inner {
+            max-width: 1100px; margin: 0 auto; padding: 0 24px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .nav-icon {
+            width: 36px; height: 36px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--gold2));
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 900; font-size: 16px; color: var(--bg);
+        }
+        .nav-title { font-size: 18px; font-weight: 700; color: var(--text); }
+        .nav-links { display: flex; gap: 32px; }
+        .nav-links a { color: var(--text2); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-cta {
+            padding: 10px 24px; border-radius: 8px; font-weight: 600; font-size: 14px;
+            background: linear-gradient(135deg, var(--gold), var(--gold2)); color: var(--bg);
+            text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(212,168,67,0.3); }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center; justify-content: center;
+            text-align: center; padding: 120px 24px 80px;
+            background: radial-gradient(ellipse at 50% 0%, rgba(212,168,67,0.08) 0%, transparent 60%);
+        }
+        .hero-content { max-width: 700px; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 500;
+            background: rgba(212,168,67,0.1); border: 1px solid rgba(212,168,67,0.2);
+            color: var(--gold); margin-bottom: 24px;
+        }
+        .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
+        .hero h1 { font-size: 56px; font-weight: 900; letter-spacing: -2px; line-height: 1.1; margin-bottom: 20px; }
+        .hero h1 span { background: linear-gradient(135deg, var(--gold), var(--gold2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 20px; color: var(--text2); line-height: 1.6; margin-bottom: 40px; }
+        .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .btn-primary {
+            padding: 14px 32px; border-radius: 10px; font-weight: 700; font-size: 16px;
+            background: linear-gradient(135deg, var(--gold), var(--gold2)); color: var(--bg);
+            text-decoration: none; transition: all 0.2s; border: none; cursor: pointer;
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(212,168,67,0.3); }
+        .btn-secondary {
+            padding: 14px 32px; border-radius: 10px; font-weight: 600; font-size: 16px;
+            background: transparent; color: var(--text); border: 1px solid var(--border);
+            text-decoration: none; transition: all 0.2s; cursor: pointer;
+        }
+        .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+        /* Stats */
+        .stats {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+            max-width: 1100px; margin: 0 auto; padding: 0 24px;
+            background: var(--border); border-radius: 16px; overflow: hidden;
+        }
+        .stat {
+            background: var(--bg2); padding: 32px; text-align: center;
+        }
+        .stat-value { font-size: 32px; font-weight: 800; letter-spacing: -1px; margin-bottom: 4px; }
+        .stat-label { font-size: 13px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* Sections */
+        section { padding: 100px 24px; }
+        .section-inner { max-width: 1100px; margin: 0 auto; }
+        .section-label {
+            display: inline-block; font-size: 13px; font-weight: 600; color: var(--gold);
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;
+        }
+        .section-title { font-size: 40px; font-weight: 800; letter-spacing: -1px; margin-bottom: 16px; }
+        .section-desc { font-size: 18px; color: var(--text2); max-width: 600px; line-height: 1.6; margin-bottom: 48px; }
+
+        /* Basket */
+        .basket-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+        .basket-card {
+            background: var(--bg2); border: 1px solid var(--border); border-radius: 16px;
+            padding: 28px 20px; text-align: center; transition: all 0.3s;
+        }
+        .basket-card:hover { transform: translateY(-4px); border-color: var(--gold); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+        .basket-icon {
+            width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 16px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 16px; color: white;
+        }
+        .basket-logo {
+            width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 16px;
+            object-fit: cover;
+        }
+        .basket-name { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+        .basket-pct { font-size: 28px; font-weight: 800; color: var(--gold); margin: 8px 0; }
+        .basket-desc { font-size: 13px; color: var(--text3); line-height: 1.4; }
+
+        /* Features */
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .feature {
+            background: var(--bg2); border: 1px solid var(--border); border-radius: 16px;
+            padding: 32px; transition: all 0.3s;
+        }
+        .feature:hover { border-color: var(--gold); }
+        .feature-icon { font-size: 32px; margin-bottom: 16px; }
+        .feature h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+        .feature p { font-size: 14px; color: var(--text2); line-height: 1.6; }
+
+        /* How to Buy */
+        .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; counter-reset: step; }
+        .step {
+            background: var(--bg2); border: 1px solid var(--border); border-radius: 16px;
+            padding: 32px; position: relative; counter-increment: step;
+        }
+        .step::before {
+            content: counter(step); position: absolute; top: -16px; left: 24px;
+            width: 32px; height: 32px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--gold2));
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 14px; color: var(--bg);
+        }
+        .step h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; margin-top: 8px; }
+        .step p { font-size: 14px; color: var(--text2); line-height: 1.6; }
+
+        /* Footer */
+        footer {
+            padding: 48px 24px; border-top: 1px solid var(--border);
+            text-align: center; color: var(--text3); font-size: 13px;
+        }
+        footer a { color: var(--text2); text-decoration: none; }
+        footer a:hover { color: var(--gold); }
+        .footer-links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; }
+
+        /* Live Price Bar */
+        .price-bar {
+            display: flex; align-items: center; justify-content: center; gap: 24px;
+            padding: 12px; background: rgba(212,168,67,0.05); border-bottom: 1px solid var(--border);
+            font-size: 14px; margin-top: 69px;
+        }
+        .price-bar .price { font-weight: 700; color: var(--gold); }
+        .price-bar .change { font-weight: 600; }
+        .price-bar .change.up { color: var(--green); }
+
+        /* Contract */
+        .contract-box {
+            display: inline-flex; align-items: center; gap: 12px;
+            background: var(--bg3); border: 1px solid var(--border); border-radius: 10px;
+            padding: 12px 20px; margin-top: 24px; cursor: pointer; transition: all 0.2s;
+        }
+        .contract-box:hover { border-color: var(--gold); }
+        .contract-box code { font-family: 'SF Mono', monospace; font-size: 14px; color: var(--text2); }
+        .contract-box .copy { font-size: 12px; color: var(--gold); font-weight: 600; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 36px; }
+            .stats { grid-template-columns: repeat(2, 1fr); }
+            .basket-grid { grid-template-columns: repeat(2, 1fr); }
+            .basket-grid .basket-card:last-child { grid-column: span 2; }
+            .features-grid, .steps { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <div class="nav-icon">A</div>
+                <span class="nav-title">Aetheris ETF</span>
+            </a>
+            <div class="nav-links">
+                <a href="#basket">Basket</a>
+                <a href="#features">Features</a>
+                <a href="#buy">How to Buy</a>
+            </div>
+            <a href="https://app.tinyman.org/#/swap?asset_in=0&asset_out=3581842047" target="_blank" class="nav-cta">Buy $AETF</a>
+        </div>
+    </nav>
+
+    <div class="price-bar">
+        <span>$AETF</span>
+        <span class="price" id="livePrice">$2.68</span>
+        <span class="change up" id="liveChange">+9.8% from launch</span>
+        <span style="color:var(--text3)">•</span>
+        <span style="color:var(--text3)">ASA 3581842047</span>
+    </div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge"><span class="dot"></span> Live on Algorand</div>
+            <h1>The First <span>Diversified ETF</span> on Algorand</h1>
+            <p>One token. Five assets. Fully backed on-chain by USDC, Gold, Silver, HOG, and xALGO. Downside protection meets market upside.</p>
+            <div class="hero-buttons">
+                <a href="https://app.tinyman.org/#/swap?asset_in=0&asset_out=3581842047" target="_blank" class="btn-primary">Buy on Tinyman</a>
+                <a href="https://vestige.fi/asset/3581842047" target="_blank" class="btn-primary" style="background:linear-gradient(135deg,#6366f1,#8b5cf6)">Buy on Vestige</a>
+                <a href="#basket" class="btn-secondary">Learn More</a>
+            </div>
+            <div class="contract-box" onclick="navigator.clipboard.writeText('3581842047');this.querySelector('.copy').textContent='Copied!'">
+                <code>ASA: 3581842047</code>
+                <span class="copy">Copy</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="stats" id="statsBar">
+        <div class="stat">
+            <div class="stat-value" id="statTvl">$51,167</div>
+            <div class="stat-label">Total Value Locked</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value" id="statMcap">$26,825</div>
+            <div class="stat-label">Market Cap</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value" id="statNav">$2.56</div>
+            <div class="stat-label">NAV per AETF</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value" id="statHolders">11</div>
+            <div class="stat-label">Holders</div>
+        </div>
+    </div>
+
+    <section id="basket">
+        <div class="section-inner">
+            <div class="section-label">Basket Composition</div>
+            <div class="section-title">Five Assets. One Token.</div>
+            <div class="section-desc">AETF combines stablecoins, precious metals, and high-growth DeFi assets into a single diversified token.</div>
+            <div class="basket-grid">
+                <div class="basket-card">
+                    <img src="img/usdc.png" alt="USDC" class="basket-logo">
+                    <div class="basket-name">USDC</div>
+                    <div class="basket-pct">35%</div>
+                    <div class="basket-desc">Stablecoin anchor. Provides stability and downside protection.</div>
+                </div>
+                <div class="basket-card">
+                    <img src="img/gold.png" alt="Meld Gold" class="basket-logo">
+                    <div class="basket-name">Gold</div>
+                    <div class="basket-pct">17.5%</div>
+                    <div class="basket-desc">Tokenized gold by Meld. Real-world asset hedge.</div>
+                </div>
+                <div class="basket-card">
+                    <img src="img/silver.png" alt="Meld Silver" class="basket-logo">
+                    <div class="basket-name">Silver</div>
+                    <div class="basket-pct">17.5%</div>
+                    <div class="basket-desc">Tokenized silver by Meld. Precious metal exposure.</div>
+                </div>
+                <div class="basket-card">
+                    <img src="img/hog.png" alt="HOG" class="basket-logo">
+                    <div class="basket-name">HOG</div>
+                    <div class="basket-pct">15%</div>
+                    <div class="basket-desc">LiquiHog DeFi token. High-growth Algorand native.</div>
+                </div>
+                <div class="basket-card">
+                    <img src="img/xalgo.png" alt="xALGO" class="basket-logo">
+                    <div class="basket-name">xALGO</div>
+                    <div class="basket-pct">15%</div>
+                    <div class="basket-desc">Liquid staking by Folks Finance. Earn staking rewards for passive income.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" style="background: var(--bg2);">
+        <div class="section-inner">
+            <div class="section-label">Why AETF</div>
+            <div class="section-title">Built Different</div>
+            <div class="section-desc">No smart contract risk. No custody. Just pure on-chain liquidity pools backing every token.</div>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Unhackable</h3>
+                    <p>AETF is a native Algorand ASA — not a smart contract. No clawback, no freeze, no mint. Fixed 10,000 supply forever.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⚖️</div>
+                    <h3>Fully Backed</h3>
+                    <p>Every AETF token is backed by real assets in on-chain liquidity pools. Transparent, verifiable, always.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    <h3>Diversified</h3>
+                    <p>35% stablecoin for protection, 35% precious metals for safety, 30% DeFi for growth. All-weather portfolio.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🤖</div>
+                    <h3>Auto-Rebalancing</h3>
+                    <p>Arbitrage bots automatically keep pool prices balanced. The public infrastructure manages itself.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💧</div>
+                    <h3>Deep Liquidity</h3>
+                    <p>Five active pools on Tinyman. Buy or sell AETF through any of the backing assets instantly.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🏛️</div>
+                    <h3>Institutional Grade</h3>
+                    <p>Fixed supply, 6-decimal precision, professional tokenomics. Built to look and feel like a real ETF.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="buy">
+        <div class="section-inner">
+            <div class="section-label">Get Started</div>
+            <div class="section-title">How to Buy $AETF</div>
+            <div class="section-desc">Three simple steps to add AETF to your portfolio.</div>
+            <div class="steps">
+                <div class="step">
+                    <h3>Get an Algorand Wallet</h3>
+                    <p>Download Pera Wallet (iOS/Android) or use any Algorand-compatible wallet. Fund it with ALGO.</p>
+                </div>
+                <div class="step">
+                    <h3>Go to a DEX</h3>
+                    <p>Visit <a href="https://app.tinyman.org" target="_blank" style="color:var(--gold)">Tinyman</a> or <a href="https://vestige.fi/asset/3581842047" target="_blank" style="color:var(--gold)">Vestige</a> and connect your wallet. Search for AETF (ASA 3581842047).</p>
+                </div>
+                <div class="step">
+                    <h3>Swap for $AETF</h3>
+                    <p>Swap ALGO, USDC, or any Algorand asset for AETF. Your diversified position is instant.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="https://vestige.fi/asset/3581842047" target="_blank">Vestige</a>
+            <a href="https://allo.info/asset/3581842047" target="_blank">Allo.info</a>
+            <a href="https://app.tinyman.org/#/swap?asset_in=0&asset_out=3581842047" target="_blank">Tinyman</a>
+            <a href="https://x.com/AetherisETF" target="_blank">Twitter/X</a>
+        </div>
+        <p>Aetheris ETF — Diversified. Decentralized. Algorand.</p>
+        <p style="margin-top: 8px; font-size: 11px; color: var(--text3);">AETF is not a registered security. This is a decentralized token on the Algorand blockchain. Do your own research.</p>
+    </footer>
+
+    <script>
+        const INDEXER = 'https://mainnet-idx.algonode.cloud';
+        const AETF_ID = 3581842047;
+        const USDC_POOL = 'P3OYRTHNLAL6E6IKVOGKHKQBUCKC2W3JHCL3ITYI2OULSXC6QQTJOONITA';
+
+        async function updateLiveData() {
+            try {
+                const res = await fetch(`${INDEXER}/v2/accounts/${USDC_POOL}`);
+                const data = await res.json();
+                const acct = data.account || data;
+                let aetf = 0, usdc = 0;
+                for (const a of (acct.assets || [])) {
+                    if (a['asset-id'] === AETF_ID) aetf = a.amount / 1e6;
+                    if (a['asset-id'] === 31566704) usdc = a.amount / 1e6;
+                }
+                if (aetf > 0) {
+                    const price = usdc / aetf;
+                    document.getElementById('livePrice').textContent = '$' + price.toFixed(4);
+                    const change = ((price - 2.44) / 2.44 * 100).toFixed(1);
+                    document.getElementById('liveChange').textContent = `+${change}% from launch`;
+                    document.getElementById('statMcap').textContent = '$' + Math.round(price * 10000).toLocaleString();
+                }
+
+                const holdRes = await fetch(`${INDEXER}/v2/assets/${AETF_ID}/balances?currency-greater-than=0`);
+                const holdData = await holdRes.json();
+                document.getElementById('statHolders').textContent = (holdData.balances || []).length;
+            } catch(e) { console.warn('Live data fetch failed', e); }
+        }
+        updateLiveData();
+        setInterval(updateLiveData, 120000);
+    </script>
+</body>
+</html>
