@@ -236,6 +236,30 @@
 
         .stat-value.loading { opacity: 0.4; animation: pulse 1.5s infinite; }
 
+        /* Donut Chart */
+        .donut-wrapper {
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 40px; gap: 32px;
+        }
+        .donut-container { position: relative; width: 200px; height: 200px; flex-shrink: 0; }
+        .donut-svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+        .donut-segment { transition: stroke-dasharray 0.8s ease, stroke-dashoffset 0.8s ease; cursor: default; }
+        .donut-segment:hover { filter: brightness(1.3); }
+        .donut-center {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .donut-tvl { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; }
+        .donut-tvl-label { font-size: 11px; color: var(--text2); text-transform: uppercase; letter-spacing: 0.5px; }
+        .donut-legend { display: flex; flex-direction: column; gap: 10px; }
+        .donut-legend-item {
+            display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text2);
+        }
+        .donut-legend-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+        .donut-legend-pct { font-weight: 700; color: var(--text); min-width: 50px; }
+        .donut-legend-name { color: var(--text2); }
+        .data-error { font-size: 12px; color: var(--text3); text-align: center; margin-top: 8px; font-style: italic; }
+
         @media (max-width: 768px) {
             .nav-title { display: none; }
             .hero h1 { font-size: 32px; letter-spacing: -1px; }
@@ -248,7 +272,11 @@
             .stats { grid-template-columns: repeat(2, 1fr); background: transparent; gap: 12px; padding: 0 16px; border: none; }
             .stat-value { font-size: 24px; }
             .stat { padding: 20px 16px; border-radius: 12px; border: 1px solid var(--gold); background: #1a2540; }
-            .section-title { font-size: 28px; }
+            .donut-wrapper { flex-direction: column; gap: 20px; }
+            .donut-container { width: 160px; height: 160px; }
+            .donut-legend { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 8px; }
+            .donut-legend-item { font-size: 12px; gap: 6px; }
+            .section-title { font-size: 28px; flex-wrap: wrap; }
             .section-desc { font-size: 16px; }
             .basket-grid { grid-template-columns: repeat(2, 1fr); }
             .basket-grid .basket-card:last-child { grid-column: span 2; }
@@ -354,6 +382,18 @@
             <div class="section-label">Basket Composition</div>
             <div class="section-title" style="display:flex;align-items:center;gap:12px;">Five Assets. One Token. <span style="font-size:13px;font-weight:500;color:var(--green);display:inline-flex;align-items:center;gap:6px;"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;display:inline-block;"></span>Live Allocations</span></div>
             <div class="section-desc">AETF combines stablecoins, precious metals, and high-growth DeFi assets into a single diversified token. Allocations update in real-time from on-chain data.</div>
+            <div class="donut-wrapper">
+                <div class="donut-container">
+                    <svg class="donut-svg" viewBox="0 0 120 120" id="donutChart">
+                        <circle cx="60" cy="60" r="50" fill="none" stroke="var(--border)" stroke-width="18" opacity="0.3"/>
+                    </svg>
+                    <div class="donut-center">
+                        <div class="donut-tvl" id="donutTvl">$—</div>
+                        <div class="donut-tvl-label">Total TVL</div>
+                    </div>
+                </div>
+                <div class="donut-legend" id="donutLegend"></div>
+            </div>
             <div class="basket-grid">
                 <div class="basket-card">
                     <img src="img/usdc.png" alt="USDC" class="basket-logo">
@@ -537,23 +577,54 @@
                     poolResults.push({ key: pool.key, tvl });
                 });
 
-                // 3. Update basket card percentages
+                // 4. Update basket card percentages + donut chart
+                const POOL_COLORS = { usdc: '#2775ca', gold: '#f0b90b', silver: '#c0c0c0', hog: '#ff6b8a', xalgo: '#60a5fa' };
+                const POOL_NAMES = { usdc: 'USDC', gold: 'Gold', silver: 'Silver', hog: 'HOG', xalgo: 'xALGO' };
+                const circumference = 2 * Math.PI * 50; // r=50
+                let donutSegments = '';
+                let legendHtml = '';
+                let offset = 0;
+
                 for (const p of poolResults) {
                     const pct = totalTvl > 0 ? (p.tvl / totalTvl * 100) : 0;
                     const el = document.getElementById('pct-' + p.key);
                     if (el) el.textContent = pct.toFixed(1) + '%';
+
+                    // Donut segment
+                    const segLen = (pct / 100) * circumference;
+                    const gap = 2;
+                    donutSegments += `<circle class="donut-segment" cx="60" cy="60" r="50" fill="none" stroke="${POOL_COLORS[p.key]}" stroke-width="18" stroke-dasharray="${Math.max(0, segLen - gap)} ${circumference - segLen + gap}" stroke-dashoffset="${-offset}" stroke-linecap="round"/>`;
+                    offset += segLen;
+
+                    // Legend
+                    legendHtml += `<div class="donut-legend-item"><div class="donut-legend-dot" style="background:${POOL_COLORS[p.key]}"></div><span class="donut-legend-pct">${pct.toFixed(1)}%</span><span class="donut-legend-name">${POOL_NAMES[p.key]}</span></div>`;
                 }
 
-                // 4. Update stats
+                document.getElementById('donutChart').innerHTML = donutSegments;
+                document.getElementById('donutLegend').innerHTML = legendHtml;
+                document.getElementById('donutTvl').textContent = '$' + Math.round(totalTvl).toLocaleString();
+
+                // 5. Update stats
                 setStatValue('statMcap', '$' + Math.round(aetfPrice * 10000).toLocaleString());
                 setStatValue('statNav', '$' + aetfPrice.toFixed(2));
                 setStatValue('statTvl', '$' + Math.round(totalTvl).toLocaleString());
 
-                // 5. Holders count
+                // 6. Holders count
                 const holdRes = await fetch(`${INDEXER}/v2/assets/${AETF_ID}/balances?currency-greater-than=0`);
                 const holdData = await holdRes.json();
                 setStatValue('statHolders', (holdData.balances || []).length);
-            } catch(e) { console.warn('Live data fetch failed', e); }
+            } catch(e) {
+                console.warn('Live data fetch failed', e);
+                // Show error indicator without breaking existing data
+                const errEl = document.getElementById('dataError');
+                if (!errEl) {
+                    const msg = document.createElement('div');
+                    msg.id = 'dataError';
+                    msg.className = 'data-error';
+                    msg.textContent = 'Live data temporarily unavailable — showing last known values';
+                    document.querySelector('.donut-wrapper')?.after(msg);
+                }
+            }
         }
         updateLiveData();
         setInterval(updateLiveData, 60000);
