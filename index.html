@@ -235,11 +235,25 @@
         .stat-value.loading { opacity: 0.4; animation: pulse 1.5s infinite; }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 36px; }
+            .hero h1 { font-size: 32px; letter-spacing: -1px; }
+            .hero p { font-size: 16px; }
+            .hero-logo { width: 90px; height: 90px; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .hero-buttons .btn-primary, .hero-buttons .btn-secondary { width: 100%; max-width: 280px; text-align: center; justify-content: center; }
+            .floating-tokens { display: none; }
+            .price-bar { flex-wrap: wrap; gap: 8px; font-size: 12px; margin-top: 60px; padding: 8px 16px; }
             .stats { grid-template-columns: repeat(2, 1fr); }
+            .stat-value { font-size: 24px; }
+            .stat { padding: 20px 16px; }
+            .section-title { font-size: 28px; }
+            .section-desc { font-size: 16px; }
             .basket-grid { grid-template-columns: repeat(2, 1fr); }
             .basket-grid .basket-card:last-child { grid-column: span 2; }
+            .basket-pct { font-size: 22px; }
             .features-grid, .steps { grid-template-columns: 1fr; }
+            section { padding: 60px 16px; }
+            .contract-box { padding: 10px 14px; }
+            .contract-box code { font-size: 12px; }
             .hamburger { display: flex; }
             .nav-links {
                 display: none; position: absolute; top: 100%; left: 0; right: 0;
@@ -251,6 +265,7 @@
             .nav-links a { padding: 12px 0; border-bottom: 1px solid var(--border); }
             .nav-buttons { gap: 6px; }
             .nav-cta { padding: 6px 12px; font-size: 12px; }
+            .footer-links { flex-wrap: wrap; gap: 16px; }
         }
     </style>
 </head>
