@@ -488,9 +488,9 @@
                     setStatValue('statMcap', '$' + Math.round(price * 10000).toLocaleString());
                     setStatValue('statNav', '$' + price.toFixed(2));
 
-                    // TVL estimate: USDC pool value * 2 (both sides) + estimate other pools
+                    // TVL estimate: USDC pool is ~35% of total TVL across all 5 pools
                     const poolTvl = usdcInPool * 2;
-                    setStatValue('statTvl', '$' + Math.round(poolTvl * 1.8).toLocaleString());
+                    setStatValue('statTvl', '$' + Math.round(poolTvl * 2.8).toLocaleString());
                 }
 
                 // Holders count
