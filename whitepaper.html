@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whitepaper — Aetheris ETF</title>
+    <meta name="description" content="AETF Whitepaper: The first diversified on-chain ETF on Algorand, backed by USDC, Gold, Silver, HOG, and xALGO.">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #060a14;
+            --bg2: #0d1220;
+            --bg3: #141c30;
+            --border: #1e2d4a;
+            --text: #f0f4ff;
+            --text2: #8899bb;
+            --text3: #556688;
+            --gold: #d4a843;
+            --gold2: #b8922e;
+            --green: #34d399;
+            --red: #ef4444;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; }
+        
+        /* Nav */
+        .nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(6,10,20,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 0 40px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 18px; text-decoration: none; color: var(--text); }
+        .nav-logo img { width: 32px; height: 32px; border-radius: 50%; }
+        .nav-back { color: var(--text2); text-decoration: none; font-size: 14px; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+        .nav-back:hover { color: var(--gold); }
+
+        /* Content */
+        .content { max-width: 800px; margin: 0 auto; padding: 100px 24px 80px; }
+        
+        h1 { font-size: 42px; font-weight: 900; letter-spacing: -1.5px; margin-bottom: 8px; line-height: 1.1; }
+        h1 span { background: linear-gradient(135deg, var(--gold), var(--gold2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .subtitle { color: var(--text2); font-size: 15px; margin-bottom: 48px; }
+        
+        h2 { font-size: 28px; font-weight: 800; margin-top: 56px; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); letter-spacing: -0.5px; }
+        h3 { font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; color: var(--gold); }
+        
+        p { color: var(--text2); margin-bottom: 16px; font-size: 16px; }
+        
+        ul, ol { color: var(--text2); margin-bottom: 16px; padding-left: 24px; }
+        li { margin-bottom: 8px; font-size: 15px; }
+        li strong { color: var(--text); }
+
+        /* Tables */
+        table { width: 100%; border-collapse: collapse; margin: 20px 0 28px; font-size: 14px; }
+        th { text-align: left; padding: 12px 16px; background: var(--bg3); color: var(--text); font-weight: 700; border: 1px solid var(--border); font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
+        td { padding: 10px 16px; border: 1px solid var(--border); color: var(--text2); }
+        td strong { color: var(--text); }
+        tr:hover td { background: rgba(212,168,67,0.03); }
+
+        /* Callout */
+        .callout { background: var(--bg2); border: 1px solid var(--border); border-left: 3px solid var(--gold); border-radius: 8px; padding: 20px 24px; margin: 24px 0; }
+        .callout p { margin: 0; color: var(--text); font-size: 15px; }
+
+        /* Links */
+        a { color: var(--gold); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Footer */
+        .footer { text-align: center; padding: 40px 24px; color: var(--text3); font-size: 13px; border-top: 1px solid var(--border); margin-top: 60px; }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            h1 { font-size: 28px; }
+            h2 { font-size: 22px; }
+            .content { padding: 80px 16px 60px; }
+            .nav { padding: 0 16px; }
+            table { font-size: 12px; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="/" class="nav-logo">
+            <img src="img/aetf_logo.png" alt="AETF">
+            Aetheris ETF
+        </a>
+        <a href="/" class="nav-back">← Back to Home</a>
+    </nav>
+
+    <div class="content">
+        <h1>Aetheris ETF <span>Whitepaper</span></h1>
+        <p class="subtitle">Version 1.0 &nbsp;|&nbsp; June 2026 &nbsp;|&nbsp; ASA ID: 3581842047 &nbsp;|&nbsp; Algorand Mainnet</p>
+
+        <!-- Abstract -->
+        <h2>Abstract</h2>
+        <p>Aetheris ETF (AETF) is the first diversified, on-chain ETF token built on Algorand. Each AETF token is backed by a basket of five assets — USDC, tokenized Gold, tokenized Silver, HOG, and xALGO — providing holders with diversified exposure across stablecoins, precious metals, and DeFi-native assets in a single token.</p>
+        <p>AETF is designed to offer downside protection through stable and defensive allocations while maintaining upside exposure to Algorand ecosystem growth. The basket rebalances passively through automated market maker (AMM) arbitrage, requiring no active management or smart contract risk.</p>
+
+        <!-- Problem -->
+        <h2>1. Problem</h2>
+        <p>Crypto portfolios are inherently volatile. Most tokens on any given blockchain are highly correlated — when the market drops, everything drops together. Investors seeking diversification must manually manage multiple positions across different asset classes, incurring fees, complexity, and execution risk.</p>
+        <p>On Algorand specifically:</p>
+        <ul>
+            <li>No index or ETF-style product exists</li>
+            <li>Real-world assets (Gold, Silver) are available via Meld Gold but underutilized</li>
+            <li>Liquid staking (xALGO) is available via Folks Finance but siloed</li>
+            <li>No product bridges traditional safe-haven assets with DeFi-native exposure</li>
+        </ul>
+
+        <!-- Solution -->
+        <h2>2. Solution</h2>
+        <p>AETF solves this by packaging five distinct asset classes into one token:</p>
+        <table>
+            <tr><th>Asset</th><th>Allocation</th><th>Role</th><th>Provider</th></tr>
+            <tr><td><strong>USDC</strong></td><td>35%</td><td>Stability floor — maintains value during drawdowns</td><td>Circle</td></tr>
+            <tr><td><strong>Gold (GOLD$)</strong></td><td>17.5%</td><td>Inflation hedge — physical gold, tokenized and auditable</td><td>Meld Gold</td></tr>
+            <tr><td><strong>Silver (SILVER$)</strong></td><td>17.5%</td><td>Precious metals diversification — physical silver, tokenized</td><td>Meld Gold</td></tr>
+            <tr><td><strong>HOG</strong></td><td>15%</td><td>DeFi market maker — grows with Algorand ecosystem liquidity</td><td>LiquiHog</td></tr>
+            <tr><td><strong>xALGO</strong></td><td>15%</td><td>Auto-compounding ALGO staking — yield continuously grows backing</td><td>Folks Finance</td></tr>
+        </table>
+        <div class="callout">
+            <p><strong>Total defensive allocation (USDC + Gold + Silver): 70%</strong><br>
+            <strong>Total growth allocation (HOG + xALGO): 30%</strong></p>
+        </div>
+
+        <!-- How It Works -->
+        <h2>3. How It Works</h2>
+        
+        <h3>3.1 Structure</h3>
+        <p>AETF is an Algorand Standard Asset (ASA) with a fixed supply of <strong>10,000 AETF</strong>. The token is paired with each of the five basket assets in separate liquidity pools on Tinyman DEX:</p>
+        <ul>
+            <li>AETF / USDC</li>
+            <li>AETF / GOLD$</li>
+            <li>AETF / SILVER$</li>
+            <li>AETF / HOG</li>
+            <li>AETF / xALGO</li>
+        </ul>
+        <p>Each pool is seeded with liquidity proportional to the target allocation. The combined value of all pools constitutes the fund's Total Value Locked (TVL).</p>
+
+        <h3>3.2 Passive Rebalancing</h3>
+        <p>AETF does not rely on smart contracts for rebalancing. Instead, it leverages the natural arbitrage mechanism of AMM pools:</p>
+        <ol>
+            <li>When one basket asset outperforms, its pool becomes mispriced relative to others</li>
+            <li>Arbitrage traders correct the imbalance by trading between pools</li>
+            <li>This process continuously adjusts the portfolio without any manual intervention</li>
+            <li>The fund effectively "sells high" on outperforming assets and "buys low" on underperforming ones</li>
+        </ol>
+        <div class="callout">
+            <p>This creates a self-balancing portfolio with <strong>zero smart contract risk</strong> and <strong>zero management overhead</strong>.</p>
+        </div>
+
+        <h3>3.3 Price Discovery</h3>
+        <p>AETF's price is determined by the market across all five pools. The primary pricing reference is the AETF/USDC pool, as USDC provides a stable dollar-denominated benchmark. The Net Asset Value (NAV) is derived from the combined value of all basket positions.</p>
+
+        <!-- Risk Architecture -->
+        <h2>4. Risk Architecture</h2>
+
+        <h3>Downside Protection</h3>
+        <ul>
+            <li><strong>35% USDC floor</strong>: In a severe market crash, more than one-third of the basket holds its dollar value</li>
+            <li><strong>35% precious metals</strong>: Gold and Silver historically perform well during market stress and inflation</li>
+            <li><strong>Combined 70% defensive</strong>: Provides a structural floor that limits drawdown severity</li>
+        </ul>
+
+        <h3>Upside Capture</h3>
+        <ul>
+            <li><strong>15% HOG</strong>: Captures Algorand DeFi ecosystem growth — as on-chain activity and liquidity increase, HOG benefits</li>
+            <li><strong>15% xALGO</strong>: Auto-compounding ALGO staking generates continuous yield, increasing the basket's total backing over time regardless of price action</li>
+        </ul>
+
+        <h3>No Smart Contract Risk</h3>
+        <ul>
+            <li>AETF is a standard ASA — no complex contract logic that can be exploited</li>
+            <li>Liquidity pools are managed by Tinyman's audited, battle-tested AMM</li>
+            <li>No admin keys for freeze or clawback — the token is fully decentralized</li>
+        </ul>
+
+        <!-- Tokenomics -->
+        <h2>5. Tokenomics</h2>
+        <table>
+            <tr><th>Parameter</th><th>Value</th></tr>
+            <tr><td><strong>Token Name</strong></td><td>Aetheris ETF</td></tr>
+            <tr><td><strong>Ticker</strong></td><td>AETF</td></tr>
+            <tr><td><strong>ASA ID</strong></td><td>3581842047</td></tr>
+            <tr><td><strong>Total Supply</strong></td><td>10,000 AETF</td></tr>
+            <tr><td><strong>Decimals</strong></td><td>6</td></tr>
+            <tr><td><strong>Blockchain</strong></td><td>Algorand</td></tr>
+            <tr><td><strong>Launch Price</strong></td><td>$2.44</td></tr>
+            <tr><td><strong>Freeze Address</strong></td><td>Zeroed (permanently disabled)</td></tr>
+            <tr><td><strong>Clawback Address</strong></td><td>Zeroed (permanently disabled)</td></tr>
+        </table>
+
+        <h3>Supply Distribution</h3>
+        <p>The entire supply of 10,000 AETF is deployed across the five liquidity pools, proportional to target allocations. There are no team allocations, vesting schedules, or locked tokens. The fund's value is fully transparent and verifiable on-chain.</p>
+
+        <!-- Verification -->
+        <h2>6. Verification & Transparency</h2>
+
+        <h3>On-Chain Verifiability</h3>
+        <p>Every aspect of AETF is publicly auditable:</p>
+        <ul>
+            <li>Pool balances are visible in real-time on Algorand explorers</li>
+            <li>Token holder distribution is publicly queryable</li>
+            <li>All transactions are recorded on the Algorand blockchain</li>
+            <li>NAV can be independently calculated from pool states at any time</li>
+        </ul>
+
+        <h3>Asset Backing</h3>
+        <table>
+            <tr><th>Asset</th><th>Verification Method</th></tr>
+            <tr><td><strong>USDC</strong></td><td>Circle attestation reports; on-chain balance visible</td></tr>
+            <tr><td><strong>GOLD$</strong></td><td>Meld Gold — 1:1 backed by physical gold in audited vaults</td></tr>
+            <tr><td><strong>SILVER$</strong></td><td>Meld Gold — 1:1 backed by physical silver in audited vaults</td></tr>
+            <tr><td><strong>HOG</strong></td><td>On-chain Tinyman pool; LiquiHog project</td></tr>
+            <tr><td><strong>xALGO</strong></td><td>Folks Finance liquid staking; yield accrual verifiable on-chain</td></tr>
+        </table>
+
+        <!-- Roadmap -->
+        <h2>7. Roadmap</h2>
+        
+        <h3>Phase 1 — Launch ✅</h3>
+        <ul>
+            <li>Token creation and liquidity seeding</li>
+            <li>Website launch (aetherisetf.com)</li>
+            <li>Tinyman and Vestige integration</li>
+            <li>Community building and first communications</li>
+        </ul>
+
+        <h3>Phase 2 — Growth (Q3 2026)</h3>
+        <ul>
+            <li>Pera Wallet verification</li>
+            <li>TVL growth to $100K+</li>
+            <li>Expanded holder base (25+ holders)</li>
+            <li>Whitepaper publication</li>
+            <li>Community engagement (Twitter, Reddit, Algorand ecosystem)</li>
+        </ul>
+
+        <h3>Phase 3 — Integration (Q4 2026)</h3>
+        <ul>
+            <li>Folks Finance collateral listing proposal</li>
+            <li>Cross-protocol composability</li>
+            <li>Advanced analytics dashboard with live allocation tracking</li>
+            <li>Partnerships with Algorand ecosystem projects</li>
+        </ul>
+
+        <h3>Phase 4 — Scale (2027)</h3>
+        <ul>
+            <li>TVL target: $1M+</li>
+            <li>Potential basket expansion (additional asset classes)</li>
+            <li>Governance framework for allocation adjustments</li>
+            <li>Institutional onboarding pathways</li>
+        </ul>
+
+        <!-- Competitive Advantage -->
+        <h2>8. Competitive Advantage</h2>
+        <table>
+            <tr><th>Feature</th><th>AETF</th><th>Typical DeFi Token</th></tr>
+            <tr><td>Diversified backing</td><td><strong>✅ 5 assets</strong></td><td>❌ Single asset</td></tr>
+            <tr><td>Downside protection</td><td><strong>✅ 70% defensive</strong></td><td>❌ None</td></tr>
+            <tr><td>Yield generation</td><td><strong>✅ xALGO auto-compounds</strong></td><td>❌ None</td></tr>
+            <tr><td>Smart contract risk</td><td><strong>✅ None (pure ASA)</strong></td><td>⚠️ High</td></tr>
+            <tr><td>Rebalancing</td><td><strong>✅ Automatic (AMM)</strong></td><td>❌ Manual</td></tr>
+            <tr><td>Transparency</td><td><strong>✅ Fully on-chain</strong></td><td>⚠️ Varies</td></tr>
+            <tr><td>Admin control</td><td><strong>✅ No freeze/clawback</strong></td><td>⚠️ Often enabled</td></tr>
+        </table>
+
+        <!-- Risks -->
+        <h2>9. Risks & Disclaimers</h2>
+        <h3>Risks</h3>
+        <ul>
+            <li><strong>Market risk</strong>: All basket assets are subject to price volatility</li>
+            <li><strong>Liquidity risk</strong>: Thin pool depth may cause slippage on large trades</li>
+            <li><strong>Oracle/pricing risk</strong>: Asset prices depend on DEX liquidity and market activity</li>
+            <li><strong>Concentration risk</strong>: HOG represents a single DeFi project; its failure would impact 15% of the basket</li>
+            <li><strong>Regulatory risk</strong>: Tokenized assets operate in an evolving regulatory landscape</li>
+            <li><strong>Impermanent loss</strong>: Liquidity pool positions are subject to impermanent loss during volatile periods</li>
+        </ul>
+
+        <h3>Disclaimer</h3>
+        <p>AETF is not a registered security, investment fund, or financial product. It is a decentralized token on the Algorand blockchain. Nothing in this document constitutes financial advice. Users should conduct their own research and understand the risks before purchasing AETF. Past performance does not guarantee future results.</p>
+
+        <!-- Links -->
+        <h2>10. Links</h2>
+        <ul>
+            <li><strong>Website</strong>: <a href="https://aetherisetf.com">aetherisetf.com</a></li>
+            <li><strong>Tinyman</strong>: <a href="https://app.tinyman.org/#/swap?asset_in=0&asset_out=3581842047" target="_blank">Buy AETF</a></li>
+            <li><strong>Vestige</strong>: <a href="https://vestige.fi/asset/3581842047" target="_blank">Track AETF</a></li>
+            <li><strong>Twitter</strong>: <a href="https://x.com/AetherisETF" target="_blank">@AetherisETF</a></li>
+            <li><strong>Explorer</strong>: <a href="https://explorer.perawallet.app/asset/3581842047/" target="_blank">ASA 3581842047</a></li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        © 2026 Aetheris ETF. All rights reserved. | <a href="/">Home</a>
+    </div>
+</body>
+</html>
