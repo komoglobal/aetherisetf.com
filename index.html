@@ -107,20 +107,7 @@
         .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
         @keyframes pulse { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
         .hero h1 { font-size: 56px; font-weight: 900; letter-spacing: -2px; line-height: 1.1; margin-bottom: 20px; }
-        .hero h1 span.diversified {
-            background: linear-gradient(90deg, 
-                #2775CA 0%, #2775CA 16%, 
-                #d4a843 20%, #d4a843 36%, 
-                #C0C0C0 40%, #C0C0C0 54%, 
-                #FF4081 58%, #FF4081 72%, 
-                #00B4D8 76%, #00B4D8 100%
-            );
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .hero h1 span.etf {
-            color: var(--text);
-        }
+        .hero h1 span { background: linear-gradient(135deg, var(--gold), var(--gold2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .hero p { font-size: 20px; color: var(--text2); line-height: 1.6; margin-bottom: 36px; }
         .floating-tokens { position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; z-index: 1; }
         .floating-tokens img {
@@ -308,7 +295,7 @@
         <div class="hero-content">
             <img src="img/aetf_logo.png" alt="AETF" class="hero-logo">
             <div class="hero-badge"><span class="dot"></span> Live on Algorand</div>
-            <h1>The First <span class="diversified">Diversified</span> <span class="etf">ETF</span><br>on Algorand</h1>
+            <h1>The First <span>Diversified ETF</span><br>on Algorand</h1>
             <p>One token. Five assets. Fully backed on-chain by USDC, Gold, Silver, HOG, and xALGO. Downside protection meets market upside.</p>
             <div class="hero-buttons">
                 <a href="https://app.tinyman.org/#/swap?asset_in=0&asset_out=3581842047" target="_blank" class="btn-primary" style="display:inline-flex;align-items:center;gap:8px;"><img src="img/tinyman.png" alt="" style="width:20px;height:20px;border-radius:4px;">Buy on Tinyman</a>
