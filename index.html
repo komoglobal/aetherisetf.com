@@ -358,31 +358,31 @@
                 <div class="basket-card">
                     <img src="img/usdc.png" alt="USDC" class="basket-logo">
                     <div class="basket-name">USDC</div>
-                    <div class="basket-pct">35%</div>
+                    <div class="basket-pct" id="pct-usdc">—%</div>
                     <div class="basket-desc">Stablecoin anchor. Provides stability and downside protection.</div>
                 </div>
                 <div class="basket-card">
                     <img src="img/gold.png" alt="Meld Gold" class="basket-logo">
                     <div class="basket-name">Gold</div>
-                    <div class="basket-pct">17.5%</div>
+                    <div class="basket-pct" id="pct-gold">—%</div>
                     <div class="basket-desc">Tokenized gold by Meld. Real-world asset hedge.</div>
                 </div>
                 <div class="basket-card">
                     <img src="img/silver.png" alt="Meld Silver" class="basket-logo">
                     <div class="basket-name">Silver</div>
-                    <div class="basket-pct">17.5%</div>
+                    <div class="basket-pct" id="pct-silver">—%</div>
                     <div class="basket-desc">Tokenized silver by Meld. Precious metal exposure.</div>
                 </div>
                 <div class="basket-card">
                     <img src="img/hog.png" alt="HOG" class="basket-logo">
                     <div class="basket-name">HOG</div>
-                    <div class="basket-pct">15%</div>
+                    <div class="basket-pct" id="pct-hog">—%</div>
                     <div class="basket-desc">Algorand's DeFi market maker. Grows with the ecosystem — like an index fund for on-chain liquidity.</div>
                 </div>
                 <div class="basket-card">
                     <img src="img/xalgo.png" alt="xALGO" class="basket-logo">
                     <div class="basket-name">xALGO</div>
-                    <div class="basket-pct">15%</div>
+                    <div class="basket-pct" id="pct-xalgo">—%</div>
                     <div class="basket-desc">Auto-compounding ALGO staking via Folks Finance. Yield continuously grows, increasing AETF's total backing over time.</div>
                 </div>
             </div>
@@ -469,8 +469,16 @@
         const INDEXER = 'https://mainnet-idx.algonode.cloud';
         const AETF_ID = 3581842047;
         const USDC_ID = 31566704;
-        const USDC_POOL = 'P3OYRTHNLAL6E6IKVOGKHKQBUCKC2W3JHCL3ITYI2OULSXC6QQTJOONITA';
         const LAUNCH_PRICE = 2.44;
+
+        // All 5 pool addresses (Tinyman V2)
+        const BASKET_POOLS = [
+            { key: 'usdc',   poolAddr: 'P3OYRTHNLAL6E6IKVOGKHKQBUCKC2W3JHCL3ITYI2OULSXC6QQTJOONITA', backingId: 31566704,   backingDecimals: 6, backingPriceUsd: 1.0 },
+            { key: 'gold',   poolAddr: 'ILLRU7CX5BAFWAVYVD7PY5ETZ2QW524T4J6S4VA4Y77KEBUXBJHZRWY3YE', backingId: 246516580,  backingDecimals: 6, backingPriceUsd: null },
+            { key: 'silver', poolAddr: 'WOQ3X6SRKXTJMJIQ7YSW5YE72MZLM5ZRTCPXQQMTFCR64SUHCXSUSD6JPY', backingId: 246519683,  backingDecimals: 6, backingPriceUsd: null },
+            { key: 'hog',    poolAddr: 'ADOOSJ75C4OMUCAMFRP2HKSH46MNGX5U5I753LEQSQ56UKQQLRJIU6KHMM', backingId: 3178895177, backingDecimals: 6, backingPriceUsd: null },
+            { key: 'xalgo',  poolAddr: 'WY6CEMU74RDFHCMIOQXQ3VDPC4CHQOF3LODDGZAYVV5CCTL43G5UTR27CI', backingId: 1134696561, backingDecimals: 6, backingPriceUsd: null }
+        ];
 
         function setStatValue(id, value) {
             const el = document.getElementById(id);
@@ -478,43 +486,67 @@
             el.classList.remove('loading');
         }
 
+        async function getPoolBalances(poolAddr, backingId) {
+            const res = await fetch(`${INDEXER}/v2/accounts/${poolAddr}`);
+            const data = await res.json();
+            const acct = data.account || data;
+            let aetf = 0, backing = 0;
+            for (const a of (acct.assets || [])) {
+                if (a['asset-id'] === AETF_ID) aetf = a.amount / 1e6;
+                if (a['asset-id'] === backingId) backing = a.amount / 1e6;
+            }
+            return { aetf, backing };
+        }
+
         async function updateLiveData() {
             try {
-                // Fetch USDC pool data for price
-                const res = await fetch(`${INDEXER}/v2/accounts/${USDC_POOL}`);
-                const data = await res.json();
-                const acct = data.account || data;
-                let aetfInPool = 0, usdcInPool = 0;
-                for (const a of (acct.assets || [])) {
-                    if (a['asset-id'] === AETF_ID) aetfInPool = a.amount / 1e6;
-                    if (a['asset-id'] === USDC_ID) usdcInPool = a.amount / 1e6;
-                }
-                if (aetfInPool > 0) {
-                    const price = usdcInPool / aetfInPool;
-                    document.getElementById('livePrice').textContent = '$' + price.toFixed(4);
-
-                    // Fix: handle negative changes properly
-                    const change = ((price - LAUNCH_PRICE) / LAUNCH_PRICE * 100).toFixed(1);
-                    const changeEl = document.getElementById('liveChange');
-                    if (change >= 0) {
-                        changeEl.textContent = `+${change}% from launch`;
-                        changeEl.className = 'change up';
-                    } else {
-                        changeEl.textContent = `${change}% from launch`;
-                        changeEl.className = 'change';
-                        changeEl.style.color = '#ef4444';
-                    }
-
-                    // Dynamic stats
-                    setStatValue('statMcap', '$' + Math.round(price * 10000).toLocaleString());
-                    setStatValue('statNav', '$' + price.toFixed(2));
-
-                    // TVL estimate: USDC pool is ~35% of total TVL across all 5 pools
-                    const poolTvl = usdcInPool * 2;
-                    setStatValue('statTvl', '$' + Math.round(poolTvl * 2.8).toLocaleString());
+                // 1. Fetch USDC pool first to get AETF price
+                const usdcPool = BASKET_POOLS[0];
+                const usdcBal = await getPoolBalances(usdcPool.poolAddr, usdcPool.backingId);
+                let aetfPrice = LAUNCH_PRICE;
+                if (usdcBal.aetf > 0) {
+                    aetfPrice = usdcBal.backing / usdcBal.aetf;
                 }
 
-                // Holders count
+                // Update price bar
+                document.getElementById('livePrice').textContent = '$' + aetfPrice.toFixed(4);
+                const change = ((aetfPrice - LAUNCH_PRICE) / LAUNCH_PRICE * 100).toFixed(1);
+                const changeEl = document.getElementById('liveChange');
+                if (change >= 0) {
+                    changeEl.textContent = `+${change}% from launch`;
+                    changeEl.className = 'change up';
+                } else {
+                    changeEl.textContent = `${change}% from launch`;
+                    changeEl.className = 'change';
+                    changeEl.style.color = '#ef4444';
+                }
+
+                // 2. Fetch all 5 pools and compute TVL per pool
+                let totalTvl = 0;
+                const poolResults = [];
+
+                for (const pool of BASKET_POOLS) {
+                    const bal = await getPoolBalances(pool.poolAddr, pool.backingId);
+                    const backingPriceUsd = pool.backingPriceUsd || (bal.backing > 0 ? (bal.aetf * aetfPrice) / bal.backing : 0);
+                    const backingUsdValue = bal.backing * backingPriceUsd;
+                    const tvl = (bal.aetf * aetfPrice) + backingUsdValue;
+                    totalTvl += tvl;
+                    poolResults.push({ key: pool.key, tvl });
+                }
+
+                // 3. Update basket card percentages
+                for (const p of poolResults) {
+                    const pct = totalTvl > 0 ? (p.tvl / totalTvl * 100) : 0;
+                    const el = document.getElementById('pct-' + p.key);
+                    if (el) el.textContent = pct.toFixed(1) + '%';
+                }
+
+                // 4. Update stats
+                setStatValue('statMcap', '$' + Math.round(aetfPrice * 10000).toLocaleString());
+                setStatValue('statNav', '$' + aetfPrice.toFixed(2));
+                setStatValue('statTvl', '$' + Math.round(totalTvl).toLocaleString());
+
+                // 5. Holders count
                 const holdRes = await fetch(`${INDEXER}/v2/assets/${AETF_ID}/balances?currency-greater-than=0`);
                 const holdData = await holdRes.json();
                 setStatValue('statHolders', (holdData.balances || []).length);
