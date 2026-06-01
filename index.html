@@ -352,8 +352,8 @@
     <section id="basket">
         <div class="section-inner">
             <div class="section-label">Basket Composition</div>
-            <div class="section-title">Five Assets. One Token.</div>
-            <div class="section-desc">AETF combines stablecoins, precious metals, and high-growth DeFi assets into a single diversified token.</div>
+            <div class="section-title" style="display:flex;align-items:center;gap:12px;">Five Assets. One Token. <span style="font-size:13px;font-weight:500;color:var(--green);display:inline-flex;align-items:center;gap:6px;"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;display:inline-block;"></span>Live Allocations</span></div>
+            <div class="section-desc">AETF combines stablecoins, precious metals, and high-growth DeFi assets into a single diversified token. Allocations update in real-time from on-chain data.</div>
             <div class="basket-grid">
                 <div class="basket-card">
                     <img src="img/usdc.png" alt="USDC" class="basket-logo">
@@ -500,12 +500,15 @@
 
         async function updateLiveData() {
             try {
-                // 1. Fetch USDC pool first to get AETF price
-                const usdcPool = BASKET_POOLS[0];
-                const usdcBal = await getPoolBalances(usdcPool.poolAddr, usdcPool.backingId);
+                // 1. Fetch all 5 pools in parallel
+                const allBalances = await Promise.all(
+                    BASKET_POOLS.map(pool => getPoolBalances(pool.poolAddr, pool.backingId))
+                );
+
+                // 2. Derive AETF price from USDC pool (index 0)
                 let aetfPrice = LAUNCH_PRICE;
-                if (usdcBal.aetf > 0) {
-                    aetfPrice = usdcBal.backing / usdcBal.aetf;
+                if (allBalances[0].aetf > 0) {
+                    aetfPrice = allBalances[0].backing / allBalances[0].aetf;
                 }
 
                 // Update price bar
@@ -521,18 +524,18 @@
                     changeEl.style.color = '#ef4444';
                 }
 
-                // 2. Fetch all 5 pools and compute TVL per pool
+                // 3. Compute TVL per pool
                 let totalTvl = 0;
                 const poolResults = [];
 
-                for (const pool of BASKET_POOLS) {
-                    const bal = await getPoolBalances(pool.poolAddr, pool.backingId);
+                BASKET_POOLS.forEach((pool, i) => {
+                    const bal = allBalances[i];
                     const backingPriceUsd = pool.backingPriceUsd || (bal.backing > 0 ? (bal.aetf * aetfPrice) / bal.backing : 0);
                     const backingUsdValue = bal.backing * backingPriceUsd;
                     const tvl = (bal.aetf * aetfPrice) + backingUsdValue;
                     totalTvl += tvl;
                     poolResults.push({ key: pool.key, tvl });
-                }
+                });
 
                 // 3. Update basket card percentages
                 for (const p of poolResults) {
