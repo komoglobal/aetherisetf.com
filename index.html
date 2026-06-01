@@ -389,8 +389,7 @@
                         <circle cx="60" cy="60" r="50" fill="none" stroke="var(--border)" stroke-width="18" opacity="0.3"/>
                     </svg>
                     <div class="donut-center">
-                        <div class="donut-tvl" id="donutTvl">$—</div>
-                        <div class="donut-tvl-label">Total TVL</div>
+                        <img src="img/aetf_logo.png" alt="AETF" style="width:64px;height:64px;border-radius:50%;opacity:0.9;filter:drop-shadow(0 0 12px rgba(212,168,67,0.4));">
                     </div>
                 </div>
                 <div class="donut-legend" id="donutLegend"></div>
@@ -603,7 +602,6 @@
 
                 document.getElementById('donutChart').innerHTML = donutSegments;
                 document.getElementById('donutLegend').innerHTML = legendHtml;
-                document.getElementById('donutTvl').textContent = '$' + Math.round(totalTvl).toLocaleString();
 
                 // 5. Update stats
                 setStatValue('statMcap', '$' + Math.round(aetfPrice * 10000).toLocaleString());
