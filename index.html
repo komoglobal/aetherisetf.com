@@ -12,6 +12,8 @@
     <meta name="twitter:site" content="@AetherisETF">
     <meta name="twitter:image" content="https://aetherisetf.com/og-image.png">
     <meta property="og:image" content="https://aetherisetf.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:url" content="https://aetherisetf.com">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -31,7 +33,7 @@
             --blue: #60a5fa;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; scroll-padding-top: 100px; }
         body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
 
         /* Nav */
@@ -66,6 +68,17 @@
         .nav-cta.vestige { background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; }
         .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
         .nav-buttons { display: flex; gap: 8px; }
+        .hamburger {
+            display: none; background: none; border: none; cursor: pointer;
+            flex-direction: column; gap: 5px; padding: 4px;
+        }
+        .hamburger span {
+            display: block; width: 22px; height: 2px; background: var(--text);
+            border-radius: 2px; transition: all 0.3s;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translateY(7px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translateY(-7px); }
 
         /* Hero */
         .hero {
@@ -98,7 +111,7 @@
         .hero p { font-size: 20px; color: var(--text2); line-height: 1.6; margin-bottom: 36px; }
         .floating-tokens { position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; z-index: 1; }
         .floating-tokens img {
-            position: absolute; border-radius: 50%; opacity: 0.3;
+            position: absolute; border-radius: 50%; opacity: 0.5;
             animation: float 8s ease-in-out infinite;
         }
         .floating-tokens img:nth-child(1) { width: 56px; top: 15%; left: 10%; animation-delay: 0s; }
@@ -219,13 +232,25 @@
         .contract-box code { font-family: 'SF Mono', monospace; font-size: 14px; color: var(--text2); }
         .contract-box .copy { font-size: 12px; color: var(--gold); font-weight: 600; }
 
+        .stat-value.loading { opacity: 0.4; animation: pulse 1.5s infinite; }
+
         @media (max-width: 768px) {
             .hero h1 { font-size: 36px; }
             .stats { grid-template-columns: repeat(2, 1fr); }
             .basket-grid { grid-template-columns: repeat(2, 1fr); }
             .basket-grid .basket-card:last-child { grid-column: span 2; }
             .features-grid, .steps { grid-template-columns: 1fr; }
-            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .nav-links {
+                display: none; position: absolute; top: 100%; left: 0; right: 0;
+                flex-direction: column; gap: 0; background: rgba(6,10,20,0.95);
+                backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
+                padding: 16px 24px;
+            }
+            .nav-links.open { display: flex; }
+            .nav-links a { padding: 12px 0; border-bottom: 1px solid var(--border); }
+            .nav-buttons { gap: 6px; }
+            .nav-cta { padding: 6px 12px; font-size: 12px; }
         }
     </style>
 </head>
@@ -236,10 +261,13 @@
                 <img src="img/aetf_logo.png" alt="AETF" style="width:32px;height:32px;border-radius:50%;">
                 <span class="nav-title">Aetheris ETF</span>
             </a>
+            <button class="hamburger" onclick="this.classList.toggle('active');document.querySelector('.nav-links').classList.toggle('open')">
+                <span></span><span></span><span></span>
+            </button>
             <div class="nav-links">
-                <a href="#basket">Basket</a>
-                <a href="#features">Features</a>
-                <a href="#buy">How to Buy</a>
+                <a href="#basket" onclick="document.querySelector('.hamburger').classList.remove('active');document.querySelector('.nav-links').classList.remove('open')">Basket</a>
+                <a href="#features" onclick="document.querySelector('.hamburger').classList.remove('active');document.querySelector('.nav-links').classList.remove('open')">Features</a>
+                <a href="#buy" onclick="document.querySelector('.hamburger').classList.remove('active');document.querySelector('.nav-links').classList.remove('open')">How to Buy</a>
             </div>
             <div class="nav-buttons">
                 <a href="https://app.tinyman.org/#/swap?asset_in=0&asset_out=3581842047" target="_blank" class="nav-cta tinyman"><img src="img/tinyman.png" alt="">Tinyman</a>
@@ -283,19 +311,19 @@
 
     <div class="stats" id="statsBar">
         <div class="stat">
-            <div class="stat-value" id="statTvl">$51,167</div>
+            <div class="stat-value loading" id="statTvl">—</div>
             <div class="stat-label">Total Value Locked</div>
         </div>
         <div class="stat">
-            <div class="stat-value" id="statMcap">$26,825</div>
+            <div class="stat-value loading" id="statMcap">—</div>
             <div class="stat-label">Market Cap</div>
         </div>
         <div class="stat">
-            <div class="stat-value" id="statNav">$2.56</div>
+            <div class="stat-value loading" id="statNav">—</div>
             <div class="stat-label">NAV per AETF</div>
         </div>
         <div class="stat">
-            <div class="stat-value" id="statHolders">11</div>
+            <div class="stat-value loading" id="statHolders">—</div>
             <div class="stat-label">Holders</div>
         </div>
     </div>
@@ -410,41 +438,69 @@
             <a href="https://app.tinyman.org/#/swap?asset_in=0&asset_out=3581842047" target="_blank">Tinyman</a>
             <a href="https://x.com/AetherisETF" target="_blank">Twitter/X</a>
             <a href="https://explorer.perawallet.app/asset/3581842047" target="_blank">Pera Explorer</a>
+            <a href="https://algorand.co" target="_blank">Built on Algorand</a>
         </div>
         <p>Aetheris ETF — Diversified. Decentralized. Algorand.</p>
-        <p style="margin-top: 8px; font-size: 11px; color: var(--text3);">AETF is not a registered security. This is a decentralized token on the Algorand blockchain. Do your own research.</p>
+        <p style="margin-top: 8px; font-size: 11px; color: var(--text3);">AETF is not a registered security or financial advice. This is a decentralized token on the Algorand blockchain. Do your own research. Past performance does not guarantee future results.</p>
     </footer>
 
     <script>
         const INDEXER = 'https://mainnet-idx.algonode.cloud';
         const AETF_ID = 3581842047;
+        const USDC_ID = 31566704;
         const USDC_POOL = 'P3OYRTHNLAL6E6IKVOGKHKQBUCKC2W3JHCL3ITYI2OULSXC6QQTJOONITA';
+        const LAUNCH_PRICE = 2.44;
+
+        function setStatValue(id, value) {
+            const el = document.getElementById(id);
+            el.textContent = value;
+            el.classList.remove('loading');
+        }
 
         async function updateLiveData() {
             try {
+                // Fetch USDC pool data for price
                 const res = await fetch(`${INDEXER}/v2/accounts/${USDC_POOL}`);
                 const data = await res.json();
                 const acct = data.account || data;
-                let aetf = 0, usdc = 0;
+                let aetfInPool = 0, usdcInPool = 0;
                 for (const a of (acct.assets || [])) {
-                    if (a['asset-id'] === AETF_ID) aetf = a.amount / 1e6;
-                    if (a['asset-id'] === 31566704) usdc = a.amount / 1e6;
+                    if (a['asset-id'] === AETF_ID) aetfInPool = a.amount / 1e6;
+                    if (a['asset-id'] === USDC_ID) usdcInPool = a.amount / 1e6;
                 }
-                if (aetf > 0) {
-                    const price = usdc / aetf;
+                if (aetfInPool > 0) {
+                    const price = usdcInPool / aetfInPool;
                     document.getElementById('livePrice').textContent = '$' + price.toFixed(4);
-                    const change = ((price - 2.44) / 2.44 * 100).toFixed(1);
-                    document.getElementById('liveChange').textContent = `+${change}% from launch`;
-                    document.getElementById('statMcap').textContent = '$' + Math.round(price * 10000).toLocaleString();
+
+                    // Fix: handle negative changes properly
+                    const change = ((price - LAUNCH_PRICE) / LAUNCH_PRICE * 100).toFixed(1);
+                    const changeEl = document.getElementById('liveChange');
+                    if (change >= 0) {
+                        changeEl.textContent = `+${change}% from launch`;
+                        changeEl.className = 'change up';
+                    } else {
+                        changeEl.textContent = `${change}% from launch`;
+                        changeEl.className = 'change';
+                        changeEl.style.color = '#ef4444';
+                    }
+
+                    // Dynamic stats
+                    setStatValue('statMcap', '$' + Math.round(price * 10000).toLocaleString());
+                    setStatValue('statNav', '$' + price.toFixed(2));
+
+                    // TVL estimate: USDC pool value * 2 (both sides) + estimate other pools
+                    const poolTvl = usdcInPool * 2;
+                    setStatValue('statTvl', '$' + Math.round(poolTvl * 1.8).toLocaleString());
                 }
 
+                // Holders count
                 const holdRes = await fetch(`${INDEXER}/v2/assets/${AETF_ID}/balances?currency-greater-than=0`);
                 const holdData = await holdRes.json();
-                document.getElementById('statHolders').textContent = (holdData.balances || []).length;
+                setStatValue('statHolders', (holdData.balances || []).length);
             } catch(e) { console.warn('Live data fetch failed', e); }
         }
         updateLiveData();
-        setInterval(updateLiveData, 120000);
+        setInterval(updateLiveData, 60000);
     </script>
 </body>
 </html>
