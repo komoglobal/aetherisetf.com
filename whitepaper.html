@@ -109,16 +109,19 @@
         <h2>2. Solution</h2>
         <p>AETF solves this by packaging five distinct asset classes into one token:</p>
         <table>
-            <tr><th>Asset</th><th>Allocation</th><th>Role</th><th>Provider</th></tr>
-            <tr><td><strong>USDC</strong></td><td>35%</td><td>Stability floor — maintains value during drawdowns</td><td>Circle</td></tr>
-            <tr><td><strong>Gold (GOLD$)</strong></td><td>17.5%</td><td>Inflation hedge — physical gold, tokenized and auditable</td><td>Meld Gold</td></tr>
-            <tr><td><strong>Silver (SILVER$)</strong></td><td>17.5%</td><td>Precious metals diversification — physical silver, tokenized</td><td>Meld Gold</td></tr>
-            <tr><td><strong>HOG</strong></td><td>15%</td><td>DeFi market maker — grows with Algorand ecosystem liquidity</td><td>LiquiHog</td></tr>
-            <tr><td><strong>xALGO</strong></td><td>15%</td><td>Auto-compounding ALGO staking — yield continuously grows backing</td><td>Folks Finance</td></tr>
+            <tr><th>Asset</th><th>Launch Allocation</th><th>Role</th><th>Provider</th></tr>
+            <tr><td><img src="img/usdc.png" alt="" style="width:20px;height:20px;border-radius:50%;vertical-align:middle;margin-right:6px;"><strong>USDC</strong></td><td>35%</td><td>Stability floor — maintains value during drawdowns</td><td>Circle</td></tr>
+            <tr><td><img src="img/gold.png" alt="" style="width:20px;height:20px;border-radius:50%;vertical-align:middle;margin-right:6px;"><strong>Gold (GOLD$)</strong></td><td>17.5%</td><td>Inflation hedge — physical gold, tokenized and auditable</td><td>Meld Gold</td></tr>
+            <tr><td><img src="img/silver.png" alt="" style="width:20px;height:20px;border-radius:50%;vertical-align:middle;margin-right:6px;"><strong>Silver (SILVER$)</strong></td><td>17.5%</td><td>Precious metals diversification — physical silver, tokenized</td><td>Meld Gold</td></tr>
+            <tr><td><img src="img/hog.png" alt="" style="width:20px;height:20px;border-radius:50%;vertical-align:middle;margin-right:6px;"><strong>HOG</strong></td><td>15%</td><td>DeFi market maker — grows with Algorand ecosystem liquidity</td><td>LiquiHog</td></tr>
+            <tr><td><img src="img/xalgo.png" alt="" style="width:20px;height:20px;border-radius:50%;vertical-align:middle;margin-right:6px;"><strong>xALGO</strong></td><td>15%</td><td>Auto-compounding ALGO staking — yield continuously grows backing</td><td>Folks Finance</td></tr>
         </table>
         <div class="callout">
-            <p><strong>Total defensive allocation (USDC + Gold + Silver): 70%</strong><br>
-            <strong>Total growth allocation (HOG + xALGO): 30%</strong></p>
+            <p><strong>Launch defensive allocation (USDC + Gold + Silver): ~70%</strong><br>
+            <strong>Launch growth allocation (HOG + xALGO): ~30%</strong></p>
+        </div>
+        <div class="callout" style="border-left-color: var(--green);">
+            <p><strong>📊 Dynamic Allocation:</strong> These are launch targets. Over time, actual allocations shift naturally as AMM arbitrage rebalances liquidity across pools. When one asset outperforms, the portfolio passively takes profits; when one underperforms, it accumulates more. Live allocations are displayed on <a href="https://aetherisetf.com">aetherisetf.com</a>.</p>
         </div>
 
         <!-- How It Works -->
@@ -133,7 +136,7 @@
             <li>AETF / HOG</li>
             <li>AETF / xALGO</li>
         </ul>
-        <p>Each pool is seeded with liquidity proportional to the target allocation. The combined value of all pools constitutes the fund's Total Value Locked (TVL).</p>
+        <p>Each pool is seeded with liquidity proportional to the target allocation. The combined value of all pools constitutes the fund's Total Value Locked (TVL). Over time, allocations drift from their initial targets as market forces redistribute liquidity — this is by design.</p>
 
         <h3>3.2 Passive Rebalancing</h3>
         <p>AETF does not rely on smart contracts for rebalancing. Instead, it leverages the natural arbitrage mechanism of AMM pools:</p>
@@ -152,18 +155,19 @@
 
         <!-- Risk Architecture -->
         <h2>4. Risk Architecture</h2>
+        <p>Allocations below reflect launch targets. Actual weights shift dynamically through AMM rebalancing — the portfolio naturally adapts to market conditions.</p>
 
         <h3>Downside Protection</h3>
         <ul>
-            <li><strong>35% USDC floor</strong>: In a severe market crash, more than one-third of the basket holds its dollar value</li>
-            <li><strong>35% precious metals</strong>: Gold and Silver historically perform well during market stress and inflation</li>
-            <li><strong>Combined 70% defensive</strong>: Provides a structural floor that limits drawdown severity</li>
+            <li><strong>USDC (~35% at launch)</strong>: Stablecoin floor — in a severe market crash, a large portion of the basket holds its dollar value</li>
+            <li><strong>Precious metals (~35% at launch)</strong>: Gold and Silver historically perform well during market stress and inflation</li>
+            <li><strong>Combined ~70% defensive</strong>: Provides a structural floor that limits drawdown severity</li>
         </ul>
 
         <h3>Upside Capture</h3>
         <ul>
-            <li><strong>15% HOG</strong>: Captures Algorand DeFi ecosystem growth — as on-chain activity and liquidity increase, HOG benefits</li>
-            <li><strong>15% xALGO</strong>: Auto-compounding ALGO staking generates continuous yield, increasing the basket's total backing over time regardless of price action</li>
+            <li><strong>HOG (~15% at launch)</strong>: Captures Algorand DeFi ecosystem growth — as on-chain activity and liquidity increase, HOG benefits. As AETF grows, its share of HOG's total liquidity increases, effectively scooping up more of the market maker</li>
+            <li><strong>xALGO (~15% at launch)</strong>: Auto-compounding ALGO staking generates continuous yield, increasing the basket's total backing over time regardless of price action</li>
         </ul>
 
         <h3>No Smart Contract Risk</h3>
@@ -254,7 +258,7 @@
         <table>
             <tr><th>Feature</th><th>AETF</th><th>Typical DeFi Token</th></tr>
             <tr><td>Diversified backing</td><td><strong>✅ 5 assets</strong></td><td>❌ Single asset</td></tr>
-            <tr><td>Downside protection</td><td><strong>✅ 70% defensive</strong></td><td>❌ None</td></tr>
+            <tr><td>Downside protection</td><td><strong>✅ ~70% defensive at launch</strong></td><td>❌ None</td></tr>
             <tr><td>Yield generation</td><td><strong>✅ xALGO auto-compounds</strong></td><td>❌ None</td></tr>
             <tr><td>Smart contract risk</td><td><strong>✅ None (pure ASA)</strong></td><td>⚠️ High</td></tr>
             <tr><td>Rebalancing</td><td><strong>✅ Automatic (AMM)</strong></td><td>❌ Manual</td></tr>
@@ -269,7 +273,7 @@
             <li><strong>Market risk</strong>: All basket assets are subject to price volatility</li>
             <li><strong>Liquidity risk</strong>: Thin pool depth may cause slippage on large trades</li>
             <li><strong>Oracle/pricing risk</strong>: Asset prices depend on DEX liquidity and market activity</li>
-            <li><strong>Concentration risk</strong>: HOG represents a single DeFi project; its failure would impact 15% of the basket</li>
+            <li><strong>Concentration risk</strong>: HOG represents a single DeFi project; its failure would impact its share of the basket (~15% at launch)</li>
             <li><strong>Regulatory risk</strong>: Tokenized assets operate in an evolving regulatory landscape</li>
             <li><strong>Impermanent loss</strong>: Liquidity pool positions are subject to impermanent loss during volatile periods</li>
         </ul>
