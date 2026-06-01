@@ -386,8 +386,8 @@
                 <div class="donut-container">
                     <svg class="donut-svg" viewBox="-5 -5 130 130" id="donutChart">
                         <circle cx="60" cy="60" r="52" fill="none" stroke="var(--border)" stroke-width="16" opacity="0.3"/>
-                        <circle cx="60" cy="60" r="61.5" fill="none" stroke="#d4a843" stroke-width="2" opacity="0.6"/>
-                        <circle cx="60" cy="60" r="43" fill="none" stroke="#d4a843" stroke-width="1" opacity="0.4"/>
+                        <circle cx="60" cy="60" r="60.5" fill="none" stroke="#c9a33c" stroke-width="1.5" opacity="0.85"/>
+                        <circle cx="60" cy="60" r="43.5" fill="none" stroke="#c9a33c" stroke-width="1" opacity="0.6"/>
                     </svg>
                     <img src="img/aetf_logo.png" alt="AETF" class="donut-logo">
                 </div>
@@ -595,7 +595,7 @@
                     offset += segLen;
                 }
 
-                document.getElementById('donutChart').innerHTML = donutSegments + '<circle cx="60" cy="60" r="61.5" fill="none" stroke="#d4a843" stroke-width="2" opacity="0.6"/><circle cx="60" cy="60" r="43" fill="none" stroke="#d4a843" stroke-width="1" opacity="0.4"/>';
+                document.getElementById('donutChart').innerHTML = donutSegments + '<circle cx="60" cy="60" r="60.5" fill="none" stroke="#c9a33c" stroke-width="1.5" opacity="0.85"/><circle cx="60" cy="60" r="43.5" fill="none" stroke="#c9a33c" stroke-width="1" opacity="0.6"/>';
 
                 // Wire up hover interaction: ring segment ↔ basket card
                 document.querySelectorAll('.donut-segment').forEach(seg => {
