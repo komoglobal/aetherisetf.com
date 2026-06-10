@@ -7,7 +7,7 @@
     <title>Aetheris ETF — Diversified Basket Token on Algorand</title>
     <meta name="description" content="AETF is a diversified ETF backed by real-world and digital assets on Algorand. Auto-rebalancing for downside protection and market upside.">
     <meta property="og:title" content="Aetheris ETF ($AETF)">
-    <meta property="og:description" content="Diversified basket token on Algorand. Backed by USDC, Gold, Silver, HOG, and xALGO.">
+    <meta property="og:description" content="Diversified basket token on Algorand. Backed by USDC, Gold, Silver, HOG, and FOLKS.">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@AetherisETF">
@@ -278,7 +278,6 @@
             .section-title { font-size: 28px; flex-wrap: wrap; }
             .section-desc { font-size: 16px; }
             .basket-grid { grid-template-columns: repeat(2, 1fr); }
-            .basket-grid .basket-card:last-child { grid-column: span 2; }
             .basket-card { border-color: var(--gold); }
             .basket-pct { font-size: 22px; }
             .features-grid, .steps { grid-template-columns: 1fr; }
@@ -338,13 +337,13 @@
             <img src="img/gold.png" alt="">
             <img src="img/silver.png" alt="">
             <img src="img/hog.png" alt="">
-            <img src="img/xalgo.png" alt="">
+            <img src="img/folks.svg" alt="">
         </div>
         <div class="hero-content">
             <img src="img/aetf_logo.png" alt="AETF" class="hero-logo">
             <div class="hero-badge"><span class="dot"></span> Live on Algorand</div>
             <h1>The First <span>Diversified</span> ETF<br>on Algorand</h1>
-            <p>One token. Five assets. Fully backed on-chain by USDC, Gold, Silver, HOG, and xALGO. Downside protection meets market upside.</p>
+            <p>One token. Five assets. Fully backed on-chain by USDC, Gold, Silver, HOG, and FOLKS. Downside protection meets market upside.</p>
             <div class="hero-buttons">
                 <a href="https://app.tinyman.org/#/swap?asset_in=0&asset_out=3581842047" target="_blank" class="btn-primary" style="display:inline-flex;align-items:center;gap:8px;"><img src="img/tinyman.png" alt="" style="width:20px;height:20px;border-radius:4px;">Buy on Tinyman</a>
                 <a href="https://vestige.fi/asset/3581842047" target="_blank" class="btn-primary" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);display:inline-flex;align-items:center;gap:8px;"><img src="img/vestige.png" alt="" style="width:20px;height:20px;border-radius:4px;">Buy on Vestige</a>
@@ -416,11 +415,11 @@
                     <div class="basket-pct" id="pct-hog">—%</div>
                     <div class="basket-desc">Algorand's DeFi market maker. Grows with the ecosystem — like an index fund for on-chain liquidity.</div>
                 </div>
-                <div class="basket-card" data-asset="xalgo">
-                    <img src="img/xalgo.png" alt="xALGO" class="basket-logo">
-                    <div class="basket-name">xALGO</div>
-                    <div class="basket-pct" id="pct-xalgo">—%</div>
-                    <div class="basket-desc">Auto-compounding ALGO staking via Folks Finance. Yield continuously grows, increasing AETF's total backing over time.</div>
+                <div class="basket-card" data-asset="folks">
+                    <img src="img/folks.svg" alt="FOLKS" class="basket-logo">
+                    <div class="basket-name">FOLKS</div>
+                    <div class="basket-pct" id="pct-folks">—%</div>
+                    <div class="basket-desc">Protocol token of Folks Finance. Captures utility and governance from cross-chain expansion.</div>
                 </div>
             </div>
         </div>
@@ -514,7 +513,7 @@
             { key: 'gold',   poolAddr: 'ILLRU7CX5BAFWAVYVD7PY5ETZ2QW524T4J6S4VA4Y77KEBUXBJHZRWY3YE', backingId: 246516580,  backingDecimals: 6, backingPriceUsd: null },
             { key: 'silver', poolAddr: 'WOQ3X6SRKXTJMJIQ7YSW5YE72MZLM5ZRTCPXQQMTFCR64SUHCXSUSD6JPY', backingId: 246519683,  backingDecimals: 6, backingPriceUsd: null },
             { key: 'hog',    poolAddr: 'ADOOSJ75C4OMUCAMFRP2HKSH46MNGX5U5I753LEQSQ56UKQQLRJIU6KHMM', backingId: 3178895177, backingDecimals: 6, backingPriceUsd: null },
-            { key: 'xalgo',  poolAddr: 'WY6CEMU74RDFHCMIOQXQ3VDPC4CHQOF3LODDGZAYVV5CCTL43G5UTR27CI', backingId: 1134696561, backingDecimals: 6, backingPriceUsd: null }
+            { key: 'folks',  poolAddr: 'K46PNCIBDOQETA5V4LRRZNYPVL2Z34RBSBKH364R4CZU4ONB4PIMEWAZBE', backingId: 3203964481, backingDecimals: 6, backingPriceUsd: null }
         ];
 
         function setStatValue(id, value) {
@@ -575,8 +574,8 @@
                 });
 
                 // 4. Update basket card percentages + donut chart
-                const POOL_COLORS = { usdc: '#2775ca', gold: '#f0b90b', silver: '#c0c0c0', hog: '#ff6b8a', xalgo: '#60a5fa' };
-                const POOL_NAMES = { usdc: 'USDC', gold: 'Gold', silver: 'Silver', hog: 'HOG', xalgo: 'xALGO' };
+                const POOL_COLORS = { usdc: '#2775ca', gold: '#f0b90b', silver: '#c0c0c0', hog: '#ff6b8a', folks: '#4f46e5' };
+                const POOL_NAMES = { usdc: 'USDC', gold: 'Gold', silver: 'Silver', hog: 'HOG', folks: 'FOLKS' };
                 const circumference = 2 * Math.PI * 52; // r=52
                 let donutSegments = '';
                 let legendHtml = '';

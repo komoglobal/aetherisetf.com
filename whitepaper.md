@@ -7,9 +7,11 @@
 
 ## Abstract
 
-Aetheris ETF (AETF) is the first diversified, on-chain ETF token built on Algorand. Each AETF token is backed by a basket of five assets — USDC, tokenized Gold, tokenized Silver, HOG, and xALGO — providing holders with diversified exposure across stablecoins, precious metals, and DeFi-native assets in a single token.
+Aetheris ETF (AETF) is the first diversified, on-chain ETF token built on Algorand. Each AETF token is backed by a basket of five assets — USDC, tokenized Gold, tokenized Silver, HOG, and FOLKS — providing holders with diversified exposure across stablecoins, precious metals, and DeFi-native assets in a single token.
 
 AETF is designed to offer downside protection through stable and defensive allocations while maintaining upside exposure to Algorand ecosystem growth. The basket rebalances passively through automated market maker (AMM) arbitrage, requiring no active management or smart contract risk.
+
+> **📌 Strategic Update (June 2026):** AETF has consolidated its liquid-staking position (xALGO) into **FOLKS**, the Folks Finance protocol token, concentrating the basket's DeFi growth exposure into a single high-conviction position with direct upside to Folks Finance's cross-chain expansion. The ~70% defensive / ~30% growth structure is preserved. Live allocations remain fully dynamic and on-chain.
 
 ---
 
@@ -20,7 +22,7 @@ Crypto portfolios are inherently volatile. Most tokens on any given blockchain a
 On Algorand specifically:
 - No index or ETF-style product exists
 - Real-world assets (Gold, Silver) are available via Meld Gold but underutilized
-- Liquid staking (xALGO) is available via Folks Finance but siloed
+- DeFi protocol tokens like FOLKS (Folks Finance) capture ecosystem growth but sit siloed from safe-haven assets
 - No product bridges traditional safe-haven assets with DeFi-native exposure
 
 ---
@@ -35,10 +37,10 @@ AETF solves this by packaging five distinct asset classes into one token:
 | **Gold (GOLD$)** | 17.5% | Inflation hedge — physical gold, tokenized and auditable | Meld Gold |
 | **Silver (SILVER$)** | 17.5% | Precious metals diversification — physical silver, tokenized | Meld Gold |
 | **HOG** | 15% | DeFi market maker — grows with Algorand ecosystem liquidity | LiquiHog |
-| **xALGO** | 15% | Auto-compounding ALGO staking — yield continuously grows backing | Folks Finance |
+| **FOLKS** | 15% | DeFi growth — protocol token of Folks Finance; captures fees, utility, and governance from cross-chain expansion | Folks Finance |
 
 **Total defensive allocation (USDC + Gold + Silver): 70%**
-**Total growth allocation (HOG + xALGO): 30%**
+**Total growth allocation (HOG + FOLKS): 30%**
 
 ---
 
@@ -52,7 +54,7 @@ AETF is an Algorand Standard Asset (ASA) with a fixed supply of **10,000 AETF**.
 - AETF / GOLD$
 - AETF / SILVER$
 - AETF / HOG
-- AETF / xALGO
+- AETF / FOLKS
 
 Each pool is seeded with liquidity proportional to the target allocation. The combined value of all pools constitutes the fund's Total Value Locked (TVL).
 
@@ -69,7 +71,7 @@ This creates a self-balancing portfolio with zero smart contract risk and zero m
 
 ### 3.3 Price Discovery
 
-AETF's price is determined by the market across all five pools. The primary pricing reference is the AETF/USDC pool, as USDC provides a stable dollar-denominated benchmark. The Net Asset Value (NAV) is derived from the combined value of all basket positions.
+AETF's price is determined by the market across all six pools. The primary pricing reference is the AETF/USDC pool, as USDC provides a stable dollar-denominated benchmark. The Net Asset Value (NAV) is derived from the combined value of all basket positions.
 
 ---
 
@@ -82,7 +84,7 @@ AETF's price is determined by the market across all five pools. The primary pric
 
 ### Upside Capture
 - **15% HOG**: Captures Algorand DeFi ecosystem growth — as on-chain activity and liquidity increase, HOG benefits
-- **15% xALGO**: Auto-compounding ALGO staking generates continuous yield, increasing the basket's total backing over time regardless of price action
+- **15% FOLKS**: AETF's primary DeFi growth position (replacing the prior xALGO allocation) — a bet on Folks Finance's cross-chain expansion, capturing protocol fees and voting power
 
 ### No Smart Contract Risk
 - AETF is a standard ASA — no complex contract logic that can be exploited
@@ -108,7 +110,7 @@ AETF's price is determined by the market across all five pools. The primary pric
 | **Manager** | 5LEDUTOGIWSMD2MZW4FIYJ2W3KZU262H2K3F7R2BBQNMHUYNDFHEA77UJQ |
 
 ### Supply Distribution
-The entire supply of 10,000 AETF is deployed across the five liquidity pools, proportional to target allocations. There are no team allocations, vesting schedules, or locked tokens. The fund's value is fully transparent and verifiable on-chain.
+The entire supply of 10,000 AETF is deployed across the six liquidity pools, proportional to target allocations. There are no team allocations, vesting schedules, or locked tokens. The fund's value is fully transparent and verifiable on-chain.
 
 ---
 
@@ -128,7 +130,7 @@ Every aspect of AETF is publicly auditable:
 | GOLD$ | Meld Gold — 1:1 backed by physical gold in audited vaults |
 | SILVER$ | Meld Gold — 1:1 backed by physical silver in audited vaults |
 | HOG | On-chain Tinyman pool; LiquiHog project |
-| xALGO | Folks Finance liquid staking; yield accrual verifiable on-chain |
+| FOLKS | Native NTT token; on-chain smart contract checks |
 
 ---
 
@@ -167,7 +169,7 @@ Every aspect of AETF is publicly auditable:
 |---------|------|-------------------|
 | Diversified backing | ✅ 5 assets | ❌ Single asset |
 | Downside protection | ✅ 70% defensive | ❌ None |
-| Yield generation | ✅ xALGO auto-compounds | ❌ None |
+| Yield generation | ✅ Pool trading fees accrue to NAV | ❌ None |
 | Smart contract risk | ✅ None (pure ASA) | ⚠️ High |
 | Rebalancing | ✅ Automatic (AMM arbitrage) | ❌ Manual |
 | Transparency | ✅ Fully on-chain | ⚠️ Varies |

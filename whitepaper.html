@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Whitepaper — Aetheris ETF</title>
-    <meta name="description" content="AETF Whitepaper: The first diversified on-chain ETF on Algorand, backed by USDC, Gold, Silver, HOG, and xALGO.">
+    <meta name="description" content="AETF Whitepaper: The first diversified on-chain ETF on Algorand, backed by USDC, Gold, Silver, HOG, and FOLKS.">
     <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
@@ -91,8 +91,12 @@
 
         <!-- Abstract -->
         <h2>Abstract</h2>
-        <p>Aetheris ETF (AETF) is the first diversified, on-chain ETF token built on Algorand. Each AETF token is backed by a basket of five assets — USDC, tokenized Gold, tokenized Silver, HOG, and xALGO — providing holders with diversified exposure across stablecoins, precious metals, and DeFi-native assets in a single token.</p>
+        <p>Aetheris ETF (AETF) is the first diversified, on-chain ETF token built on Algorand. Each AETF token is backed by a basket of five assets — USDC, tokenized Gold, tokenized Silver, HOG, and FOLKS — providing holders with diversified exposure across stablecoins, precious metals, and DeFi-native assets in a single token.</p>
         <p>AETF is designed to offer downside protection through stable and defensive allocations while maintaining upside exposure to Algorand ecosystem growth. The basket rebalances passively through automated market maker (AMM) arbitrage, requiring no active management or smart contract risk.</p>
+
+        <div class="callout" style="border-left-color: var(--gold);">
+            <p><strong>📌 Strategic Update (June 2026):</strong> AETF has consolidated its liquid-staking position (xALGO) into <strong>FOLKS</strong>, the Folks Finance protocol token. This concentrates the basket's DeFi growth exposure into a single high-conviction position with direct upside to Folks Finance's cross-chain expansion, while preserving the ~70% defensive / ~30% growth structure. Live allocations remain fully dynamic and verifiable on-chain.</p>
+        </div>
 
         <!-- Problem -->
         <h2>1. Problem</h2>
@@ -101,7 +105,7 @@
         <ul>
             <li>No index or ETF-style product exists</li>
             <li>Real-world assets (Gold, Silver) are available via Meld Gold but underutilized</li>
-            <li>Liquid staking (xALGO) is available via Folks Finance but siloed</li>
+            <li>DeFi protocol tokens like FOLKS (Folks Finance) capture ecosystem growth but sit siloed from safe-haven assets</li>
             <li>No product bridges traditional safe-haven assets with DeFi-native exposure</li>
         </ul>
 
@@ -114,11 +118,11 @@
             <tr><td><img src="img/gold.png" alt="" style="width:20px;height:20px;border-radius:50%;vertical-align:middle;margin-right:6px;"><strong>Gold (GOLD$)</strong></td><td>17.5%</td><td>Inflation hedge — physical gold, tokenized and auditable</td><td>Meld Gold</td></tr>
             <tr><td><img src="img/silver.png" alt="" style="width:20px;height:20px;border-radius:50%;vertical-align:middle;margin-right:6px;"><strong>Silver (SILVER$)</strong></td><td>17.5%</td><td>Precious metals diversification — physical silver, tokenized</td><td>Meld Gold</td></tr>
             <tr><td><img src="img/hog.png" alt="" style="width:20px;height:20px;border-radius:50%;vertical-align:middle;margin-right:6px;"><strong>HOG</strong></td><td>15%</td><td>DeFi market maker — grows with Algorand ecosystem liquidity</td><td>LiquiHog</td></tr>
-            <tr><td><img src="img/xalgo.png" alt="" style="width:20px;height:20px;border-radius:50%;vertical-align:middle;margin-right:6px;"><strong>xALGO</strong></td><td>15%</td><td>Auto-compounding ALGO staking — yield continuously grows backing</td><td>Folks Finance</td></tr>
+            <tr><td><img src="img/folks.svg" alt="" style="width:20px;height:20px;border-radius:50%;vertical-align:middle;margin-right:6px;"><strong>FOLKS</strong></td><td>15%</td><td>DeFi growth — protocol token of Folks Finance; captures fees, utility, and governance from cross-chain expansion</td><td>Folks Finance</td></tr>
         </table>
         <div class="callout">
             <p><strong>Launch defensive allocation (USDC + Gold + Silver): ~70%</strong><br>
-            <strong>Launch growth allocation (HOG + xALGO): ~30%</strong></p>
+            <strong>Launch growth allocation (HOG + FOLKS): ~30%</strong></p>
         </div>
         <div class="callout" style="border-left-color: var(--green);">
             <p><strong>📊 Dynamic Allocation:</strong> These are launch targets. Over time, actual allocations shift naturally as AMM arbitrage rebalances liquidity across pools. When one asset outperforms, the portfolio passively takes profits; when one underperforms, it accumulates more. Live allocations are displayed on <a href="https://aetherisetf.com">aetherisetf.com</a>.</p>
@@ -134,7 +138,7 @@
             <li>AETF / GOLD$</li>
             <li>AETF / SILVER$</li>
             <li>AETF / HOG</li>
-            <li>AETF / xALGO</li>
+            <li>AETF / FOLKS</li>
         </ul>
         <p>Each pool is seeded with liquidity proportional to the target allocation. The combined value of all pools constitutes the fund's Total Value Locked (TVL). Over time, allocations drift from their initial targets as market forces redistribute liquidity — this is by design.</p>
 
@@ -151,7 +155,7 @@
         </div>
 
         <h3>3.3 Price Discovery</h3>
-        <p>AETF's price is determined by the market across all five pools. The primary pricing reference is the AETF/USDC pool, as USDC provides a stable dollar-denominated benchmark. The Net Asset Value (NAV) is derived from the combined value of all basket positions.</p>
+        <p>AETF's price is determined by the market across all six pools. The primary pricing reference is the AETF/USDC pool, as USDC provides a stable dollar-denominated benchmark. The Net Asset Value (NAV) is derived from the combined value of all basket positions.</p>
 
         <!-- Risk Architecture -->
         <h2>4. Risk Architecture</h2>
@@ -167,7 +171,7 @@
         <h3>Upside Capture</h3>
         <ul>
             <li><strong>HOG (~15% at launch)</strong>: Captures Algorand DeFi ecosystem growth — as on-chain activity and liquidity increase, HOG benefits. As AETF grows, its share of HOG's total liquidity increases, effectively scooping up more of the market maker</li>
-            <li><strong>xALGO (~15% at launch)</strong>: Auto-compounding ALGO staking generates continuous yield, increasing the basket's total backing over time regardless of price action</li>
+            <li><strong>FOLKS (~15% at launch)</strong>: Protocol token of Folks Finance — captures utility, fees, and governance from cross-chain expansion. This is AETF's primary DeFi growth position, replacing the prior xALGO allocation</li>
         </ul>
 
         <h3>No Smart Contract Risk</h3>
@@ -214,7 +218,7 @@
             <tr><td><strong>GOLD$</strong></td><td>Meld Gold — 1:1 backed by physical gold in audited vaults</td></tr>
             <tr><td><strong>SILVER$</strong></td><td>Meld Gold — 1:1 backed by physical silver in audited vaults</td></tr>
             <tr><td><strong>HOG</strong></td><td>On-chain Tinyman pool; LiquiHog project</td></tr>
-            <tr><td><strong>xALGO</strong></td><td>Folks Finance liquid staking; yield accrual verifiable on-chain</td></tr>
+            <tr><td><strong>FOLKS</strong></td><td>Native NTT token; on-chain smart contract checks</td></tr>
         </table>
 
         <!-- Roadmap -->
@@ -259,7 +263,7 @@
             <tr><th>Feature</th><th>AETF</th><th>Typical DeFi Token</th></tr>
             <tr><td>Diversified backing</td><td><strong>✅ 5 assets</strong></td><td>❌ Single asset</td></tr>
             <tr><td>Downside protection</td><td><strong>✅ ~70% defensive at launch</strong></td><td>❌ None</td></tr>
-            <tr><td>Yield generation</td><td><strong>✅ xALGO auto-compounds</strong></td><td>❌ None</td></tr>
+            <tr><td>Yield generation</td><td><strong>✅ Pool trading fees accrue to NAV</strong></td><td>❌ None</td></tr>
             <tr><td>Smart contract risk</td><td><strong>✅ None (pure ASA)</strong></td><td>⚠️ High</td></tr>
             <tr><td>Rebalancing</td><td><strong>✅ Automatic (AMM)</strong></td><td>❌ Manual</td></tr>
             <tr><td>Transparency</td><td><strong>✅ Fully on-chain</strong></td><td>⚠️ Varies</td></tr>
