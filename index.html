@@ -278,6 +278,7 @@
             .section-title { font-size: 28px; flex-wrap: wrap; }
             .section-desc { font-size: 16px; }
             .basket-grid { grid-template-columns: repeat(2, 1fr); }
+            .basket-grid .basket-card:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 8px); }
             .basket-card { border-color: var(--gold); }
             .basket-pct { font-size: 22px; }
             .features-grid, .steps { grid-template-columns: 1fr; }
