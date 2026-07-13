@@ -1,4 +1,4 @@
-# Aetheris ETF (AETF) — Whitepaper
+# Aetheris (AETF) — Whitepaper
 
 **Version 1.0 | June 2026**
 **ASA ID: 3581842047 | Algorand Mainnet**
@@ -7,7 +7,7 @@
 
 ## Abstract
 
-Aetheris ETF (AETF) is the first diversified, on-chain ETF token built on Algorand. Each AETF token is backed by a basket of five assets — USDC, tokenized Gold, tokenized Silver, HOG, and xALGO — providing holders with diversified exposure across stablecoins, precious metals, and DeFi-native assets in a single token.
+Aetheris (AETF) is the first diversified, on-chain token pool built on Algorand. Each AETF token is backed by a basket of five assets — USDC, tokenized Gold, tokenized Silver, HOG, and xALGO — providing holders with diversified exposure across stablecoins, precious metals, and DeFi-native assets in a single token.
 
 AETF is designed to offer downside protection through stable and defensive allocations while maintaining upside exposure to Algorand ecosystem growth. The basket rebalances passively through automated market maker (AMM) arbitrage, requiring no active management or smart contract risk.
 
@@ -20,7 +20,7 @@ AETF is designed to offer downside protection through stable and defensive alloc
 Crypto portfolios are inherently volatile. Most tokens on any given blockchain are highly correlated — when the market drops, everything drops together. Investors seeking diversification must manually manage multiple positions across different asset classes, incurring fees, complexity, and execution risk.
 
 On Algorand specifically:
-- No index or ETF-style product exists
+- No diversified, index-style basket token exists
 - Real-world assets (Gold, Silver) are available via Meld Gold but underutilized
 - DeFi and liquid-staking assets like xALGO capture ecosystem growth but sit siloed from safe-haven assets
 - No product bridges traditional safe-haven assets with DeFi-native exposure
@@ -97,7 +97,7 @@ AETF's price is determined by the market across all five pools. The primary pric
 
 | Parameter | Value |
 |-----------|-------|
-| **Token Name** | Aetheris ETF |
+| **Token Name** | Aetheris ETF *(immutable on-chain ASA name; brand: Aetheris)* |
 | **Ticker** | AETF |
 | **ASA ID** | 3581842047 |
 | **Total Supply** | 10,000 AETF |
@@ -202,4 +202,4 @@ AETF is not a registered security, investment fund, or financial product. It is 
 
 ---
 
-*© 2026 Aetheris ETF. All rights reserved.*
+*© 2026 Aetheris. All rights reserved. AETF is a token pool, not a registered security or investment fund. Nothing herein is investment advice — DYOR.*
