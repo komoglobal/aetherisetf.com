@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
     <title>Aetheris (AETF) — Diversified Token Pool on Algorand</title>
-    <meta name="description" content="AETF is a diversified token pool backed by real-world and digital assets on Algorand. Auto-rebalancing basket for downside protection and market upside. Not a registered security.">
+    <meta name="description" content="Aetheris is a diversified token pool on Algorand with public USDC, tokenized metal, HOG, and xALGO liquidity. Pool-implied marks and reserves are visible on-chain. Not a registered security.">
     <meta property="og:title" content="Aetheris ($AETF)">
-    <meta property="og:description" content="Diversified basket token on Algorand. Backed by USDC, Gold, Silver, HOG, and xALGO.">
+    <meta property="og:description" content="Diversified token pool on Algorand with public USDC, tokenized metal, HOG, and xALGO liquidity markets.">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@AetherisETF">
@@ -326,8 +326,8 @@
 
     <div class="price-bar">
         <span>$AETF</span>
-        <span class="price" id="livePrice">$2.68</span>
-        <span class="change up" id="liveChange">+9.8% from launch</span>
+        <span class="price" id="livePrice">—</span>
+        <span class="change" id="liveChange">Pool-implied mark loading</span>
         <span style="color:var(--text)">•</span>
         <span style="color:var(--text)">ASA 3581842047</span>
     </div>
@@ -344,7 +344,7 @@
             <img src="img/aetf_logo.png" alt="AETF" class="hero-logo">
             <div class="hero-badge"><span class="dot"></span> Live on Algorand</div>
             <h1><span>Diversified Token&nbsp;Pool</span><br>on Algorand</h1>
-            <p>One token. Five assets. Fully backed on-chain by USDC, Gold, Silver, HOG, and xALGO. Downside protection meets market upside.</p>
+            <p>One token. Five public liquidity markets. AETF trades against USDC, tokenized metals, HOG, and xALGO on Algorand, with pool balances and a pool-implied dollar mark visible on-chain.</p>
             <div class="hero-buttons">
                 <a href="https://app.tinyman.org/analytics/assets/detail/3581842047" target="_blank" class="btn-primary" style="display:inline-flex;align-items:center;gap:8px;"><img src="img/tinyman.png" alt="" style="width:20px;height:20px;border-radius:4px;">Buy on Tinyman</a>
                 <a href="https://vestige.fi/asset/3581842047" target="_blank" class="btn-primary" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);display:inline-flex;align-items:center;gap:8px;"><img src="img/vestige.png" alt="" style="width:20px;height:20px;border-radius:4px;">Buy on Vestige</a>
@@ -360,19 +360,19 @@
     <div class="stats" id="statsBar">
         <div class="stat">
             <div class="stat-value loading" id="statTvl">—</div>
-            <div class="stat-label">Total Value Locked</div>
+            <div class="stat-label">Pool-implied marked TVL</div>
         </div>
         <div class="stat">
             <div class="stat-value loading" id="statMcap">—</div>
-            <div class="stat-label">Market Cap</div>
+            <div class="stat-label">Fixed-supply implied value</div>
         </div>
         <div class="stat">
             <div class="stat-value loading" id="statNav">—</div>
-            <div class="stat-label">NAV per AETF</div>
+            <div class="stat-label">AETF/USDC pool mark</div>
         </div>
         <div class="stat">
             <div class="stat-value loading" id="statHolders">—</div>
-            <div class="stat-label">Holders</div>
+            <div class="stat-label">External positive holders</div>
         </div>
     </div>
 
@@ -380,8 +380,8 @@
         <div class="section-inner" style="text-align:center;">
             <div class="section-label">Basket Composition</div>
             <div class="section-title">Five Assets. One Token.</div>
-            <div class="section-desc" style="margin-left:auto;margin-right:auto;">AETF combines stablecoins, precious metals, and high-growth DeFi assets into a single diversified token. Allocations update in real-time from on-chain data.</div>
-            <div style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--green);margin-bottom:32px;"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;display:inline-block;"></span>Live Allocations</div>
+            <div class="section-desc" style="margin-left:auto;margin-right:auto;">AETF connects USDC, tokenized metals, HOG, and xALGO through separate public liquidity markets. The displayed composition is pool-implied and updates from on-chain data.</div>
+            <div style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--green);margin-bottom:32px;"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;display:inline-block;"></span>Live pool-implied composition</div>
             <div class="donut-wrapper">
                 <div class="donut-container">
                     <svg class="donut-svg" viewBox="-5 -5 130 130" id="donutChart">
@@ -396,31 +396,31 @@
                     <img src="img/usdc.png" alt="USDC" class="basket-logo">
                     <div class="basket-name">USDC</div>
                     <div class="basket-pct" id="pct-usdc">—%</div>
-                    <div class="basket-desc">Stablecoin anchor. Provides stability and downside protection.</div>
+                    <div class="basket-desc">Dollar-denominated trading counterparty and primary price anchor.</div>
                 </div>
                 <div class="basket-card" data-asset="gold">
                     <img src="img/gold.png" alt="Meld Gold" class="basket-logo">
                     <div class="basket-name">Gold</div>
                     <div class="basket-pct" id="pct-gold">—%</div>
-                    <div class="basket-desc">Tokenized gold by Meld. Real-world asset hedge.</div>
+                    <div class="basket-desc">Tokenized gold liquidity market by Meld. Pool balance is publicly visible.</div>
                 </div>
                 <div class="basket-card" data-asset="silver">
                     <img src="img/silver.png" alt="Meld Silver" class="basket-logo">
                     <div class="basket-name">Silver</div>
                     <div class="basket-pct" id="pct-silver">—%</div>
-                    <div class="basket-desc">Tokenized silver by Meld. Precious metal exposure.</div>
+                    <div class="basket-desc">Tokenized silver liquidity market by Meld. Pool balance is publicly visible.</div>
                 </div>
                 <div class="basket-card" data-asset="hog">
                     <img src="img/hog.png" alt="HOG" class="basket-logo">
                     <div class="basket-name">HOG</div>
                     <div class="basket-pct" id="pct-hog">—%</div>
-                    <div class="basket-desc">Algorand's DeFi market maker. Grows with the ecosystem — like an index fund for on-chain liquidity.</div>
+                    <div class="basket-desc">Algorand DeFi exposure through a public AETF/HOG liquidity market.</div>
                 </div>
                 <div class="basket-card" data-asset="xalgo">
                     <img src="img/xalgo.png" alt="xALGO" class="basket-logo">
                     <div class="basket-name">xALGO</div>
                     <div class="basket-pct" id="pct-xalgo">—%</div>
-                    <div class="basket-desc">Liquid-staked ALGO by Folks Finance. ALGO exposure plus staking yield.</div>
+                    <div class="basket-desc">Liquid-staked ALGO exposure through a public AETF/xALGO liquidity market.</div>
                 </div>
             </div>
         </div>
@@ -429,38 +429,38 @@
     <section id="features" style="background: var(--bg2);">
         <div class="section-inner" style="text-align:center;">
             <div class="section-label">Why AETF</div>
-            <div class="section-title">Built Different</div>
-            <div class="section-desc" style="margin-left:auto;margin-right:auto;">No smart contract risk. No custody. Just pure on-chain liquidity pools backing every token.</div>
+            <div class="section-title">Built to be auditable</div>
+            <div class="section-desc" style="margin-left:auto;margin-right:auto;">AETF is a native ASA with public liquidity pools. The pool-implied mark is observable, but it is not a fixed redemption price or guaranteed NAV.</div>
             <div class="features-grid">
                 <div class="feature">
                     <div class="feature-icon">🔒</div>
-                    <h3>Unhackable</h3>
-                    <p>AETF is a native Algorand ASA — not a smart contract. No clawback, no freeze, no mint. Fixed 10,000 supply forever.</p>
+                    <h3>Simple asset layer</h3>
+                    <p>AETF is a native Algorand ASA with a fixed 10,000-token supply. The trading pools are separate AMM smart-contract systems with their own risks.</p>
                 </div>
                 <div class="feature">
                     <div class="feature-icon">⚖️</div>
-                    <h3>Fully Backed</h3>
-                    <p>Every AETF token is backed by real assets in on-chain liquidity pools. Transparent, verifiable, always.</p>
+                    <h3>Publicly observable</h3>
+                    <p>Pool balances and transactions are visible on-chain. The AETF/USDC pool supplies a market route and dollar mark, not contractual redemption.</p>
                 </div>
                 <div class="feature">
                     <div class="feature-icon">📊</div>
-                    <h3>Diversified</h3>
-                    <p>Stablecoins for protection, precious metals for safety, DeFi for growth. A balanced all-weather portfolio.</p>
+                    <h3>Multi-market basket</h3>
+                    <p>USDC, tokenized metals, HOG, and xALGO are connected through separate public AETF liquidity markets. Actual weights can drift.</p>
                 </div>
                 <div class="feature">
                     <div class="feature-icon">🤖</div>
-                    <h3>Auto-Rebalancing</h3>
-                    <p>Arbitrage bots automatically keep pool prices balanced. The public infrastructure manages itself.</p>
+                    <h3>Market alignment</h3>
+                    <p>Permissionless arbitrage may align AETF prices across pools. It does not enforce target weights or guarantee dip-buying.</p>
                 </div>
                 <div class="feature">
                     <div class="feature-icon">💧</div>
-                    <h3>Deep Liquidity</h3>
-                    <p>Five active pools on Tinyman. Buy or sell AETF through any of the backing assets instantly.</p>
+                    <h3>Multiple exit routes</h3>
+                    <p>Five public pools provide trading routes, but execution depends on depth, fees, market conditions, and slippage.</p>
                 </div>
                 <div class="feature">
                     <div class="feature-icon">🏛️</div>
-                    <h3>Institutional Grade</h3>
-                    <p>Fixed supply, 6-decimal precision, professional tokenomics. Built with the discipline of a traditional diversified basket.</p>
+                    <h3>Transparent early-stage system</h3>
+                    <p>Fixed supply, public reserves, and on-chain reporting. This is an early-stage token pool, not a registered fund or institutional custody product.</p>
                 </div>
             </div>
         </div>
@@ -470,7 +470,7 @@
         <div class="section-inner" style="text-align:center;">
             <div class="section-label">Get Started</div>
             <div class="section-title">How to Buy $AETF</div>
-            <div class="section-desc" style="margin-left:auto;margin-right:auto;">Three simple steps to add AETF to your portfolio.</div>
+            <div class="section-desc" style="margin-left:auto;margin-right:auto;">Three simple steps to trade AETF through a public Algorand liquidity market.</div>
             <div class="steps">
                 <div class="step">
                     <h3>Get an Algorand Wallet</h3>
@@ -482,7 +482,7 @@
                 </div>
                 <div class="step">
                     <h3>Swap for $AETF</h3>
-                    <p>Swap ALGO, USDC, or any Algorand asset for AETF. Your diversified position is instant.</p>
+                    <p>Swap through a public route after reviewing the live price, pool depth, fees, and slippage. AETF is not directly redeemable from a protocol vault at a fixed price.</p>
                 </div>
             </div>
         </div>
@@ -498,7 +498,7 @@
             <a href="https://explorer.perawallet.app/asset/3581842047" target="_blank">Pera Explorer</a>
             <a href="https://algorand.co" target="_blank">Built on Algorand</a>
         </div>
-        <p>Aetheris — Diversified. Decentralized. Algorand.</p>
+        <p>Aetheris — Diversified markets. Public reserves. Algorand.</p>
         <p style="margin-top: 8px; font-size: 11px; color: var(--text3);">AETF is not a registered security or financial advice. This is a decentralized token on the Algorand blockchain. Do your own research. Past performance does not guarantee future results.</p>
     </footer>
 
@@ -542,7 +542,8 @@
                     BASKET_POOLS.map(pool => getPoolBalances(pool.poolAddr, pool.backingId))
                 );
 
-                // 2. Derive AETF price from USDC pool (index 0)
+                // 2. Derive a pool-implied AETF/USDC mark (index 0).
+                // This is not an independent NAV or fixed redemption value.
                 let aetfPrice = LAUNCH_PRICE;
                 if (allBalances[0].aetf > 0) {
                     aetfPrice = allBalances[0].backing / allBalances[0].aetf;
@@ -627,10 +628,23 @@
                 setStatValue('statNav', '$' + aetfPrice.toFixed(2));
                 setStatValue('statTvl', '$' + Math.round(totalTvl).toLocaleString());
 
-                // 6. Holders count
-                const holdRes = await fetch(`${INDEXER}/v2/assets/${AETF_ID}/balances?currency-greater-than=0`);
-                const holdData = await holdRes.json();
-                setStatValue('statHolders', (holdData.balances || []).length);
+                // 6. Read every positive-balance page and exclude known pool accounts.
+                const poolAddresses = new Set(BASKET_POOLS.map(pool => pool.poolAddr));
+                const holderRows = [];
+                let nextToken = null;
+                do {
+                    const params = new URLSearchParams({
+                        'currency-greater-than': '0',
+                        limit: '1000'
+                    });
+                    if (nextToken) params.set('next', nextToken);
+                    const holdRes = await fetch(`${INDEXER}/v2/assets/${AETF_ID}/balances?${params}`);
+                    const holdData = await holdRes.json();
+                    holderRows.push(...(holdData.balances || []));
+                    nextToken = holdData['next-token'] || null;
+                } while (nextToken);
+                const externalHolders = holderRows.filter(row => row.amount > 0 && !poolAddresses.has(row.address));
+                setStatValue('statHolders', externalHolders.length.toLocaleString());
             } catch(e) {
                 console.warn('Live data fetch failed', e);
                 // Show error indicator without breaking existing data
@@ -639,7 +653,7 @@
                     const msg = document.createElement('div');
                     msg.id = 'dataError';
                     msg.className = 'data-error';
-                    msg.textContent = 'Live data temporarily unavailable — showing last known values';
+                    msg.textContent = 'Pool-implied live data temporarily unavailable — showing last known values';
                     document.querySelector('.donut-wrapper')?.after(msg);
                 }
             }

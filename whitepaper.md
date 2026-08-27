@@ -7,9 +7,9 @@
 
 ## Abstract
 
-Aetheris (AETF) is a diversified, on-chain token pool built on Algorand. Each AETF token is backed by a basket of five assets — USDC, tokenized Gold, tokenized Silver, HOG, and xALGO — providing holders with diversified exposure across stablecoins, precious metals, and DeFi-native assets in a single token.
+Aetheris (AETF) is a diversified, on-chain token pool built on Algorand. AETF trades through public liquidity markets against USDC, tokenized Gold, tokenized Silver, HOG, and xALGO.
 
-AETF is designed to offer downside protection through stable and defensive allocations while maintaining upside exposure to Algorand ecosystem growth. The basket rebalances passively through automated market maker (AMM) arbitrage, requiring no active management or smart contract risk.
+AETF is designed to offer diversified exposure through public liquidity markets. Its AMM pools can allow permissionless arbitrage to align AETF prices across markets, but they do not enforce target weights, guarantee NAV tracking, or buy dips according to an independent valuation rule. The ASA itself is simple; the external AMM pools have their own smart-contract and liquidity risks.
 
 > **📌 Strategic Update (June 2026):** AETF has rotated its FOLKS position back into **xALGO** (Folks Finance liquid-staked ALGO), restoring liquid, yield-bearing ALGO exposure as the growth sleeve in place of a single concentrated protocol-token bet. The ~70% defensive / ~30% growth structure is preserved. Allocations begin at these initial targets and **drift dynamically with the market** — live and verifiable on-chain at all times.
 
@@ -33,7 +33,7 @@ AETF solves this by packaging five distinct asset classes into one token:
 
 | Asset | Allocation | Role | Provider |
 |-------|-----------|------|----------|
-| **USDC** | 35% | Stability floor — maintains value during drawdowns | Circle |
+| **USDC** | 35% | Dollar-denominated quote asset and defensive launch target | Circle |
 | **Gold (GOLD$)** | 17.5% | Inflation hedge — physical gold, tokenized and auditable | Meld Gold |
 | **Silver (SILVER$)** | 17.5% | Precious metals diversification — physical silver, tokenized | Meld Gold |
 | **HOG** | 15% | DeFi market maker — grows with Algorand ecosystem liquidity | LiquiHog |
@@ -56,40 +56,40 @@ AETF is an Algorand Standard Asset (ASA) with a fixed supply of **10,000 AETF**.
 - AETF / HOG
 - AETF / xALGO
 
-Each pool is seeded with liquidity proportional to the target allocation. The combined value of all pools constitutes the fund's Total Value Locked (TVL).
+Each pool was seeded with liquidity based on launch targets. The combined value of the pools can be reported as pool-implied marked TVL, but it is not an independent NAV calculation or a fixed redemption reserve.
 
 ### 3.2 Passive Rebalancing
 
-AETF does not rely on smart contracts for rebalancing. Instead, it leverages the natural arbitrage mechanism of AMM pools:
+AETF does not contain an allocation-rebalancing contract. Instead, public AMM activity may create cross-pool arbitrage:
 
-1. When one basket asset outperforms, its pool becomes mispriced relative to others
-2. Arbitrage traders correct the imbalance by trading between pools
-3. This process continuously adjusts the portfolio without any manual intervention
-4. The fund effectively "sells high" on outperforming assets and "buys low" on underperforming ones
+1. AETF can trade at different prices across its pools after market movement or a trade
+2. Arbitrage traders may trade between pools when the price difference exceeds fees, slippage, and risk
+3. That activity can align AETF prices, while reserves and economic weights drift with trading and liquidity flows
+4. Arbitrageurs optimize for trade profit; they are not required to enforce target allocations or buy an asset because it is fundamentally cheap
 
-This creates a self-balancing portfolio with zero smart contract risk and zero management overhead.
+This creates a market-alignment mechanism, not a guaranteed portfolio rebalancer. The system has no fixed-price protocol redemption mechanism.
 
 ### 3.3 Price Discovery
 
-AETF's price is determined by the market across all five pools. The primary pricing reference is the AETF/USDC pool, as USDC provides a stable dollar-denominated benchmark. The Net Asset Value (NAV) is derived from the combined value of all basket positions.
+AETF's observable price is determined by trading across the five pools. The primary price reference is the AETF/USDC pool because USDC supplies a dollar-denominated quote. A pool-implied marked value can be calculated from the pool states, but it is not an independent NAV or a fixed redemption price.
 
 ---
 
 ## 4. Risk Architecture
 
-### Downside Protection
-- **35% USDC floor**: In a severe market crash, more than one-third of the basket holds its dollar value
-- **35% precious metals**: Gold and Silver historically perform well during market stress and inflation
-- **Combined 70% defensive**: Provides a structural floor that limits drawdown severity
+### Defensive launch targets
+- **35% USDC target at launch**: Provides a dollar-denominated trading counterparty and a defensive sleeve, not a guaranteed AETF price floor
+- **35% precious-metals target at launch**: Gold and Silver add different market exposures; their value and liquidity can vary
+- **Combined 70% defensive target at launch**: Actual pool-side weights can drift and do not constitute a guaranteed floor
 
 ### Upside Capture
 - **15% HOG**: Captures Algorand DeFi ecosystem growth — as on-chain activity and liquidity increase, HOG benefits
-- **15% xALGO**: Liquid-staked ALGO (Folks Finance) — ALGO ecosystem upside plus native staking yield, fully liquid and redeemable for ALGO
+- **15% xALGO**: Liquid-staked ALGO exposure through Folks Finance; review the provider's current liquidity and redemption terms
 
-### No Smart Contract Risk
-- AETF is a standard ASA — no complex contract logic that can be exploited
-- Liquidity pools are managed by Tinyman's audited, battle-tested AMM
-- No admin keys for freeze or clawback — the token is fully decentralized
+### Risk separation
+- AETF is a standard ASA with no custom allocation contract
+- Liquidity pools are managed by third-party AMM smart contracts with their own protocol, implementation, and liquidity risks
+- The ASA's freeze and clawback fields are publicly observable; users should verify the current chain state rather than rely on a static document
 
 ---
 
@@ -104,13 +104,12 @@ AETF's price is determined by the market across all five pools. The primary pric
 | **Decimals** | 6 |
 | **Blockchain** | Algorand |
 | **Launch Price** | $2.44 |
-| **Freeze Address** | Zeroed (permanently disabled) |
-| **Clawback Address** | Zeroed (permanently disabled) |
+| **Freeze / clawback fields** | Verify current zeroed state from the live ASA record |
 | **Creator** | T77MFFTY4IUNMMJ47NS4C5RBWZFRE3UVPU7KVHCDPVJGHZVUDAKB7DCNRM |
 | **Manager** | 5LEDUTOGIWSMD2MZW4FIYJ2W3KZU262H2K3F7R2BBQNMHUYNDFHEA77UJQ |
 
 ### Supply Distribution
-The entire supply of 10,000 AETF is deployed across the five liquidity pools, proportional to target allocations. There are no team allocations, vesting schedules, or locked tokens. The fund's value is fully transparent and verifiable on-chain.
+The entire supply of 10,000 AETF was initially deployed across five public liquidity pools. Current balances and pool-side weights change with swaps, arbitrage, and liquidity operations, so launch targets are not current allocation guarantees. There are no team allocations or vesting schedules in the stated launch design. Pool balances are publicly verifiable; that does not create fixed-price redemption.
 
 ---
 
@@ -121,16 +120,16 @@ Every aspect of AETF is publicly auditable:
 - Pool balances are visible in real-time on Algorand explorers
 - Token holder distribution is publicly queryable
 - All transactions (swaps, arbitrage, pool additions) are recorded on the Algorand blockchain
-- NAV can be independently calculated from pool states at any time
+- Pool-implied marks can be calculated from pool states; independent NAV depends on external pricing and the absence of a fixed redemption mechanism
 
-### Asset Backing
+### Underlying asset references
 | Asset | Verification Method |
 |-------|-------------------|
-| USDC | Circle attestation reports; on-chain balance visible |
-| GOLD$ | Meld Gold — 1:1 backed by physical gold in audited vaults |
-| SILVER$ | Meld Gold — 1:1 backed by physical silver in audited vaults |
-| HOG | On-chain Tinyman pool; LiquiHog project |
-| xALGO | Folks Finance liquid-staked ALGO; redeemable for ALGO + staking rewards, verifiable on-chain |
+| USDC | Circle reserve disclosures; AETF pool balance visible on-chain |
+| GOLD$ | Meld Gold asset; current provider backing and redemption terms should be verified separately |
+| SILVER$ | Meld Gold asset; current provider backing and redemption terms should be verified separately |
+| HOG | On-chain AETF/HOG liquidity market; LiquiHog project |
+| xALGO | Folks Finance liquid-staked ALGO asset; current provider liquidity and redemption terms should be verified separately |
 
 ---
 
@@ -168,12 +167,12 @@ Every aspect of AETF is publicly auditable:
 | Feature | AETF | Typical DeFi Token |
 |---------|------|-------------------|
 | Diversified backing | ✅ 5 assets | ❌ Single asset |
-| Downside protection | ✅ 70% defensive | ❌ None |
-| Yield generation | ✅ Pool trading fees accrue to NAV | ❌ None |
-| Smart contract risk | ✅ None (pure ASA) | ⚠️ High |
-| Rebalancing | ✅ Automatic (AMM arbitrage) | ❌ Manual |
+| Defensive launch target | ✅ 70% defensive at launch | ❌ None |
+| LP fee exposure | ✅ Fees accrue to LP positions | ❌ None |
+| Custom allocation contract | ✅ None in AETF ASA | ⚠️ Varies |
+| Market alignment | ✅ Permissionless AMM arbitrage may align prices | ❌ Requires a separate policy |
 | Transparency | ✅ Fully on-chain | ⚠️ Varies |
-| Admin control | ✅ No freeze/clawback | ⚠️ Often enabled |
+| ASA authority visibility | ✅ Publicly verifiable | ⚠️ Varies |
 
 ---
 
