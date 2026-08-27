@@ -195,7 +195,7 @@ AETF is not a registered security, investment fund, or financial product. It is 
 ## 10. Links
 
 - **Website**: [aetherisetf.com](https://aetherisetf.com)
-- **Tinyman**: [Buy AETF](https://app.tinyman.org/#/swap?asset_in=0&asset_out=3581842047)
+- **Tinyman**: [Buy AETF](https://app.tinyman.org/analytics/assets/detail/3581842047)
 - **Vestige**: [Track AETF](https://vestige.fi/asset/3581842047)
 - **Twitter**: [@AetherisETF](https://x.com/AetherisETF)
 - **Algorand Explorer**: [ASA 3581842047](https://explorer.perawallet.app/asset/3581842047/)
