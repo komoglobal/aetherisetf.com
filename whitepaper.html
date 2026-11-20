@@ -95,7 +95,7 @@
         <p>AETF is designed to offer diversified exposure through public markets. Permissionless arbitrage may align AETF prices across pools, but the pools do not enforce target weights, guarantee NAV tracking, or provide fixed-price redemption. The ASA itself is simple; the external AMM pools have their own smart-contract and liquidity risks.</p>
 
         <div class="callout" style="border-left-color: var(--accent);">
-            <p><strong>Market update (November 2026):</strong> Liquidity was moved out of the Meld gold and silver pools after a Meld loan failure froze them. AETF now runs as an active market maker in USDC, fUSDC, and HOG pools on Tinyman, Pact, and LiquiHog. fUSDC is Folks Finance interest-bearing USDC, so part of the pool liquidity earns lending yield. No APY or yield is guaranteed.</p>
+            <p><strong>Market update (November 2026):</strong> AETF trades against and makes markets in USDC, fUSDC, and HOG pools on Tinyman, Pact, and LiquiHog. fUSDC is Folks Finance interest-bearing USDC, so part of the pool liquidity earns lending yield. No APY or yield is guaranteed.</p>
         </div>
 
         <!-- Problem -->
@@ -167,7 +167,7 @@
         <ul>
             <li>AETF is a standard ASA with no custom allocation contract</li>
             <li>Liquidity pools are managed by third-party AMM smart contracts (Tinyman, Pact, and LiquiHog STAMM) with their own protocol, implementation, and liquidity risks</li>
-            <li>The current ASA freeze and clawback fields should be verified from the live chain; the AMM pools remain separate third-party smart-contract systems</li>
+            <li>The current ASA clawback and other authority fields should be verified from the live chain; the AMM pools remain separate third-party smart-contract systems</li>
         </ul>
 
         <!-- Tokenomics -->
@@ -181,11 +181,11 @@
             <tr><td><strong>Decimals</strong></td><td>6</td></tr>
             <tr><td><strong>Blockchain</strong></td><td>Algorand</td></tr>
             <tr><td><strong>Launch Price</strong></td><td>$2.44</td></tr>
-            <tr><td><strong>Freeze / clawback fields</strong></td><td>Verify current zeroed state from the live ASA record</td></tr>
+            <tr><td><strong>Clawback and authority fields</strong></td><td>Verify current zeroed state from the live ASA record</td></tr>
         </table>
 
         <h3>Supply Distribution</h3>
-        <p>The entire supply of 10,000 AETF was initially deployed across public liquidity pools. Current balances and pool-side weights change with swaps, arbitrage, liquidity operations, and market-making, so earlier launch targets are not current allocation guarantees. Liquidity was later moved out of the Meld gold and silver pools after a Meld loan failure froze them, and AETF now makes markets in USDC, fUSDC, and HOG. Pool balances are publicly verifiable, but this does not create fixed-price redemption.</p>
+        <p>The entire supply of 10,000 AETF was initially deployed across public liquidity pools. Current balances and pool-side weights change with swaps, arbitrage, liquidity operations, and market-making, so earlier launch targets are not current allocation guarantees. AETF makes markets in USDC, fUSDC, and HOG. Pool balances are publicly verifiable, but this does not create fixed-price redemption.</p>
 
         <!-- Verification -->
         <h2>6. Verification & Transparency</h2>

@@ -380,7 +380,7 @@
         <div class="section-inner" style="text-align:center;">
             <div class="section-label">Basket Composition</div>
             <div class="section-title">Three Markets. One Token.</div>
-            <div class="section-desc" style="margin-left:auto;margin-right:auto;">AETF trades against USDC, fUSDC, and HOG on Tinyman, Pact, and LiquiHog STAMM. Liquidity was moved out of the Meld gold and silver pools after a Meld loan failure froze them. AETF now runs as an active market maker in these markets. The displayed composition is pool-implied and updates from on-chain data.</div>
+            <div class="section-desc" style="margin-left:auto;margin-right:auto;">AETF trades against and makes markets in USDC, fUSDC, and HOG on Tinyman, Pact, and LiquiHog STAMM. The displayed composition is pool-implied and updates from on-chain data.</div>
             <div style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--green);margin-bottom:32px;"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;display:inline-block;"></span>Live pool-implied composition</div>
             <div class="donut-wrapper">
                 <div class="donut-container">
@@ -533,7 +533,7 @@
         const POOL_NAMES = { usdc: 'USDC', fusdc: 'fUSDC', hog: 'HOG' };
 
         // External holders exclude project wallets, current pool accounts, the Pact vault,
-        // and leftover gold / silver / xALGO Tinyman pool accounts.
+        // and leftover legacy Tinyman pool accounts.
         const EXCLUDED_HOLDER_ADDRS = new Set([
             'T77MFFTY4IUNMMJ47NS4C5RBWZFRE3UVPU7KVHCDPVJGHZVUDAKB7DCNRM', // ASA creator
             '5LEDUTOGIWSMD2MZW4FIYJ2W3KZU262H2K3F7R2BBQNMHUYNDFHEA77UJQ', // ASA manager and reserve
@@ -547,9 +547,9 @@
             STAMM_USDC_ADDR,
             STAMM_FUSDC_ADDR,
             STAMM_HOG_ADDR,
-            'ILLRU7CX5BAFWAVYVD7PY5ETZ2QW524T4J6S4VA4Y77KEBUXBJHZRWY3YE', // old gold Tinyman
-            'WOQ3X6SRKXTJMJIQ7YSW5YE72MZLM5ZRTCPXQQMTFCR64SUHCXSUSD6JPY', // old silver Tinyman
-            'WY6CEMU74RDFHCMIOQXQ3VDPC4CHQOF3LODDGZAYVV5CCTL43G5UTR27CI'  // old xALGO Tinyman
+            'ILLRU7CX5BAFWAVYVD7PY5ETZ2QW524T4J6S4VA4Y77KEBUXBJHZRWY3YE', // legacy Tinyman pool
+            'WOQ3X6SRKXTJMJIQ7YSW5YE72MZLM5ZRTCPXQQMTFCR64SUHCXSUSD6JPY', // legacy Tinyman pool
+            'WY6CEMU74RDFHCMIOQXQ3VDPC4CHQOF3LODDGZAYVV5CCTL43G5UTR27CI'  // legacy Tinyman pool
         ]);
 
         function setStatValue(id, value) {
