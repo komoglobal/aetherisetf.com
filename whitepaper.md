@@ -190,7 +190,6 @@ AETF is not a registered security, investment fund, or financial product. It is 
 - **Tinyman**: [Buy AETF](https://app.tinyman.org/analytics/assets/detail/3581842047)
 - **Pact**: [Buy AETF](https://app.pact.fi/swap?from=31566704&to=3581842047)
 - **LiquiHog**: [Buy AETF](https://app.liquihog.com/asset/3581842047)
-- **LiquiHog**: [Trade AETF](https://app.liquihog.com/asset/3581842047)
 - **Twitter**: [@AetherisETF](https://x.com/AetherisETF)
 - **Algorand Explorer**: [ASA 3581842047](https://explorer.perawallet.app/asset/3581842047/)
 
