@@ -7,11 +7,11 @@
 
 ## Abstract
 
-Aetheris (AETF) is a diversified, on-chain token pool built on Algorand. AETF trades through public liquidity markets against USDC, Folks V2 USDC (fUSDC), and HOG on LiquiHog STAMM, Pact, and Tinyman.
+Aetheris (AETF) is a diversified, on-chain token pool built on Algorand. AETF provides liquidity in USDC, Folks V2 USDC (fUSDC), and HOG on LiquiHog STAMM, Pact, and Tinyman.
 
 AETF is designed to offer diversified exposure through public liquidity markets. Its AMM pools can allow permissionless arbitrage to align AETF prices across markets, but they do not enforce target weights, guarantee NAV tracking, or buy dips according to an independent valuation rule. The ASA itself is simple. The external AMM pools have their own smart-contract and liquidity risks.
 
-> **Market update (November 2026):** AETF trades against and makes markets in USDC, fUSDC, and HOG pools on LiquiHog, Pact, and Tinyman. fUSDC is Folks Finance interest-bearing USDC, so part of the pool liquidity earns lending yield. No APY or yield is guaranteed.
+> **Market update (November 2026):** AETF provides liquidity in USDC, fUSDC, and HOG pools on LiquiHog, Pact, and Tinyman. fUSDC is Folks Finance interest-bearing USDC, so part of the pool liquidity earns lending yield. No APY or yield is guaranteed.
 
 ---
 
@@ -103,7 +103,7 @@ Allocations and pool-side weights change through market trades, liquidity flows,
 | **Manager** | 5LEDUTOGIWSMD2MZW4FIYJ2W3KZU262H2K3F7R2BBQNMHUYNDFHEA77UJQ |
 
 ### Supply Distribution
-The entire supply of 10,000 AETF was initially deployed across public liquidity pools. Current balances and pool-side weights change with swaps, arbitrage, liquidity operations, and market-making, so earlier launch targets are not current allocation guarantees. AETF makes markets in USDC, fUSDC, and HOG. There are no team allocations or vesting schedules in the stated launch design. Pool balances are publicly verifiable. That does not create fixed-price redemption.
+The entire supply of 10,000 AETF was initially deployed across public liquidity pools. Current balances and pool-side weights change with swaps, arbitrage, liquidity operations, and market-making, so earlier launch targets are not current allocation guarantees. AETF provides liquidity in USDC, fUSDC, and HOG. There are no team allocations or vesting schedules in the stated launch design. Pool balances are publicly verifiable. That does not create fixed-price redemption.
 
 ---
 
