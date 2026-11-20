@@ -127,26 +127,26 @@ Every aspect of AETF is publicly auditable:
 
 ## 7. Roadmap
 
-### Phase 1 — Launch ✅
+### Phase 1: Launch ✅
 - Token creation and liquidity seeding
 - Website launch (aetherisetf.com)
 - Tinyman, Pact and LiquiHog integration
 - Community building and first communications
 
-### Phase 2 — Growth (Q3 2026)
+### Phase 2: Growth (Q3 2026)
 - Pera Wallet verification
 - TVL growth to $100K+
 - Expanded holder base (25+ holders)
 - Whitepaper publication
 - Community engagement (Twitter, Reddit, Algorand ecosystem)
 
-### Phase 3 — Integration (Q4 2026)
+### Phase 3: Integration (Q4 2026)
 - Folks Finance collateral listing proposal
 - Cross-protocol composability
 - Advanced analytics dashboard with live allocation tracking
 - Partnerships with Algorand ecosystem projects
 
-### Phase 4 — Scale (2027)
+### Phase 4: Scale (2027)
 - TVL target: $1M+
 - Potential basket expansion (additional asset classes)
 - Governance framework for allocation adjustments

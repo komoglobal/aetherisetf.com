@@ -66,7 +66,7 @@
         }
         .nav-cta img { width: 18px; height: 18px; border-radius: 4px; }
         .nav-cta.tinyman { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: var(--bg); }
-        .nav-cta.vestige { background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; }
+        .nav-cta.liquihog { background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; }
         .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
         .nav-buttons { display: flex; gap: 8px; }
         .hamburger {
@@ -457,7 +457,7 @@
                 <a href="whitepaper.html">Whitepaper</a>
             </div>
             <div class="nav-buttons">
-                <a href="https://app.liquihog.com/asset/3581842047" target="_blank" class="nav-cta vestige"><img src="img/hog.png" alt="">LiquiHog</a>
+                <a href="https://app.liquihog.com/asset/3581842047" target="_blank" class="nav-cta liquihog"><img src="img/hog.png" alt="">LiquiHog</a>
             </div>
         </div>
     </nav>
@@ -540,7 +540,7 @@
                     <img src="img/fusdc.png" alt="fUSDC" class="basket-logo">
                     <div class="basket-name">fUSDC</div>
                     <div class="basket-pct" id="pct-fusdc">—%</div>
-                    <div class="basket-desc">Folks Finance interest-bearing USDC. Part of this pool liquidity earns lending yield. No APY or yield is guaranteed.</div>
+                    <div class="basket-desc">Folks Finance interest-bearing USDC. Part of this pool liquidity may earn variable lending yield from Folks. No APY or yield is promised.</div>
                 </div>
                 <div class="basket-card" data-asset="hog">
                     <img src="img/hog.png" alt="HOG" class="basket-logo">
@@ -688,8 +688,8 @@
             <a href="https://explorer.perawallet.app/asset/3581842047" target="_blank">Pera Explorer</a>
             <a href="https://algorand.co" target="_blank">Built on Algorand</a>
         </div>
-        <p>Aetheris — Diversified markets. Public reserves. Algorand.</p>
-        <p style="margin-top: 8px; font-size: 11px; color: var(--text3);">AETF is not a registered security or financial advice. This is a decentralized token on the Algorand blockchain. Do your own research. Past performance does not guarantee future results.</p>
+        <p>Aetheris. Diversified markets. Public reserves. Algorand.</p>
+        <p style="margin-top: 8px; font-size: 12px; color: var(--text3);">AETF is not a registered security, not an investment fund, and not investment advice. This is a decentralized token on the Algorand blockchain. Do your own research. You can lose the value you put in. Past performance does not guarantee future results.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
@@ -814,6 +814,41 @@
             }
         }
 
+        function clearLiveFigures() {
+            const price = document.getElementById('livePrice');
+            if (price) price.textContent = '';
+            const changeEl = document.getElementById('liveChange');
+            if (changeEl) {
+                changeEl.textContent = '';
+                changeEl.className = 'change liq';
+                changeEl.style.color = '';
+            }
+            ['statTvl', 'statMcap', 'statNav', 'statHolders'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) { el.textContent = ''; el.classList.remove('loading'); }
+            });
+            ['pct-usdc', 'pct-fusdc', 'pct-hog'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = '';
+            });
+            const donut = document.getElementById('donutChart');
+            if (donut) donut.innerHTML = '<circle cx="60" cy="60" r="52" fill="none" stroke="var(--border)" stroke-width="16" opacity="0.35"/>';
+            ['hogTotalHeld', 'hogPriceLine', 'hogVenueTinyman', 'hogVenuePact', 'hogVenueStamm', 'hogShareTinyman', 'hogSharePact', 'hogShareStamm'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.textContent = '';
+                    el.classList.remove('loading');
+                }
+            });
+            if (!document.getElementById('dataError')) {
+                const msg = document.createElement('div');
+                msg.id = 'dataError';
+                msg.className = 'data-error';
+                msg.textContent = 'Pool-implied live data temporarily unavailable.';
+                document.querySelector('.donut-wrapper')?.after(msg);
+            }
+        }
+
         async function updateLiveData() {
             try {
                 const allBalances = await Promise.all(BASKET_POOLS.map(getPoolBalances));
@@ -829,7 +864,12 @@
                         usdcUsd += bal.backing * (pool.backingPriceUsd || 1);
                     }
                 });
-                const aetfPrice = usdcAetf > 0 ? usdcUsd / usdcAetf : LAUNCH_PRICE;
+                if (usdcAetf <= 0) {
+                    clearLiveFigures();
+                    return;
+                }
+                const aetfPrice = usdcUsd / usdcAetf;
+                document.getElementById('dataError')?.remove();
 
                 document.getElementById('livePrice').textContent = '$' + aetfPrice.toFixed(4);
 
@@ -912,37 +952,31 @@
                 setStatValue('statNav', '$' + aetfPrice.toFixed(2));
                 setStatValue('statTvl', '$' + Math.round(totalTvl).toLocaleString());
 
-                const holderRows = [];
-                let nextToken = null;
-                do {
-                    const params = new URLSearchParams({
-                        'currency-greater-than': '0',
-                        limit: '1000'
-                    });
-                    if (nextToken) params.set('next', nextToken);
-                    const holdRes = await fetch(`${INDEXER}/v2/assets/${AETF_ID}/balances?${params}`);
-                    const holdData = await holdRes.json();
-                    holderRows.push(...(holdData.balances || []));
-                    nextToken = holdData['next-token'] || null;
-                } while (nextToken);
-                const externalHolders = holderRows.filter(row => row.amount > 0 && !EXCLUDED_HOLDER_ADDRS.has(row.address));
-                setStatValue('statHolders', externalHolders.length.toLocaleString());
+                try {
+                    const holderRows = [];
+                    let nextToken = null;
+                    do {
+                        const params = new URLSearchParams({
+                            'currency-greater-than': '0',
+                            limit: '1000'
+                        });
+                        if (nextToken) params.set('next', nextToken);
+                        const holdRes = await fetch(`${INDEXER}/v2/assets/${AETF_ID}/balances?${params}`);
+                        if (!holdRes.ok) throw new Error('holders ' + holdRes.status);
+                        const holdData = await holdRes.json();
+                        holderRows.push(...(holdData.balances || []));
+                        nextToken = holdData['next-token'] || null;
+                    } while (nextToken);
+                    const externalHolders = holderRows.filter(row => row.amount > 0 && !EXCLUDED_HOLDER_ADDRS.has(row.address));
+                    setStatValue('statHolders', externalHolders.length.toLocaleString());
+                } catch (holdErr) {
+                    console.warn('Holder count fetch failed', holdErr);
+                    const holdEl = document.getElementById('statHolders');
+                    if (holdEl) { holdEl.textContent = ''; holdEl.classList.remove('loading'); }
+                }
             } catch(e) {
                 console.warn('Live data fetch failed', e);
-                const changeEl = document.getElementById('liveChange');
-                if (changeEl) {
-                    changeEl.textContent = '';
-                    changeEl.className = 'change liq';
-                    changeEl.style.color = '';
-                }
-                const errEl = document.getElementById('dataError');
-                if (!errEl) {
-                    const msg = document.createElement('div');
-                    msg.id = 'dataError';
-                    msg.className = 'data-error';
-                    msg.textContent = 'Pool-implied live data temporarily unavailable. Showing last known values.';
-                    document.querySelector('.donut-wrapper')?.after(msg);
-                }
+                clearLiveFigures();
             }
         }
         function formatHogAmt(n) {
