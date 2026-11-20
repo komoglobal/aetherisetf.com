@@ -130,7 +130,7 @@ Every aspect of AETF is publicly auditable:
 ### Phase 1 — Launch ✅
 - Token creation and liquidity seeding
 - Website launch (aetherisetf.com)
-- Tinyman and Vestige integration
+- Tinyman, Pact and LiquiHog integration
 - Community building and first communications
 
 ### Phase 2 — Growth (Q3 2026)
@@ -190,7 +190,7 @@ AETF is not a registered security, investment fund, or financial product. It is 
 - **Tinyman**: [Buy AETF](https://app.tinyman.org/analytics/assets/detail/3581842047)
 - **Pact**: [Buy AETF](https://app.pact.fi/swap?from=31566704&to=3581842047)
 - **LiquiHog**: [Buy AETF](https://app.liquihog.com/asset/3581842047)
-- **Vestige**: [Track AETF](https://vestige.fi/asset/3581842047)
+- **LiquiHog**: [Trade AETF](https://app.liquihog.com/asset/3581842047)
 - **Twitter**: [@AetherisETF](https://x.com/AetherisETF)
 - **Algorand Explorer**: [ASA 3581842047](https://explorer.perawallet.app/asset/3581842047/)
 
