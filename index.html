@@ -360,16 +360,28 @@
         }
         .hog-explain-card.rise .hog-explain-tag { background: var(--blue); color: #061018; }
         .price-bar .change.liq { color: var(--text2); font-weight: 600; }
+        .price-bar .price-asa { color: var(--text); white-space: nowrap; }
 
         @media (max-width: 768px) {
             .nav-title { display: none; }
+            .nav-inner { position: relative; padding: 0 16px; }
+            .nav-logo { order: 1; }
+            .nav-buttons { order: 2; margin-left: auto; }
+            .hamburger { order: 3; margin-left: 8px; flex-shrink: 0; }
+            .nav-links { order: 4; z-index: 102; }
+            .hero { padding: 72px 16px 48px; }
             .hero h1 { font-size: 32px; letter-spacing: -1px; }
             .hero p { font-size: 16px; }
             .hero-logo { width: 90px; height: 90px; }
-            .hero-buttons { flex-direction: column; align-items: center; }
-            .hero-buttons .btn-primary, .hero-buttons .btn-secondary { width: 100%; max-width: 280px; text-align: center; justify-content: center; }
+            .hero-buttons { flex-direction: column; align-items: center; gap: 12px; }
+            .hero-buttons .btn-primary, .hero-buttons .btn-secondary {
+                width: 100%; max-width: 360px; min-height: 48px; text-align: center;
+                display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+                box-sizing: border-box;
+            }
+            .hero-buttons .btn-primary { border: 1px solid transparent; }
             .floating-tokens { display: none; }
-            .price-bar { flex-wrap: wrap; gap: 8px; font-size: 12px; margin-top: 64px; padding: 8px 16px; justify-content: center; }
+            .price-bar { flex-wrap: wrap; gap: 6px 8px; font-size: 12px; margin-top: 64px; padding: 8px 16px; justify-content: center; row-gap: 4px; }
             .stats { grid-template-columns: repeat(2, 1fr); background: transparent; gap: 12px; padding: 0 16px; border: none; }
             .stat-value { font-size: 24px; }
             .stat { padding: 20px 16px; border-radius: 12px; border: 1px solid var(--accent); background: #1a2540; }
@@ -400,13 +412,30 @@
             .nav-buttons { gap: 6px; }
             .nav-cta { padding: 6px 12px; font-size: 12px; }
 
-            .hog-live-grid { grid-template-columns: 1fr 1fr; }
-            .hog-stat { grid-column: 1 / -1; }
+            .hog-live-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+            .hog-stat { grid-column: 1 / -1; padding: 20px 16px; }
             .hog-stat-value { font-size: 26px; }
+            .hog-venue { padding: 14px 6px 16px; }
+            .hog-venue img, .hog-pact-mark { width: 28px; height: 28px; margin-bottom: 6px; }
+            .hog-pact-mark { font-size: 13px; }
+            .hog-venue-name { font-size: 12px; line-height: 1.25; }
+            .hog-venue-amt { font-size: 15px; }
+            .hog-venue-share { font-size: 12px; line-height: 1.3; }
             .hog-chart-wrap { height: 280px; }
+            .hog-chart-card { padding: 16px 14px 12px; }
+            .hog-chart-head h3 { font-size: 15px; }
             .hog-explain { grid-template-columns: 1fr; }
             .hog-chart-card, .hog-stat, .hog-venue, .hog-explain-card { border-color: var(--accent); }
-            .footer-links { flex-wrap: wrap; gap: 16px; }
+            .footer-links { flex-wrap: wrap; gap: 16px; justify-content: center; }
+        }
+        @media (max-width: 420px) {
+            .section-title { font-size: 24px; }
+        }
+        @media (max-width: 379px) {
+            .hero h1 { font-size: 28px; }
+            .hog-venue-amt { font-size: 14px; }
+            .hog-venue-name { font-size: 11px; }
+            .hog-chart-wrap { height: 250px; }
         }
     </style>
 </head>
@@ -437,8 +466,7 @@
         <span>$AETF</span>
         <span class="price" id="livePrice">—</span>
         <span class="change liq" id="liveChange"></span>
-        <span style="color:var(--text)">•</span>
-        <span style="color:var(--text)">ASA 3581842047</span>
+        <span class="price-asa">• ASA 3581842047</span>
     </div>
 
     <section class="hero">
@@ -456,8 +484,8 @@
             <p>One token. Public markets in USDC, fUSDC, and HOG. AETF trades on Tinyman, Pact, and LiquiHog STAMM, with pool balances and a pool-implied dollar mark visible on-chain.</p>
             <div class="hero-buttons">
                 <a href="https://app.liquihog.com/asset/3581842047" target="_blank" class="btn-primary" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);display:inline-flex;align-items:center;gap:8px;"><img src="img/hog.png" alt="" style="width:20px;height:20px;border-radius:4px;">Buy on LiquiHog</a>
-                <a href="https://app.tinyman.org/analytics/assets/detail/3581842047" target="_blank" class="btn-primary" style="display:inline-flex;align-items:center;gap:8px;"><img src="img/tinyman.png" alt="" style="width:20px;height:20px;border-radius:4px;">Buy on Tinyman</a>
                 <a href="https://app.pact.fi/swap?from=31566704&to=3581842047" target="_blank" class="btn-primary" style="background:linear-gradient(135deg,#2563eb,#3b82f6);color:white;display:inline-flex;align-items:center;gap:8px;"><span style="width:20px;height:20px;border-radius:4px;background:white;color:#2563eb;font-weight:800;font-size:13px;display:inline-flex;align-items:center;justify-content:center;">P</span>Buy on Pact</a>
+                <a href="https://app.tinyman.org/analytics/assets/detail/3581842047" target="_blank" class="btn-primary" style="display:inline-flex;align-items:center;gap:8px;"><img src="img/tinyman.png" alt="" style="width:20px;height:20px;border-radius:4px;">Buy on Tinyman</a>
                 <a href="#basket" class="btn-secondary">Learn More</a>
             </div>
             <div class="contract-box" onclick="navigator.clipboard.writeText('3581842047');this.querySelector('.copy').textContent='Copied!'">
@@ -539,12 +567,6 @@
                     <div class="hog-stat-sub" id="hogPriceLine">Pool-implied HOG mark loading</div>
                 </div>
                 <div class="hog-venue">
-                    <img src="img/tinyman.png" alt="">
-                    <div class="hog-venue-name">Tinyman</div>
-                    <div class="hog-venue-amt loading" id="hogVenueTinyman">--</div>
-                    <div class="hog-venue-share" id="hogShareTinyman"></div>
-                </div>
-                <div class="hog-venue">
                     <div class="hog-pact-mark" aria-hidden="true">P</div>
                     <div class="hog-venue-name">Pact</div>
                     <div class="hog-venue-amt loading" id="hogVenuePact">--</div>
@@ -556,28 +578,32 @@
                     <div class="hog-venue-amt loading" id="hogVenueStamm">--</div>
                     <div class="hog-venue-share" id="hogShareStamm"></div>
                 </div>
+                <div class="hog-venue">
+                    <img src="img/tinyman.png" alt="">
+                    <div class="hog-venue-name">Tinyman</div>
+                    <div class="hog-venue-amt loading" id="hogVenueTinyman">--</div>
+                    <div class="hog-venue-share" id="hogShareTinyman"></div>
+                </div>
             </div>
             <div class="hog-chart-card">
                 <div class="hog-chart-head">
                     <h3>HOG held vs pool-implied HOG mark</h3>
                     <div class="hog-chart-legend">
-                        <span><i class="hog-swatch" style="background:#2dd4bf"></i>Tinyman</span>
-                        <span><i class="hog-swatch" style="background:#60a5fa"></i>Pact</span>
-                        <span><i class="hog-swatch" style="background:#ff6b8a"></i>LiquiHog STAMM</span>
-                        <span><i class="hog-swatch" style="background:#d4a843"></i>HOG mark (right axis)</span>
+                        <span><i class="hog-swatch" style="background:#2dd4bf"></i>Total HOG held</span>
+                        <span><i class="hog-swatch" style="background:#d4a843"></i>HOG mark</span>
                     </div>
                 </div>
                 <div class="hog-chart-wrap">
                     <canvas id="hogHistoryChart" aria-label="Daily HOG held in AETF/HOG pools and the pool-implied HOG dollar mark"></canvas>
                     <div class="hog-chart-empty" id="hogChartEmpty">Historical chart could not be loaded. Live pool figures above are still fetched on-chain when available.</div>
                 </div>
-                <p class="hog-chart-note">Daily end-of-day reserves, UTC, reconstructed from Algorand indexer records of the pool accounts and Pact application state. The series starts on 31 May 2026, when the Tinyman AETF/HOG pool was created. Replay was checked against live balances on 20 Nov 2026 (Asia/Bangkok). No points were interpolated. The near-empty print on 13-14 Jun 2026 is a liquidity withdrawal; most of that liquidity was re-added on 15 Jun, when the LiquiHog STAMM pool also opened. On 18 Nov 2026, liquidity was split across Tinyman, LiquiHog STAMM, and a new Pact pool.</p>
+                <p class="hog-chart-note">Daily end-of-day reserves, UTC, reconstructed from Algorand indexer records of the pool accounts and Pact application state. The series starts on 31 May 2026, when the Tinyman AETF/HOG pool was created. Replay was checked against live balances on 20 Nov 2026 (Asia/Bangkok). No points were interpolated. The near-empty print on 13-14 Jun 2026 is a liquidity withdrawal; most of that liquidity was re-added on 15 Jun.</p>
             </div>
             <div class="hog-explain">
                 <div class="hog-explain-card">
                     <div class="hog-explain-tag">When HOG dips</div>
                     <h3>The pools buy HOG</h3>
-                    <p>Traders sell HOG into the AETF/HOG pools. The pools pay with USDC‑backed AETF and are left holding more HOG.</p>
+                    <p>Traders sell HOG into the AETF/HOG pools. The pools pay in AETF and are left holding more HOG.</p>
                 </div>
                 <div class="hog-explain-card rise">
                     <div class="hog-explain-tag">When HOG rises</div>
@@ -641,7 +667,7 @@
                 </div>
                 <div class="step">
                     <h3>Go to a DEX</h3>
-                    <p>Visit <a href="https://app.liquihog.com/asset/3581842047" target="_blank" style="color:var(--accent)">LiquiHog</a>, <a href="https://app.tinyman.org/analytics/assets/detail/3581842047" target="_blank" style="color:var(--accent)">Tinyman</a>, or <a href="https://app.pact.fi/swap?from=31566704&to=3581842047" target="_blank" style="color:var(--accent)">Pact</a> and connect your wallet. Search for AETF (ASA <span style="white-space:nowrap">358&#8203;184&#8203;2047</span>).</p>
+                    <p>Visit <a href="https://app.liquihog.com/asset/3581842047" target="_blank" style="color:var(--accent)">LiquiHog</a>, <a href="https://app.pact.fi/swap?from=31566704&to=3581842047" target="_blank" style="color:var(--accent)">Pact</a>, or <a href="https://app.tinyman.org/analytics/assets/detail/3581842047" target="_blank" style="color:var(--accent)">Tinyman</a> and connect your wallet. Search for AETF (ASA <span style="white-space:nowrap">358&#8203;184&#8203;2047</span>).</p>
                 </div>
                 <div class="step">
                     <h3>Swap for $AETF</h3>
@@ -656,8 +682,8 @@
         <div class="footer-links">
             <a href="https://allo.info/asset/3581842047" target="_blank">Allo.info</a>
             <a href="https://app.liquihog.com/asset/3581842047" target="_blank">LiquiHog</a>
-            <a href="https://app.tinyman.org/analytics/assets/detail/3581842047" target="_blank">Tinyman</a>
             <a href="https://app.pact.fi/swap?from=31566704&to=3581842047" target="_blank">Pact</a>
+            <a href="https://app.tinyman.org/analytics/assets/detail/3581842047" target="_blank">Tinyman</a>
             <a href="https://x.com/AetherisETF" target="_blank">Twitter/X</a>
             <a href="https://explorer.perawallet.app/asset/3581842047" target="_blank">Pera Explorer</a>
             <a href="https://algorand.co" target="_blank">Built on Algorand</a>
@@ -982,10 +1008,8 @@
             if (hogChart && hogHistoryPayload && live.hogUsd != null) {
                 const daily = upsertToday(hogHistoryPayload.daily.slice(), live);
                 hogChart.data.labels = daily.map(r => r.date);
-                hogChart.data.datasets[0].data = daily.map(r => r.hog_tinyman);
-                hogChart.data.datasets[1].data = daily.map(r => r.hog_pact);
-                hogChart.data.datasets[2].data = daily.map(r => r.hog_stamm);
-                hogChart.data.datasets[3].data = daily.map(r => r.hog_usd);
+                hogChart.data.datasets[0].data = daily.map(r => r.hog_total);
+                hogChart.data.datasets[1].data = daily.map(r => r.hog_usd);
                 hogChart.update('none');
             }
         }
@@ -1014,40 +1038,15 @@
                         labels: daily.map(r => r.date),
                         datasets: [
                             {
-                                label: 'Tinyman HOG',
-                                data: daily.map(r => r.hog_tinyman),
+                                label: 'Total HOG held',
+                                data: daily.map(r => r.hog_total),
                                 borderColor: '#2dd4bf',
-                                backgroundColor: 'rgba(45,212,191,0.35)',
+                                backgroundColor: 'rgba(45,212,191,0.18)',
                                 fill: true,
-                                stack: 'hog',
                                 yAxisID: 'y',
                                 tension: 0.15,
                                 pointRadius: 0,
-                                borderWidth: 1.5
-                            },
-                            {
-                                label: 'Pact HOG',
-                                data: daily.map(r => r.hog_pact),
-                                borderColor: '#60a5fa',
-                                backgroundColor: 'rgba(96,165,250,0.35)',
-                                fill: true,
-                                stack: 'hog',
-                                yAxisID: 'y',
-                                tension: 0.15,
-                                pointRadius: 0,
-                                borderWidth: 1.5
-                            },
-                            {
-                                label: 'LiquiHog STAMM HOG',
-                                data: daily.map(r => r.hog_stamm),
-                                borderColor: '#ff6b8a',
-                                backgroundColor: 'rgba(255,107,138,0.40)',
-                                fill: true,
-                                stack: 'hog',
-                                yAxisID: 'y',
-                                tension: 0.15,
-                                pointRadius: 0,
-                                borderWidth: 1.5
+                                borderWidth: 2
                             },
                             {
                                 label: 'HOG mark (USD)',
@@ -1055,7 +1054,6 @@
                                 borderColor: '#d4a843',
                                 backgroundColor: 'transparent',
                                 fill: false,
-                                stack: undefined,
                                 yAxisID: 'y1',
                                 tension: 0.15,
                                 pointRadius: 0,
@@ -1081,7 +1079,7 @@
                                         if (item.dataset.yAxisID === 'y1') {
                                             return ' HOG mark $' + (v == null ? 'n/a' : v.toFixed(4));
                                         }
-                                        return ' ' + item.dataset.label.replace(' HOG', '') + ': ' + formatHogAmt(v || 0) + ' HOG';
+                                        return ' Total HOG held: ' + formatHogAmt(v || 0) + ' HOG';
                                     }
                                 }
                             }
@@ -1103,7 +1101,6 @@
                                 grid: { color: grid }
                             },
                             y: {
-                                stacked: true,
                                 position: 'left',
                                 title: { display: true, text: 'HOG held', color: tick, font: { size: 11 } },
                                 ticks: {
