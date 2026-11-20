@@ -9,7 +9,7 @@
 
 Aetheris (AETF) is a diversified, on-chain token pool built on Algorand. AETF trades through public liquidity markets against USDC, Folks V2 USDC (fUSDC), and HOG on Tinyman, Pact, and LiquiHog STAMM.
 
-AETF is designed to offer diversified exposure through public liquidity markets. Its AMM pools can allow permissionless arbitrage to align AETF prices across markets, but they do not enforce target weights, guarantee NAV tracking, or buy dips according to an independent valuation rule. The ASA itself is simple; the external AMM pools have their own smart-contract and liquidity risks.
+AETF is designed to offer diversified exposure through public liquidity markets. Its AMM pools can allow permissionless arbitrage to align AETF prices across markets, but they do not enforce target weights, guarantee NAV tracking, or buy dips according to an independent valuation rule. The ASA itself is simple. The external AMM pools have their own smart-contract and liquidity risks.
 
 > **Market update (November 2026):** AETF trades against and makes markets in USDC, fUSDC, and HOG pools on Tinyman, Pact, and LiquiHog. fUSDC is Folks Finance interest-bearing USDC, so part of the pool liquidity earns lending yield. No APY or yield is guaranteed.
 
@@ -33,7 +33,7 @@ AETF packages public trading markets against three assets into one token:
 | Asset | Role | Provider |
 |-------|------|----------|
 | **USDC** | Dollar-denominated quote asset and primary price anchor | Circle |
-| **fUSDC** | Folks Finance interest-bearing USDC. Part of pool liquidity earns lending yield; no APY or yield is guaranteed | Folks Finance |
+| **fUSDC** | Folks Finance interest-bearing USDC. Part of pool liquidity may earn variable lending yield from Folks. No APY or yield is promised. | Folks Finance |
 | **HOG** | DeFi market-maker token that trades in public AETF/HOG pools | LiquiHog |
 
 Live pool-implied composition is displayed on [aetherisetf.com](https://aetherisetf.com). Actual pool-side weights can drift as markets trade and liquidity changes.
@@ -59,7 +59,7 @@ AETF does not contain an allocation-rebalancing contract. Instead, public AMM ac
 1. AETF can trade at different prices across its pools after market movement or a trade
 2. Arbitrage traders may trade between pools when the price difference exceeds fees, slippage, and risk
 3. That activity can align AETF prices, while reserves and economic weights drift with trading and liquidity flows
-4. Arbitrageurs optimize for trade profit; they are not required to enforce target allocations or buy an asset because it is fundamentally cheap
+4. Arbitrageurs optimize for trade profit. They are not required to enforce target allocations or buy an asset because it is fundamentally cheap
 
 This describes a market-alignment mechanism, not a promised strategy or a guaranteed portfolio rebalancer. The system has no fixed-price protocol redemption mechanism.
 
@@ -83,7 +83,7 @@ Allocations and pool-side weights change through market trades, liquidity flows,
 ### Risk separation
 - AETF is a standard ASA with no custom allocation contract
 - Liquidity pools are managed by third-party AMM smart contracts (Tinyman, Pact, and LiquiHog STAMM) with their own protocol, implementation, and liquidity risks
-- The ASA's freeze and clawback fields are publicly observable; users should verify the current chain state rather than rely on a static document
+- The ASA's freeze and clawback fields are publicly observable. Users should verify the current chain state rather than rely on a static document
 
 ---
 
@@ -91,7 +91,7 @@ Allocations and pool-side weights change through market trades, liquidity flows,
 
 | Parameter | Value |
 |-----------|-------|
-| **Token Name** | Aetheris ETF *(immutable on-chain ASA name; brand: Aetheris)* |
+| **Token Name** | Aetheris ETF *(immutable on-chain ASA name, brand: Aetheris)* |
 | **Ticker** | AETF |
 | **ASA ID** | 3581842047 |
 | **Total Supply** | 10,000 AETF |
@@ -103,7 +103,7 @@ Allocations and pool-side weights change through market trades, liquidity flows,
 | **Manager** | 5LEDUTOGIWSMD2MZW4FIYJ2W3KZU262H2K3F7R2BBQNMHUYNDFHEA77UJQ |
 
 ### Supply Distribution
-The entire supply of 10,000 AETF was initially deployed across public liquidity pools. Current balances and pool-side weights change with swaps, arbitrage, liquidity operations, and market-making, so earlier launch targets are not current allocation guarantees. AETF makes markets in USDC, fUSDC, and HOG. There are no team allocations or vesting schedules in the stated launch design. Pool balances are publicly verifiable; that does not create fixed-price redemption.
+The entire supply of 10,000 AETF was initially deployed across public liquidity pools. Current balances and pool-side weights change with swaps, arbitrage, liquidity operations, and market-making, so earlier launch targets are not current allocation guarantees. AETF makes markets in USDC, fUSDC, and HOG. There are no team allocations or vesting schedules in the stated launch design. Pool balances are publicly verifiable. That does not create fixed-price redemption.
 
 ---
 
@@ -114,14 +114,14 @@ Every aspect of AETF is publicly auditable:
 - Pool balances are visible in real-time on Algorand explorers
 - Token holder distribution is publicly queryable
 - All transactions (swaps, arbitrage, pool additions) are recorded on the Algorand blockchain
-- Pool-implied marks can be calculated from pool states; independent NAV depends on external pricing and the absence of a fixed redemption mechanism
+- Pool-implied marks can be calculated from pool states. Independent NAV depends on external pricing and the absence of a fixed redemption mechanism
 
 ### Underlying asset references
 | Asset | Verification Method |
 |-------|-------------------|
-| USDC | Circle reserve disclosures; AETF pool balance visible on-chain |
-| fUSDC | Folks Finance interest-bearing USDC (ASA 971384592); current provider terms should be verified separately. Lending yield is not guaranteed. |
-| HOG | On-chain AETF/HOG liquidity markets; LiquiHog project |
+| USDC | Circle reserve disclosures, and the AETF pool balance is visible on-chain |
+| fUSDC | Folks Finance interest-bearing USDC (ASA 971384592). Current provider terms should be verified separately. Lending yield is not guaranteed. |
+| HOG | On-chain AETF/HOG liquidity markets, and the LiquiHog project |
 
 ---
 
@@ -174,8 +174,8 @@ Every aspect of AETF is publicly auditable:
 - **Market risk**: All basket assets are subject to price volatility
 - **Liquidity risk**: Thin pool depth may cause slippage on large trades
 - **Oracle/pricing risk**: Asset prices depend on DEX liquidity and market activity
-- **Concentration risk**: HOG represents a single DeFi project; its failure would affect the HOG sleeve of the basket
-- **Protocol risk**: fUSDC carries Folks Finance protocol and lending-market risk; yield is not guaranteed
+- **Concentration risk**: HOG represents a single DeFi project, and its failure would affect the HOG sleeve of the basket
+- **Protocol risk**: fUSDC carries Folks Finance protocol and lending-market risk, and yield is not guaranteed
 - **Regulatory risk**: Tokenized assets operate in an evolving regulatory landscape
 - **Impermanent loss**: Liquidity pool positions are subject to impermanent loss during volatile periods
 

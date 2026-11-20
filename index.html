@@ -481,7 +481,7 @@
     <div class="price-bar">
         <span class="price-item">
             <span class="price-label">$AETF</span>
-            <span class="price" id="livePrice">—</span>
+            <span class="price" id="livePrice">...</span>
         </span>
         <span class="price-item">
             <span class="price-dot" aria-hidden="true">•</span>
@@ -522,19 +522,19 @@
 
     <div class="stats" id="statsBar">
         <div class="stat">
-            <div class="stat-value loading" id="statTvl">—</div>
+            <div class="stat-value loading" id="statTvl">...</div>
             <div class="stat-label">Pool-implied marked TVL</div>
         </div>
         <div class="stat">
-            <div class="stat-value loading" id="statMcap">—</div>
+            <div class="stat-value loading" id="statMcap">...</div>
             <div class="stat-label">Fixed-supply implied value</div>
         </div>
         <div class="stat">
-            <div class="stat-value loading" id="statNav">—</div>
+            <div class="stat-value loading" id="statNav">...</div>
             <div class="stat-label">AETF/USDC pool mark</div>
         </div>
         <div class="stat">
-            <div class="stat-value loading" id="statHolders">—</div>
+            <div class="stat-value loading" id="statHolders">...</div>
             <div class="stat-label">External holders</div>
         </div>
     </div>
@@ -558,19 +558,19 @@
                 <div class="basket-card" data-asset="usdc">
                     <img src="img/usdc.png" alt="USDC" class="basket-logo">
                     <div class="basket-name">USDC</div>
-                    <div class="basket-pct" id="pct-usdc">—%</div>
+                    <div class="basket-pct" id="pct-usdc">...</div>
                     <div class="basket-desc">Dollar-denominated trading counterparty and primary price anchor. Pools on Tinyman, Pact, and LiquiHog STAMM.</div>
                 </div>
                 <div class="basket-card" data-asset="fusdc">
                     <img src="img/fusdc.png" alt="fUSDC" class="basket-logo">
                     <div class="basket-name">fUSDC</div>
-                    <div class="basket-pct" id="pct-fusdc">—%</div>
+                    <div class="basket-pct" id="pct-fusdc">...</div>
                     <div class="basket-desc">Folks Finance interest-bearing USDC. Part of this pool liquidity may earn variable lending yield from Folks. No APY or yield is promised.</div>
                 </div>
                 <div class="basket-card" data-asset="hog">
                     <img src="img/hog.png" alt="HOG" class="basket-logo">
                     <div class="basket-name">HOG</div>
-                    <div class="basket-pct" id="pct-hog">—%</div>
+                    <div class="basket-pct" id="pct-hog">...</div>
                     <div class="basket-desc">Algorand DeFi exposure through public AETF/HOG markets on Tinyman, Pact, and LiquiHog STAMM.</div>
                 </div>
             </div>
@@ -582,7 +582,7 @@
             <div style="text-align:center;">
                 <div class="section-label">AETF / HOG pools</div>
                 <div class="section-title">The stable side of HOG liquidity</div>
-                <div class="section-desc" style="margin-left:auto;margin-right:auto;">AETF provides the stable side of HOG liquidity: when HOG dips, the pools buy HOG with AETF; when it rises, they sell. The public AETF/HOG pools on Tinyman, Pact, and LiquiHog STAMM do this automatically as traders swap. Inventory also changes when liquidity is added or withdrawn. This is not a price-support promise, and it is not investment advice.</div>
+                <div class="section-desc" style="margin-left:auto;margin-right:auto;">AETF provides the stable side of HOG liquidity. When HOG dips, the pools buy HOG with AETF. When it rises, they sell. The public AETF/HOG pools on Tinyman, Pact, and LiquiHog STAMM do this automatically as traders swap. Inventory also changes when liquidity is added or withdrawn. This is not a price-support promise, and it is not investment advice.</div>
                 <div style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--green);margin-bottom:32px;"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;display:inline-block;"></span>Live HOG held in the three AETF/HOG pools</div>
             </div>
             <div class="hog-live-grid">
@@ -622,7 +622,7 @@
                     <canvas id="hogHistoryChart" aria-label="Daily HOG held in AETF/HOG pools and the pool-implied HOG dollar mark"></canvas>
                     <div class="hog-chart-empty" id="hogChartEmpty">Historical chart could not be loaded. Live pool figures above are still fetched on-chain when available.</div>
                 </div>
-                <p class="hog-chart-note">Daily end-of-day reserves, UTC, reconstructed from Algorand indexer records of the pool accounts and Pact application state. The series starts on 31 May 2026, when the Tinyman AETF/HOG pool was created. Replay was checked against live balances on 20 Nov 2026 (Asia/Bangkok). No points were interpolated. The near-empty print on 13-14 Jun 2026 is a liquidity withdrawal; most of that liquidity was re-added on 15 Jun.</p>
+                <p class="hog-chart-note">Daily end-of-day reserves, UTC, reconstructed from Algorand indexer records of the pool accounts and Pact application state. The series starts on 31 May 2026, when the Tinyman AETF/HOG pool was created. Replay was checked against live balances on 20 Nov 2026 (Asia/Bangkok). No points were interpolated. The near-empty print on 13-14 Jun 2026 is a liquidity withdrawal. Most of that liquidity was re-added on 15 Jun.</p>
             </div>
             <div class="hog-explain">
                 <div class="hog-explain-card">
