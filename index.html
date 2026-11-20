@@ -216,10 +216,12 @@
 
         /* Live Price Bar */
         .price-bar {
-            display: flex; align-items: center; justify-content: center; gap: 24px;
+            display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px 20px;
             padding: 12px; background: rgba(212,168,67,0.05); border-bottom: 1px solid var(--border);
             font-size: 14px; margin-top: 69px;
         }
+        .price-bar .price-item { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+        .price-bar .price-label, .price-bar .price-dot { color: var(--text); }
         .price-bar .price { font-weight: 700; color: var(--accent); }
         .price-bar .change { font-weight: 600; }
         .price-bar .change.up { color: var(--green); }
@@ -360,7 +362,7 @@
         }
         .hog-explain-card.rise .hog-explain-tag { background: var(--blue); color: #061018; }
         .price-bar .change.liq { color: var(--text2); font-weight: 600; }
-        .price-bar .price-asa { color: var(--text); white-space: nowrap; }
+        .price-bar .price-asa { color: var(--text); }
 
         @media (max-width: 768px) {
             .nav-title { display: none; }
@@ -381,7 +383,8 @@
             }
             .hero-buttons .btn-primary { border: 1px solid transparent; }
             .floating-tokens { display: none; }
-            .price-bar { flex-wrap: wrap; gap: 6px 8px; font-size: 12px; margin-top: 64px; padding: 8px 16px; justify-content: center; row-gap: 4px; }
+            .price-bar { flex-wrap: wrap; gap: 4px 12px; font-size: 12px; margin-top: 64px; padding: 8px 12px; justify-content: center; }
+            .price-bar .price-item { gap: 6px; }
             .stats { grid-template-columns: repeat(2, 1fr); background: transparent; gap: 12px; padding: 0 16px; border: none; }
             .stat-value { font-size: 24px; }
             .stat { padding: 20px 16px; border-radius: 12px; border: 1px solid var(--accent); background: #1a2540; }
@@ -412,15 +415,22 @@
             .nav-buttons { gap: 6px; }
             .nav-cta { padding: 6px 12px; font-size: 12px; }
 
-            .hog-live-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+            .hog-live-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
             .hog-stat { grid-column: 1 / -1; padding: 20px 16px; }
             .hog-stat-value { font-size: 26px; }
-            .hog-venue { padding: 14px 6px 16px; }
-            .hog-venue img, .hog-pact-mark { width: 28px; height: 28px; margin-bottom: 6px; }
+            .hog-venue { padding: 16px 10px; }
+            .hog-venue img, .hog-pact-mark { width: 32px; height: 32px; margin-bottom: 6px; }
             .hog-pact-mark { font-size: 13px; }
-            .hog-venue-name { font-size: 12px; line-height: 1.25; }
-            .hog-venue-amt { font-size: 15px; }
+            .hog-venue-name { font-size: 13px; line-height: 1.25; }
+            .hog-venue-amt { font-size: 18px; }
             .hog-venue-share { font-size: 12px; line-height: 1.3; }
+            .hog-venue.hog-venue-lead {
+                grid-column: 1 / -1;
+                padding: 20px 16px;
+            }
+            .hog-venue.hog-venue-lead img { width: 40px; height: 40px; margin-bottom: 8px; }
+            .hog-venue.hog-venue-lead .hog-venue-name { font-size: 16px; }
+            .hog-venue.hog-venue-lead .hog-venue-amt { font-size: 24px; }
             .hog-chart-wrap { height: 280px; }
             .hog-chart-card { padding: 16px 14px 12px; }
             .hog-chart-head h3 { font-size: 15px; }
@@ -428,13 +438,19 @@
             .hog-chart-card, .hog-stat, .hog-venue, .hog-explain-card { border-color: var(--accent); }
             .footer-links { flex-wrap: wrap; gap: 16px; justify-content: center; }
         }
+        @media (max-width: 430px) {
+            .price-bar .price-asa { flex-basis: 100%; justify-content: center; }
+            .price-bar .price-asa .price-dot { display: none; }
+        }
         @media (max-width: 420px) {
             .section-title { font-size: 24px; }
         }
         @media (max-width: 379px) {
             .hero h1 { font-size: 28px; }
-            .hog-venue-amt { font-size: 14px; }
-            .hog-venue-name { font-size: 11px; }
+            .hog-venue-amt { font-size: 16px; }
+            .hog-venue-name { font-size: 12px; }
+            .hog-venue.hog-venue-lead .hog-venue-amt { font-size: 22px; }
+            .hog-venue.hog-venue-lead .hog-venue-name { font-size: 15px; }
             .hog-chart-wrap { height: 250px; }
         }
     </style>
@@ -463,10 +479,19 @@
     </nav>
 
     <div class="price-bar">
-        <span>$AETF</span>
-        <span class="price" id="livePrice">—</span>
-        <span class="change liq" id="liveChange"></span>
-        <span class="price-asa">• ASA 3581842047</span>
+        <span class="price-item">
+            <span class="price-label">$AETF</span>
+            <span class="price" id="livePrice">—</span>
+        </span>
+        <span class="price-item">
+            <span class="price-dot" aria-hidden="true">•</span>
+            <span class="price-label">Total liquidity</span>
+            <span class="price" id="liveTvl"></span>
+        </span>
+        <span class="price-item price-asa">
+            <span class="price-dot" aria-hidden="true">•</span>
+            <span>ASA 3581842047</span>
+        </span>
     </div>
 
     <section class="hero">
@@ -566,17 +591,17 @@
                     <div class="hog-stat-value loading" id="hogTotalHeld">--</div>
                     <div class="hog-stat-sub" id="hogPriceLine">Pool-implied HOG mark loading</div>
                 </div>
+                <div class="hog-venue hog-venue-lead">
+                    <img src="img/hog.png" alt="">
+                    <div class="hog-venue-name">LiquiHog STAMM</div>
+                    <div class="hog-venue-amt loading" id="hogVenueStamm">--</div>
+                    <div class="hog-venue-share" id="hogShareStamm"></div>
+                </div>
                 <div class="hog-venue">
                     <img src="img/pact.png" alt="">
                     <div class="hog-venue-name">Pact</div>
                     <div class="hog-venue-amt loading" id="hogVenuePact">--</div>
                     <div class="hog-venue-share" id="hogSharePact"></div>
-                </div>
-                <div class="hog-venue">
-                    <img src="img/hog.png" alt="">
-                    <div class="hog-venue-name">LiquiHog STAMM</div>
-                    <div class="hog-venue-amt loading" id="hogVenueStamm">--</div>
-                    <div class="hog-venue-share" id="hogShareStamm"></div>
                 </div>
                 <div class="hog-venue">
                     <img src="img/tinyman.png" alt="">
@@ -817,12 +842,8 @@
         function clearLiveFigures() {
             const price = document.getElementById('livePrice');
             if (price) price.textContent = '';
-            const changeEl = document.getElementById('liveChange');
-            if (changeEl) {
-                changeEl.textContent = '';
-                changeEl.className = 'change liq';
-                changeEl.style.color = '';
-            }
+            const tvlEl = document.getElementById('liveTvl');
+            if (tvlEl) tvlEl.textContent = '';
             ['statTvl', 'statMcap', 'statNav', 'statHolders'].forEach(id => {
                 const el = document.getElementById(id);
                 if (el) { el.textContent = ''; el.classList.remove('loading'); }
@@ -896,12 +917,8 @@
                     }
                 });
 
-                const changeEl = document.getElementById('liveChange');
-                if (changeEl) {
-                    changeEl.style.color = '';
-                    changeEl.className = 'change liq';
-                    changeEl.textContent = '\u2022 Total liquidity $' + Math.round(totalTvl).toLocaleString('en-US');
-                }
+                const tvlEl = document.getElementById('liveTvl');
+                if (tvlEl) tvlEl.textContent = '$' + Math.round(totalTvl).toLocaleString('en-US');
 
                 const hogUsd = (usdcAetf > 0 && hogQty > 0) ? (aetfPrice * hogAetf / hogQty) : null;
                 updateHogLive({ tinyman: hogHeld.tinyman, pact: hogHeld.pact, stamm: hogHeld.stamm, total: hogQty, hogUsd, aetfPrice, usdcOk: usdcAetf > 0 });
