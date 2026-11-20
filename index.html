@@ -544,7 +544,7 @@
         </span>
         <span class="price-item price-asa">
             <span class="price-dot" aria-hidden="true">•</span>
-            <span>ASA 3581842047</span>
+            <span>ASA: 3581842047</span>
         </span>
     </div>
 
@@ -779,9 +779,10 @@
         const FUSDC_ID = 971384592;
         const HOG_ID = 3178895177;
         const LAUNCH_PRICE = 2.44;
-        // Folks V2 USDC (fUSDC, ASA 971384592) is marked at 1.258 USD, not $1.
-        // Named constant until a live public price source is wired in.
-        const FUSDC_PRICE_USD = 1.258;
+        // Folks V2 USDC lending pool (official contracts: app 971372237, fAsset ASA 971384592).
+        // fUSDC is marked live as accrued depositInterestIndex / 1e14 USDC. No fallback.
+        const FOLKS_USDC_POOL_APP = 971372237;
+        const FOLKS_FASSET_EXCHANGE_SCALE = 1e14;
 
         // Precomputed application addresses (algosdk getApplicationAddress).
         // Pact reserves are NOT held on the app account; they sit in a shared vault
@@ -801,9 +802,9 @@
             { key: 'usdc-tinyman', pair: 'usdc', dex: 'Tinyman', kind: 'account', poolAddr: 'P3OYRTHNLAL6E6IKVOGKHKQBUCKC2W3JHCL3ITYI2OULSXC6QQTJOONITA', backingId: USDC_ID, backingDecimals: 6, backingPriceUsd: 1.0 },
             { key: 'usdc-pact', pair: 'usdc', dex: 'Pact', kind: 'pact-app', appId: PACT_USDC_APP, poolAddr: PACT_USDC_APP_ADDR, backingId: USDC_ID, backingDecimals: 6, backingPriceUsd: 1.0 },
             { key: 'usdc-stamm', pair: 'usdc', dex: 'STAMM', kind: 'account', poolAddr: STAMM_USDC_ADDR, backingId: USDC_ID, backingDecimals: 6, backingPriceUsd: 1.0 },
-            { key: 'fusdc-tinyman', pair: 'fusdc', dex: 'Tinyman', kind: 'account', poolAddr: '335Y6EWBEI3FSNWYDWRP2IBNEZ4TRJA7MNHXSRMGRGCI7U5KDNWFFYP27M', backingId: FUSDC_ID, backingDecimals: 6, backingPriceUsd: FUSDC_PRICE_USD },
-            { key: 'fusdc-pact', pair: 'fusdc', dex: 'Pact', kind: 'pact-app', appId: PACT_FUSDC_APP, poolAddr: PACT_FUSDC_APP_ADDR, backingId: FUSDC_ID, backingDecimals: 6, backingPriceUsd: FUSDC_PRICE_USD },
-            { key: 'fusdc-stamm', pair: 'fusdc', dex: 'STAMM', kind: 'account', poolAddr: STAMM_FUSDC_ADDR, backingId: FUSDC_ID, backingDecimals: 6, backingPriceUsd: FUSDC_PRICE_USD },
+            { key: 'fusdc-tinyman', pair: 'fusdc', dex: 'Tinyman', kind: 'account', poolAddr: '335Y6EWBEI3FSNWYDWRP2IBNEZ4TRJA7MNHXSRMGRGCI7U5KDNWFFYP27M', backingId: FUSDC_ID, backingDecimals: 6, backingPriceUsd: null },
+            { key: 'fusdc-pact', pair: 'fusdc', dex: 'Pact', kind: 'pact-app', appId: PACT_FUSDC_APP, poolAddr: PACT_FUSDC_APP_ADDR, backingId: FUSDC_ID, backingDecimals: 6, backingPriceUsd: null },
+            { key: 'fusdc-stamm', pair: 'fusdc', dex: 'STAMM', kind: 'account', poolAddr: STAMM_FUSDC_ADDR, backingId: FUSDC_ID, backingDecimals: 6, backingPriceUsd: null },
             { key: 'hog-tinyman', pair: 'hog', dex: 'Tinyman', kind: 'account', poolAddr: 'ADOOSJ75C4OMUCAMFRP2HKSH46MNGX5U5I753LEQSQ56UKQQLRJIU6KHMM', backingId: HOG_ID, backingDecimals: 6, backingPriceUsd: null },
             { key: 'hog-pact', pair: 'hog', dex: 'Pact', kind: 'pact-app', appId: PACT_HOG_APP, poolAddr: PACT_HOG_APP_ADDR, backingId: HOG_ID, backingDecimals: 6, backingPriceUsd: null },
             { key: 'hog-stamm', pair: 'hog', dex: 'STAMM', kind: 'account', poolAddr: STAMM_HOG_ADDR, backingId: HOG_ID, backingDecimals: 6, backingPriceUsd: null }
@@ -844,6 +845,52 @@
             } catch (e) {
                 return '';
             }
+        }
+
+        function parseUint64sFromB64(b64) {
+            const bin = atob(b64);
+            const bytes = new Uint8Array(bin.length);
+            for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+            const view = new DataView(bytes.buffer);
+            const out = [];
+            for (let i = 0; i + 8 <= bytes.length; i += 8) {
+                out.push(view.getBigUint64(i, false));
+            }
+            return out;
+        }
+
+        // Folks V2: USDC withdrawable = fUSDC * accrued depositInterestIndex / 1e14.
+        // Official SDK: retrievePoolInfo + calcDepositInterestIndex + calcWithdrawReturn
+        // (@folks-finance/algorand-sdk, pool global state key "i").
+        async function getFolksFusdcPriceUsd() {
+            const res = await fetch(`${INDEXER}/v2/applications/${FOLKS_USDC_POOL_APP}`);
+            if (!res.ok) throw new Error('Folks USDC pool fetch failed');
+            const data = await res.json();
+            const app = data.application || data;
+            const gs = (app.params && app.params['global-state']) || [];
+            let iBytes = null;
+            for (const kv of gs) {
+                if (decodeStateKey(kv.key) === 'i') {
+                    iBytes = kv.value && kv.value.bytes;
+                    break;
+                }
+            }
+            if (!iBytes) throw new Error('Folks USDC pool missing interest state');
+            const interest = parseUint64sFromB64(iBytes);
+            const dirt = interest[4];
+            const diit1 = interest[5];
+            const latestUpdate = interest[6];
+            if (dirt === undefined || !diit1 || latestUpdate === undefined) {
+                throw new Error('Folks USDC pool interest fields missing');
+            }
+            const now = BigInt(Math.floor(Date.now() / 1000));
+            const dt = now > latestUpdate ? now - latestUpdate : 0n;
+            const SECONDS_IN_YEAR = 365n * 24n * 60n * 60n;
+            const ONE_16_DP = 10000000000000000n;
+            const dii = diit1 * (ONE_16_DP + (dirt * dt) / SECONDS_IN_YEAR) / ONE_16_DP;
+            const price = Number(dii) / FOLKS_FASSET_EXCHANGE_SCALE;
+            if (!(price > 0) || !isFinite(price)) throw new Error('Folks fUSDC price invalid');
+            return price;
         }
 
         async function getAccountBalances(poolAddr, backingId, backingDecimals) {
@@ -926,7 +973,13 @@
 
         async function updateLiveData() {
             try {
-                const allBalances = await Promise.all(BASKET_POOLS.map(getPoolBalances));
+                const [fusdcPriceUsd, allBalances] = await Promise.all([
+                    getFolksFusdcPriceUsd(),
+                    Promise.all(BASKET_POOLS.map(getPoolBalances))
+                ]);
+                BASKET_POOLS.forEach(pool => {
+                    if (pool.pair === 'fusdc') pool.backingPriceUsd = fusdcPriceUsd;
+                });
 
                 // Pool-implied AETF/USDC mark from the three USDC pools, liquidity-weighted.
                 // This is not an independent NAV or fixed redemption value.
