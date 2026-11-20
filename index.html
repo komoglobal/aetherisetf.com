@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
-    <title>Aetheris (AETF) — Diversified Token Pool on Algorand</title>
-    <meta name="description" content="Aetheris is a diversified token pool on Algorand with public USDC, tokenized metal, HOG, and xALGO liquidity. Pool-implied marks and reserves are visible on-chain. Not a registered security.">
+    <title>Aetheris (AETF) | Diversified Token Pool on Algorand</title>
+    <meta name="description" content="Aetheris is a diversified token pool on Algorand. AETF trades against USDC, fUSDC, and HOG on Tinyman, Pact, and LiquiHog STAMM. Pool-implied marks and reserves are visible on-chain. Not a registered security.">
     <meta property="og:title" content="Aetheris ($AETF)">
-    <meta property="og:description" content="Diversified token pool on Algorand with public USDC, tokenized metal, HOG, and xALGO liquidity markets.">
+    <meta property="og:description" content="Diversified token pool on Algorand. AETF trades against USDC, fUSDC, and HOG on Tinyman, Pact, and LiquiHog STAMM.">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@AetherisETF">
@@ -28,8 +28,8 @@
             --text: #f0f4ff;
             --text2: #8899bb;
             --text3: #556688;
-            --gold: #d4a843;
-            --gold2: #f0d078;
+            --accent: #d4a843;
+            --accent2: #f0d078;
             --green: #34d399;
             --blue: #60a5fa;
         }
@@ -51,21 +51,21 @@
         .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
         .nav-icon {
             width: 36px; height: 36px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--gold), var(--gold2));
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
             display: flex; align-items: center; justify-content: center;
             font-weight: 900; font-size: 16px; color: var(--bg);
         }
         .nav-title { font-size: 18px; font-weight: 700; color: var(--text); }
         .nav-links { display: flex; gap: 32px; }
         .nav-links a { color: var(--text2); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
-        .nav-links a:hover { color: var(--gold); }
+        .nav-links a:hover { color: var(--accent); }
         .nav-cta {
             padding: 8px 16px; border-radius: 8px; font-weight: 600; font-size: 13px;
             text-decoration: none; transition: all 0.2s;
             display: inline-flex; align-items: center; gap: 6px;
         }
         .nav-cta img { width: 18px; height: 18px; border-radius: 4px; }
-        .nav-cta.tinyman { background: linear-gradient(135deg, var(--gold), var(--gold2)); color: var(--bg); }
+        .nav-cta.tinyman { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: var(--bg); }
         .nav-cta.vestige { background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; }
         .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
         .nav-buttons { display: flex; gap: 8px; }
@@ -103,12 +103,12 @@
             display: inline-flex; align-items: center; gap: 6px;
             padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 500;
             background: rgba(212,168,67,0.1); border: 1px solid rgba(212,168,67,0.2);
-            color: var(--gold); margin-bottom: 20px;
+            color: var(--accent); margin-bottom: 20px;
         }
         .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
         @keyframes pulse { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
         .hero h1 { font-size: 56px; font-weight: 900; letter-spacing: -2px; line-height: 1.1; margin-bottom: 20px; }
-        .hero h1 span { background: linear-gradient(135deg, var(--gold), var(--gold2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero h1 span { background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .hero p { font-size: 20px; color: var(--text2); line-height: 1.6; margin-bottom: 36px; }
         .floating-tokens { position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; z-index: 1; }
         .floating-tokens img {
@@ -124,7 +124,7 @@
         .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
         .btn-primary {
             padding: 14px 32px; border-radius: 10px; font-weight: 700; font-size: 16px;
-            background: linear-gradient(135deg, var(--gold), var(--gold2)); color: var(--bg);
+            background: linear-gradient(135deg, var(--accent), var(--accent2)); color: var(--bg);
             text-decoration: none; transition: all 0.2s; border: none; cursor: pointer;
         }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(212,168,67,0.3); }
@@ -133,14 +133,14 @@
             background: transparent; color: var(--text); border: 1px solid var(--border);
             text-decoration: none; transition: all 0.2s; cursor: pointer;
         }
-        .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+        .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
 
         /* Stats */
         .stats {
             display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
             max-width: 1100px; margin: 0 auto; padding: 0 24px;
-            background: var(--gold); border-radius: 16px; overflow: hidden;
-            border: 1px solid var(--gold);
+            background: var(--accent); border-radius: 16px; overflow: hidden;
+            border: 1px solid var(--accent);
         }
         .stat {
             background: #1a2540; padding: 32px; text-align: center;
@@ -152,19 +152,19 @@
         section { padding: 100px 24px; }
         .section-inner { max-width: 1100px; margin: 0 auto; }
         .section-label {
-            display: inline-block; font-size: 13px; font-weight: 600; color: var(--gold);
+            display: inline-block; font-size: 13px; font-weight: 600; color: var(--accent);
             text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;
         }
         .section-title { font-size: 40px; font-weight: 800; letter-spacing: -1px; margin-bottom: 16px; }
         .section-desc { font-size: 18px; color: var(--text2); max-width: 600px; line-height: 1.6; margin-bottom: 48px; }
 
         /* Basket */
-        .basket-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+        .basket-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
         .basket-card {
             background: #1a2540; border: 1px solid var(--border); border-radius: 16px;
             padding: 28px 20px; text-align: center; transition: all 0.3s;
         }
-        .basket-card:hover { transform: translateY(-4px); border-color: var(--gold); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+        .basket-card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
         .basket-icon {
             width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 16px;
             display: flex; align-items: center; justify-content: center;
@@ -175,7 +175,7 @@
             object-fit: cover;
         }
         .basket-name { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
-        .basket-pct { font-size: 28px; font-weight: 800; color: var(--gold); margin: 8px 0; }
+        .basket-pct { font-size: 28px; font-weight: 800; color: var(--accent); margin: 8px 0; }
         .basket-desc { font-size: 13px; color: var(--text2); line-height: 1.4; }
 
         /* Features */
@@ -184,7 +184,7 @@
             background: #1a2540; border: 1px solid var(--border); border-radius: 16px;
             padding: 32px; transition: all 0.3s;
         }
-        .feature:hover { border-color: var(--gold); }
+        .feature:hover { border-color: var(--accent); }
         .feature-icon { font-size: 32px; margin-bottom: 16px; }
         .feature h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
         .feature p { font-size: 14px; color: var(--text2); line-height: 1.6; }
@@ -198,7 +198,7 @@
         .step::before {
             content: counter(step); position: absolute; top: -16px; left: 24px;
             width: 32px; height: 32px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--gold), var(--gold2));
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
             display: flex; align-items: center; justify-content: center;
             font-weight: 800; font-size: 14px; color: var(--bg);
         }
@@ -211,7 +211,7 @@
             text-align: center; color: var(--text3); font-size: 13px;
         }
         footer a { color: var(--text2); text-decoration: none; }
-        footer a:hover { color: var(--gold); }
+        footer a:hover { color: var(--accent); }
         .footer-links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; }
 
         /* Live Price Bar */
@@ -220,7 +220,7 @@
             padding: 12px; background: rgba(212,168,67,0.05); border-bottom: 1px solid var(--border);
             font-size: 14px; margin-top: 69px;
         }
-        .price-bar .price { font-weight: 700; color: var(--gold); }
+        .price-bar .price { font-weight: 700; color: var(--accent); }
         .price-bar .change { font-weight: 600; }
         .price-bar .change.up { color: var(--green); }
 
@@ -230,9 +230,9 @@
             background: var(--bg3); border: 1px solid var(--border); border-radius: 10px;
             padding: 12px 20px; margin-top: 24px; cursor: pointer; transition: all 0.2s;
         }
-        .contract-box:hover { border-color: var(--gold); }
+        .contract-box:hover { border-color: var(--accent); }
         .contract-box code { font-family: 'SF Mono', monospace; font-size: 14px; color: var(--text2); }
-        .contract-box .copy { font-size: 12px; color: var(--gold); font-weight: 600; }
+        .contract-box .copy { font-size: 12px; color: var(--accent); font-weight: 600; }
 
         .stat-value.loading { opacity: 0.4; animation: pulse 1.5s infinite; }
 
@@ -255,7 +255,7 @@
         .donut-segment { transition: stroke-dasharray 0.8s ease, stroke-dashoffset 0.8s ease, opacity 0.3s ease; cursor: pointer; }
         .donut-segment:hover, .donut-segment.active { filter: brightness(1.3); transform-origin: center; }
         .basket-card { transition: border-color 0.3s ease, box-shadow 0.3s ease; }
-        .basket-card.highlight { border-color: var(--gold) !important; box-shadow: 0 0 20px rgba(212,168,67,0.3); }
+        .basket-card.highlight { border-color: var(--accent) !important; box-shadow: 0 0 20px rgba(212,168,67,0.3); }
         .donut-legend { display: none; }
         .data-error { font-size: 12px; color: var(--text3); text-align: center; margin-top: 8px; font-style: italic; }
 
@@ -270,7 +270,7 @@
             .price-bar { flex-wrap: wrap; gap: 8px; font-size: 12px; margin-top: 64px; padding: 8px 16px; justify-content: center; }
             .stats { grid-template-columns: repeat(2, 1fr); background: transparent; gap: 12px; padding: 0 16px; border: none; }
             .stat-value { font-size: 24px; }
-            .stat { padding: 20px 16px; border-radius: 12px; border: 1px solid var(--gold); background: #1a2540; }
+            .stat { padding: 20px 16px; border-radius: 12px; border: 1px solid var(--accent); background: #1a2540; }
             .donut-wrapper { flex-direction: column; gap: 20px; }
             .donut-container { width: 160px; height: 160px; }
             .donut-legend { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 8px; }
@@ -279,10 +279,10 @@
             .section-desc { font-size: 16px; }
             .basket-grid { grid-template-columns: repeat(2, 1fr); }
             .basket-grid .basket-card:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 8px); }
-            .basket-card { border-color: var(--gold); }
+            .basket-card { border-color: var(--accent); }
             .basket-pct { font-size: 22px; }
             .features-grid, .steps { grid-template-columns: 1fr; }
-            .feature, .step { border-color: var(--gold); }
+            .feature, .step { border-color: var(--accent); }
             section { padding: 60px 16px; }
             .contract-box { padding: 10px 14px; }
             .contract-box code { font-size: 12px; }
@@ -334,17 +334,17 @@
 
     <section class="hero">
         <div class="floating-tokens">
-            <img src="img/usdc.png" alt="">
-            <img src="img/gold.png" alt="">
-            <img src="img/silver.png" alt="">
-            <img src="img/hog.png" alt="">
-            <img src="img/xalgo.png" alt="">
+            <img src="img/usdc.png" alt="USDC">
+            <img src="img/fusdc.png" alt="fUSDC">
+            <img src="img/hog.png" alt="HOG">
+            <img src="img/aetf_logo.png" alt="AETF">
+            <img src="img/usdc.png" alt="USDC">
         </div>
         <div class="hero-content">
             <img src="img/aetf_logo.png" alt="AETF" class="hero-logo">
             <div class="hero-badge"><span class="dot"></span> Live on Algorand</div>
             <h1><span>Diversified Token&nbsp;Pool</span><br>on Algorand</h1>
-            <p>One token. Five public liquidity markets. AETF trades against USDC, tokenized metals, HOG, and xALGO on Algorand, with pool balances and a pool-implied dollar mark visible on-chain.</p>
+            <p>One token. Public markets in USDC, fUSDC, and HOG. AETF trades on Tinyman, Pact, and LiquiHog STAMM, with pool balances and a pool-implied dollar mark visible on-chain.</p>
             <div class="hero-buttons">
                 <a href="https://app.tinyman.org/analytics/assets/detail/3581842047" target="_blank" class="btn-primary" style="display:inline-flex;align-items:center;gap:8px;"><img src="img/tinyman.png" alt="" style="width:20px;height:20px;border-radius:4px;">Buy on Tinyman</a>
                 <a href="https://vestige.fi/asset/3581842047" target="_blank" class="btn-primary" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);display:inline-flex;align-items:center;gap:8px;"><img src="img/vestige.png" alt="" style="width:20px;height:20px;border-radius:4px;">Buy on Vestige</a>
@@ -372,15 +372,15 @@
         </div>
         <div class="stat">
             <div class="stat-value loading" id="statHolders">—</div>
-            <div class="stat-label">External positive holders</div>
+            <div class="stat-label">External holders</div>
         </div>
     </div>
 
     <section id="basket">
         <div class="section-inner" style="text-align:center;">
             <div class="section-label">Basket Composition</div>
-            <div class="section-title">Five Assets. One Token.</div>
-            <div class="section-desc" style="margin-left:auto;margin-right:auto;">AETF connects USDC, tokenized metals, HOG, and xALGO through separate public liquidity markets. The displayed composition is pool-implied and updates from on-chain data.</div>
+            <div class="section-title">Three Markets. One Token.</div>
+            <div class="section-desc" style="margin-left:auto;margin-right:auto;">AETF trades against and makes markets in USDC, fUSDC, and HOG on Tinyman, Pact, and LiquiHog STAMM. The displayed composition is pool-implied and updates from on-chain data.</div>
             <div style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--green);margin-bottom:32px;"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;display:inline-block;"></span>Live pool-implied composition</div>
             <div class="donut-wrapper">
                 <div class="donut-container">
@@ -396,31 +396,19 @@
                     <img src="img/usdc.png" alt="USDC" class="basket-logo">
                     <div class="basket-name">USDC</div>
                     <div class="basket-pct" id="pct-usdc">—%</div>
-                    <div class="basket-desc">Dollar-denominated trading counterparty and primary price anchor.</div>
+                    <div class="basket-desc">Dollar-denominated trading counterparty and primary price anchor. Pools on Tinyman, Pact, and LiquiHog STAMM.</div>
                 </div>
-                <div class="basket-card" data-asset="gold">
-                    <img src="img/gold.png" alt="Meld Gold" class="basket-logo">
-                    <div class="basket-name">Gold</div>
-                    <div class="basket-pct" id="pct-gold">—%</div>
-                    <div class="basket-desc">Tokenized gold liquidity market by Meld. Pool balance is publicly visible.</div>
-                </div>
-                <div class="basket-card" data-asset="silver">
-                    <img src="img/silver.png" alt="Meld Silver" class="basket-logo">
-                    <div class="basket-name">Silver</div>
-                    <div class="basket-pct" id="pct-silver">—%</div>
-                    <div class="basket-desc">Tokenized silver liquidity market by Meld. Pool balance is publicly visible.</div>
+                <div class="basket-card" data-asset="fusdc">
+                    <img src="img/fusdc.png" alt="fUSDC" class="basket-logo">
+                    <div class="basket-name">fUSDC</div>
+                    <div class="basket-pct" id="pct-fusdc">—%</div>
+                    <div class="basket-desc">Folks Finance interest-bearing USDC. Part of this pool liquidity earns lending yield. No APY or yield is guaranteed.</div>
                 </div>
                 <div class="basket-card" data-asset="hog">
                     <img src="img/hog.png" alt="HOG" class="basket-logo">
                     <div class="basket-name">HOG</div>
                     <div class="basket-pct" id="pct-hog">—%</div>
-                    <div class="basket-desc">Algorand DeFi exposure through a public AETF/HOG liquidity market.</div>
-                </div>
-                <div class="basket-card" data-asset="xalgo">
-                    <img src="img/xalgo.png" alt="xALGO" class="basket-logo">
-                    <div class="basket-name">xALGO</div>
-                    <div class="basket-pct" id="pct-xalgo">—%</div>
-                    <div class="basket-desc">Liquid-staked ALGO exposure through a public AETF/xALGO liquidity market.</div>
+                    <div class="basket-desc">Algorand DeFi exposure through public AETF/HOG markets on Tinyman, Pact, and LiquiHog STAMM.</div>
                 </div>
             </div>
         </div>
@@ -445,7 +433,7 @@
                 <div class="feature">
                     <div class="feature-icon">📊</div>
                     <h3>Multi-market basket</h3>
-                    <p>USDC, tokenized metals, HOG, and xALGO are connected through separate public AETF liquidity markets. Actual weights can drift.</p>
+                    <p>USDC, fUSDC, and HOG are connected through public AETF liquidity markets on Tinyman, Pact, and LiquiHog STAMM. Actual weights can drift.</p>
                 </div>
                 <div class="feature">
                     <div class="feature-icon">🤖</div>
@@ -455,7 +443,7 @@
                 <div class="feature">
                     <div class="feature-icon">💧</div>
                     <h3>Multiple exit routes</h3>
-                    <p>Five public pools provide trading routes, but execution depends on depth, fees, market conditions, and slippage.</p>
+                    <p>Nine public pools provide trading routes, but execution depends on depth, fees, market conditions, and slippage.</p>
                 </div>
                 <div class="feature">
                     <div class="feature-icon">🏛️</div>
@@ -478,7 +466,7 @@
                 </div>
                 <div class="step">
                     <h3>Go to a DEX</h3>
-                    <p>Visit <a href="https://app.tinyman.org/analytics/assets/detail/3581842047" target="_blank" style="color:var(--gold)">Tinyman</a> or <a href="https://vestige.fi/asset/3581842047" target="_blank" style="color:var(--gold)">Vestige</a> and connect your wallet. Search for AETF (ASA <span style="white-space:nowrap">358&#8203;184&#8203;2047</span>).</p>
+                    <p>Visit <a href="https://app.tinyman.org/analytics/assets/detail/3581842047" target="_blank" style="color:var(--accent)">Tinyman</a>, <a href="https://app.pact.fi/swap?from=31566704&to=3581842047" target="_blank" style="color:var(--accent)">Pact</a>, <a href="https://app.liquihog.com/asset/3581842047" target="_blank" style="color:var(--accent)">LiquiHog</a>, or <a href="https://vestige.fi/asset/3581842047" target="_blank" style="color:var(--accent)">Vestige</a> and connect your wallet. Search for AETF (ASA <span style="white-space:nowrap">358&#8203;184&#8203;2047</span>).</p>
                 </div>
                 <div class="step">
                     <h3>Swap for $AETF</h3>
@@ -494,6 +482,8 @@
             <a href="https://vestige.fi/asset/3581842047" target="_blank">Vestige</a>
             <a href="https://allo.info/asset/3581842047" target="_blank">Allo.info</a>
             <a href="https://app.tinyman.org/analytics/assets/detail/3581842047" target="_blank">Tinyman</a>
+            <a href="https://app.pact.fi/swap?from=31566704&to=3581842047" target="_blank">Pact</a>
+            <a href="https://app.liquihog.com/asset/3581842047" target="_blank">LiquiHog</a>
             <a href="https://x.com/AetherisETF" target="_blank">Twitter/X</a>
             <a href="https://explorer.perawallet.app/asset/3581842047" target="_blank">Pera Explorer</a>
             <a href="https://algorand.co" target="_blank">Built on Algorand</a>
@@ -506,16 +496,61 @@
         const INDEXER = 'https://mainnet-idx.algonode.cloud';
         const AETF_ID = 3581842047;
         const USDC_ID = 31566704;
+        const FUSDC_ID = 971384592;
+        const HOG_ID = 3178895177;
         const LAUNCH_PRICE = 2.44;
+        // Folks V2 USDC (fUSDC, ASA 971384592) is marked at 1.258 USD, not $1.
+        // Named constant until a live public price source is wired in.
+        const FUSDC_PRICE_USD = 1.258;
 
-        // All 5 pool addresses (Tinyman V2)
+        // Precomputed application addresses (algosdk getApplicationAddress).
+        // Pact reserves are NOT held on the app account; they sit in a shared vault
+        // (app 3656084807) and are read from each pool's global state.
+        const PACT_USDC_APP = 3775940320;
+        const PACT_FUSDC_APP = 3776028497;
+        const PACT_HOG_APP = 3775943032;
+        const PACT_USDC_APP_ADDR = 'CJUH2QNDJMDY6MU7QL5SGY26YDDZRFPYEBX6COIDW5QVMDORXBTP676YDM';
+        const PACT_FUSDC_APP_ADDR = 'J7HSOAQNUSVJNVRFAAK3W6D3FMX3TR2IOS7LUIVHCP37FCNR77SCX3B5WQ';
+        const PACT_HOG_APP_ADDR = 'MQJDIG6PWLE3DGGVKJNNW2GORJOYWPFP3B46RFDVRWSPFDIGQYB4XQXDEE';
+        const PACT_VAULT_ADDR = '7FSDP27MVWXOUT55I2GNQIEF6OFDFWFJBD3GIZQ4VJHZHXCLFOG2X3PZGM';
+        const STAMM_USDC_ADDR = 'N5P3VV6Z7XLEFRU6CARA6CHQHH53PZQ3L4ICMVHGVIGRHL6MDHTWETMCIU';
+        const STAMM_FUSDC_ADDR = 'XZVKRXQKZWPZ6LHJQ4KIUVP4PB3EWJ5NQ32ZPV3SOI5GP5I5IK6ESP7S4Q';
+        const STAMM_HOG_ADDR = 'CLZEQ5JP6OZWBNVHOTYIWGEMRDVYVRPIAC7WLTF4JZWEOTSHSXRW4FRA34';
+
         const BASKET_POOLS = [
-            { key: 'usdc',   poolAddr: 'P3OYRTHNLAL6E6IKVOGKHKQBUCKC2W3JHCL3ITYI2OULSXC6QQTJOONITA', backingId: 31566704,   backingDecimals: 6, backingPriceUsd: 1.0 },
-            { key: 'gold',   poolAddr: 'ILLRU7CX5BAFWAVYVD7PY5ETZ2QW524T4J6S4VA4Y77KEBUXBJHZRWY3YE', backingId: 246516580,  backingDecimals: 6, backingPriceUsd: null },
-            { key: 'silver', poolAddr: 'WOQ3X6SRKXTJMJIQ7YSW5YE72MZLM5ZRTCPXQQMTFCR64SUHCXSUSD6JPY', backingId: 246519683,  backingDecimals: 6, backingPriceUsd: null },
-            { key: 'hog',    poolAddr: 'ADOOSJ75C4OMUCAMFRP2HKSH46MNGX5U5I753LEQSQ56UKQQLRJIU6KHMM', backingId: 3178895177, backingDecimals: 6, backingPriceUsd: null },
-            { key: 'xalgo',  poolAddr: 'WY6CEMU74RDFHCMIOQXQ3VDPC4CHQOF3LODDGZAYVV5CCTL43G5UTR27CI', backingId: 1134696561, backingDecimals: 6, backingPriceUsd: null }
+            { key: 'usdc-tinyman', pair: 'usdc', dex: 'Tinyman', kind: 'account', poolAddr: 'P3OYRTHNLAL6E6IKVOGKHKQBUCKC2W3JHCL3ITYI2OULSXC6QQTJOONITA', backingId: USDC_ID, backingDecimals: 6, backingPriceUsd: 1.0 },
+            { key: 'usdc-pact', pair: 'usdc', dex: 'Pact', kind: 'pact-app', appId: PACT_USDC_APP, poolAddr: PACT_USDC_APP_ADDR, backingId: USDC_ID, backingDecimals: 6, backingPriceUsd: 1.0 },
+            { key: 'usdc-stamm', pair: 'usdc', dex: 'STAMM', kind: 'account', poolAddr: STAMM_USDC_ADDR, backingId: USDC_ID, backingDecimals: 6, backingPriceUsd: 1.0 },
+            { key: 'fusdc-tinyman', pair: 'fusdc', dex: 'Tinyman', kind: 'account', poolAddr: '335Y6EWBEI3FSNWYDWRP2IBNEZ4TRJA7MNHXSRMGRGCI7U5KDNWFFYP27M', backingId: FUSDC_ID, backingDecimals: 6, backingPriceUsd: FUSDC_PRICE_USD },
+            { key: 'fusdc-pact', pair: 'fusdc', dex: 'Pact', kind: 'pact-app', appId: PACT_FUSDC_APP, poolAddr: PACT_FUSDC_APP_ADDR, backingId: FUSDC_ID, backingDecimals: 6, backingPriceUsd: FUSDC_PRICE_USD },
+            { key: 'fusdc-stamm', pair: 'fusdc', dex: 'STAMM', kind: 'account', poolAddr: STAMM_FUSDC_ADDR, backingId: FUSDC_ID, backingDecimals: 6, backingPriceUsd: FUSDC_PRICE_USD },
+            { key: 'hog-tinyman', pair: 'hog', dex: 'Tinyman', kind: 'account', poolAddr: 'ADOOSJ75C4OMUCAMFRP2HKSH46MNGX5U5I753LEQSQ56UKQQLRJIU6KHMM', backingId: HOG_ID, backingDecimals: 6, backingPriceUsd: null },
+            { key: 'hog-pact', pair: 'hog', dex: 'Pact', kind: 'pact-app', appId: PACT_HOG_APP, poolAddr: PACT_HOG_APP_ADDR, backingId: HOG_ID, backingDecimals: 6, backingPriceUsd: null },
+            { key: 'hog-stamm', pair: 'hog', dex: 'STAMM', kind: 'account', poolAddr: STAMM_HOG_ADDR, backingId: HOG_ID, backingDecimals: 6, backingPriceUsd: null }
         ];
+
+        const POOL_COLORS = { usdc: '#2775ca', fusdc: '#1d9dd8', hog: '#ff6b8a' };
+        const POOL_NAMES = { usdc: 'USDC', fusdc: 'fUSDC', hog: 'HOG' };
+
+        // External holders exclude project wallets, current pool accounts, the Pact vault,
+        // and leftover legacy Tinyman pool accounts.
+        const EXCLUDED_HOLDER_ADDRS = new Set([
+            'T77MFFTY4IUNMMJ47NS4C5RBWZFRE3UVPU7KVHCDPVJGHZVUDAKB7DCNRM', // ASA creator
+            '5LEDUTOGIWSMD2MZW4FIYJ2W3KZU262H2K3F7R2BBQNMHUYNDFHEA77UJQ', // ASA manager and reserve
+            'P3OYRTHNLAL6E6IKVOGKHKQBUCKC2W3JHCL3ITYI2OULSXC6QQTJOONITA', // USDC Tinyman
+            '335Y6EWBEI3FSNWYDWRP2IBNEZ4TRJA7MNHXSRMGRGCI7U5KDNWFFYP27M', // fUSDC Tinyman
+            'ADOOSJ75C4OMUCAMFRP2HKSH46MNGX5U5I753LEQSQ56UKQQLRJIU6KHMM', // HOG Tinyman
+            PACT_USDC_APP_ADDR,
+            PACT_FUSDC_APP_ADDR,
+            PACT_HOG_APP_ADDR,
+            PACT_VAULT_ADDR, // Pact shared vault, app 3656084807
+            STAMM_USDC_ADDR,
+            STAMM_FUSDC_ADDR,
+            STAMM_HOG_ADDR,
+            'ILLRU7CX5BAFWAVYVD7PY5ETZ2QW524T4J6S4VA4Y77KEBUXBJHZRWY3YE', // legacy Tinyman pool
+            'WOQ3X6SRKXTJMJIQ7YSW5YE72MZLM5ZRTCPXQQMTFCR64SUHCXSUSD6JPY', // legacy Tinyman pool
+            'WY6CEMU74RDFHCMIOQXQ3VDPC4CHQOF3LODDGZAYVV5CCTL43G5UTR27CI'  // legacy Tinyman pool
+        ]);
 
         function setStatValue(id, value) {
             const el = document.getElementById(id);
@@ -523,33 +558,78 @@
             el.classList.remove('loading');
         }
 
-        async function getPoolBalances(poolAddr, backingId) {
+        function decodeStateKey(b64) {
+            try {
+                return atob(b64);
+            } catch (e) {
+                return '';
+            }
+        }
+
+        async function getAccountBalances(poolAddr, backingId, backingDecimals) {
             const res = await fetch(`${INDEXER}/v2/accounts/${poolAddr}`);
+            if (!res.ok) throw new Error('account fetch failed');
             const data = await res.json();
             const acct = data.account || data;
+            const divAetf = 1e6;
+            const divBack = Math.pow(10, backingDecimals || 6);
             let aetf = 0, backing = 0;
             for (const a of (acct.assets || [])) {
-                if (a['asset-id'] === AETF_ID) aetf = a.amount / 1e6;
-                if (a['asset-id'] === backingId) backing = a.amount / 1e6;
+                if (a['asset-id'] === AETF_ID) aetf = a.amount / divAetf;
+                if (a['asset-id'] === backingId) backing = a.amount / divBack;
             }
             return { aetf, backing };
         }
 
+        async function getPactReserves(pool) {
+            const res = await fetch(`${INDEXER}/v2/applications/${pool.appId}`);
+            if (!res.ok) throw new Error('Pact app fetch failed');
+            const data = await res.json();
+            const app = data.application || data;
+            const gs = (app.params && app.params['global-state']) || [];
+            const state = {};
+            for (const item of gs) {
+                const key = decodeStateKey(item.key);
+                const val = item.value || {};
+                if (val.uint !== undefined) state[key] = val.uint;
+            }
+            const divAetf = 1e6;
+            const divBack = Math.pow(10, pool.backingDecimals || 6);
+            let aetf = 0, backing = 0;
+            if (state.asset_a === AETF_ID) aetf = (state.reserve_a || 0) / divAetf;
+            if (state.asset_b === AETF_ID) aetf = (state.reserve_b || 0) / divAetf;
+            if (state.asset_a === pool.backingId) backing = (state.reserve_a || 0) / divBack;
+            if (state.asset_b === pool.backingId) backing = (state.reserve_b || 0) / divBack;
+            return { aetf, backing };
+        }
+
+        async function getPoolBalances(pool) {
+            try {
+                if (pool.kind === 'pact-app') return await getPactReserves(pool);
+                return await getAccountBalances(pool.poolAddr, pool.backingId, pool.backingDecimals);
+            } catch (e) {
+                console.warn('Pool fetch failed', pool.key, e);
+                return { aetf: 0, backing: 0 };
+            }
+        }
+
         async function updateLiveData() {
             try {
-                // 1. Fetch all 5 pools in parallel
-                const allBalances = await Promise.all(
-                    BASKET_POOLS.map(pool => getPoolBalances(pool.poolAddr, pool.backingId))
-                );
+                const allBalances = await Promise.all(BASKET_POOLS.map(getPoolBalances));
 
-                // 2. Derive a pool-implied AETF/USDC mark (index 0).
+                // Pool-implied AETF/USDC mark from the three USDC pools, liquidity-weighted.
                 // This is not an independent NAV or fixed redemption value.
-                let aetfPrice = LAUNCH_PRICE;
-                if (allBalances[0].aetf > 0) {
-                    aetfPrice = allBalances[0].backing / allBalances[0].aetf;
-                }
+                let usdcAetf = 0;
+                let usdcUsd = 0;
+                BASKET_POOLS.forEach((pool, i) => {
+                    const bal = allBalances[i];
+                    if (pool.pair === 'usdc' && bal.aetf > 0) {
+                        usdcAetf += bal.aetf;
+                        usdcUsd += bal.backing * (pool.backingPriceUsd || 1);
+                    }
+                });
+                const aetfPrice = usdcAetf > 0 ? usdcUsd / usdcAetf : LAUNCH_PRICE;
 
-                // Update price bar
                 document.getElementById('livePrice').textContent = '$' + aetfPrice.toFixed(4);
                 const change = ((aetfPrice - LAUNCH_PRICE) / LAUNCH_PRICE * 100).toFixed(1);
                 const changeEl = document.getElementById('liveChange');
@@ -562,42 +642,36 @@
                     changeEl.style.color = '#ef4444';
                 }
 
-                // 3. Compute TVL per pool
                 let totalTvl = 0;
-                const poolResults = [];
+                const pairTvl = { usdc: 0, fusdc: 0, hog: 0 };
 
                 BASKET_POOLS.forEach((pool, i) => {
                     const bal = allBalances[i];
-                    const backingPriceUsd = pool.backingPriceUsd || (bal.backing > 0 ? (bal.aetf * aetfPrice) / bal.backing : 0);
-                    const backingUsdValue = bal.backing * backingPriceUsd;
-                    const tvl = (bal.aetf * aetfPrice) + backingUsdValue;
+                    const backingPriceUsd = pool.backingPriceUsd != null
+                        ? pool.backingPriceUsd
+                        : (bal.backing > 0 ? (bal.aetf * aetfPrice) / bal.backing : 0);
+                    const tvl = (bal.aetf * aetfPrice) + (bal.backing * backingPriceUsd);
                     totalTvl += tvl;
-                    poolResults.push({ key: pool.key, tvl });
+                    if (pairTvl[pool.pair] !== undefined) pairTvl[pool.pair] += tvl;
                 });
 
-                // 4. Update basket card percentages + donut chart
-                const POOL_COLORS = { usdc: '#2775ca', gold: '#f0b90b', silver: '#c0c0c0', hog: '#ff6b8a', xalgo: '#2dd4bf' };
-                const POOL_NAMES = { usdc: 'USDC', gold: 'Gold', silver: 'Silver', hog: 'HOG', xalgo: 'xALGO' };
-                const circumference = 2 * Math.PI * 52; // r=52
+                const circumference = 2 * Math.PI * 52;
                 let donutSegments = '';
-                let legendHtml = '';
                 let offset = 0;
-
-                for (const p of poolResults) {
-                    const pct = totalTvl > 0 ? (p.tvl / totalTvl * 100) : 0;
-                    const el = document.getElementById('pct-' + p.key);
+                const pairOrder = ['usdc', 'fusdc', 'hog'];
+                for (const pair of pairOrder) {
+                    const tvl = pairTvl[pair];
+                    const pct = totalTvl > 0 ? (tvl / totalTvl * 100) : 0;
+                    const el = document.getElementById('pct-' + pair);
                     if (el) el.textContent = pct.toFixed(1) + '%';
-
-                    // Ring segment around the logo
                     const segLen = (pct / 100) * circumference;
                     const gap = 2;
-                    donutSegments += `<circle class="donut-segment" data-asset="${p.key}" cx="60" cy="60" r="52" fill="none" stroke="${POOL_COLORS[p.key]}" stroke-width="16" stroke-dasharray="${Math.max(0, segLen - gap)} ${circumference - segLen + gap}" stroke-dashoffset="${-offset}" stroke-linecap="round"/>`;
+                    donutSegments += `<circle class="donut-segment" data-asset="${pair}" cx="60" cy="60" r="52" fill="none" stroke="${POOL_COLORS[pair]}" stroke-width="16" stroke-dasharray="${Math.max(0, segLen - gap)} ${circumference - segLen + gap}" stroke-dashoffset="${-offset}" stroke-linecap="round"/>`;
                     offset += segLen;
                 }
 
                 document.getElementById('donutChart').innerHTML = donutSegments + '<circle cx="60" cy="60" r="60.5" fill="none" stroke="#c9a33c" stroke-width="1.5" opacity="0.85"/>';
 
-                // Wire up hover interaction: ring segment ↔ basket card
                 document.querySelectorAll('.donut-segment').forEach(seg => {
                     seg.addEventListener('mouseenter', () => {
                         const key = seg.getAttribute('data-asset');
@@ -623,13 +697,10 @@
                     });
                 });
 
-                // 5. Update stats
                 setStatValue('statMcap', '$' + Math.round(aetfPrice * 10000).toLocaleString());
                 setStatValue('statNav', '$' + aetfPrice.toFixed(2));
                 setStatValue('statTvl', '$' + Math.round(totalTvl).toLocaleString());
 
-                // 6. Read every positive-balance page and exclude known pool accounts.
-                const poolAddresses = new Set(BASKET_POOLS.map(pool => pool.poolAddr));
                 const holderRows = [];
                 let nextToken = null;
                 do {
@@ -643,17 +714,16 @@
                     holderRows.push(...(holdData.balances || []));
                     nextToken = holdData['next-token'] || null;
                 } while (nextToken);
-                const externalHolders = holderRows.filter(row => row.amount > 0 && !poolAddresses.has(row.address));
+                const externalHolders = holderRows.filter(row => row.amount > 0 && !EXCLUDED_HOLDER_ADDRS.has(row.address));
                 setStatValue('statHolders', externalHolders.length.toLocaleString());
             } catch(e) {
                 console.warn('Live data fetch failed', e);
-                // Show error indicator without breaking existing data
                 const errEl = document.getElementById('dataError');
                 if (!errEl) {
                     const msg = document.createElement('div');
                     msg.id = 'dataError';
                     msg.className = 'data-error';
-                    msg.textContent = 'Pool-implied live data temporarily unavailable — showing last known values';
+                    msg.textContent = 'Pool-implied live data temporarily unavailable. Showing last known values.';
                     document.querySelector('.donut-wrapper')?.after(msg);
                 }
             }

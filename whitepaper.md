@@ -1,46 +1,42 @@
-# Aetheris (AETF) — Whitepaper
+# Aetheris (AETF) Whitepaper
 
-**Version 1.0 | June 2026**
+**Version 1.1 | November 2026**
 **ASA ID: 3581842047 | Algorand Mainnet**
 
 ---
 
 ## Abstract
 
-Aetheris (AETF) is a diversified, on-chain token pool built on Algorand. AETF trades through public liquidity markets against USDC, tokenized Gold, tokenized Silver, HOG, and xALGO.
+Aetheris (AETF) is a diversified, on-chain token pool built on Algorand. AETF trades through public liquidity markets against USDC, Folks V2 USDC (fUSDC), and HOG on Tinyman, Pact, and LiquiHog STAMM.
 
 AETF is designed to offer diversified exposure through public liquidity markets. Its AMM pools can allow permissionless arbitrage to align AETF prices across markets, but they do not enforce target weights, guarantee NAV tracking, or buy dips according to an independent valuation rule. The ASA itself is simple; the external AMM pools have their own smart-contract and liquidity risks.
 
-> **📌 Strategic Update (June 2026):** AETF has rotated its FOLKS position back into **xALGO** (Folks Finance liquid-staked ALGO), restoring liquid, yield-bearing ALGO exposure as the growth sleeve in place of a single concentrated protocol-token bet. The ~70% defensive / ~30% growth structure is preserved. Allocations begin at these initial targets and **drift dynamically with the market** — live and verifiable on-chain at all times.
+> **Market update (November 2026):** AETF trades against and makes markets in USDC, fUSDC, and HOG pools on Tinyman, Pact, and LiquiHog. fUSDC is Folks Finance interest-bearing USDC, so part of the pool liquidity earns lending yield. No APY or yield is guaranteed.
 
 ---
 
 ## 1. Problem
 
-Crypto portfolios are inherently volatile. Most tokens on any given blockchain are highly correlated — when the market drops, everything drops together. Investors seeking diversification must manually manage multiple positions across different asset classes, incurring fees, complexity, and execution risk.
+Crypto portfolios are inherently volatile. Most tokens on any given blockchain are highly correlated: when the market drops, everything drops together. Investors seeking diversification must manually manage multiple positions across different asset classes, incurring fees, complexity, and execution risk.
 
 On Algorand specifically:
 - Diversified, index-style basket tokens are scarce
-- Real-world assets (Gold, Silver) are available via Meld Gold but underutilized
-- DeFi and liquid-staking assets like xALGO capture ecosystem growth but sit siloed from safe-haven assets
-- No product bridges traditional safe-haven assets with DeFi-native exposure
+- Dollar, lending-market, and DeFi-native assets often sit in separate venues
+- Combining those exposures in one publicly tradable token still requires the holder to accept AMM, protocol, and liquidity risk
 
 ---
 
 ## 2. Solution
 
-AETF solves this by packaging five distinct asset classes into one token:
+AETF packages public trading markets against three assets into one token:
 
-| Asset | Allocation | Role | Provider |
-|-------|-----------|------|----------|
-| **USDC** | 35% | Dollar-denominated quote asset and defensive launch target | Circle |
-| **Gold (GOLD$)** | 17.5% | Inflation hedge — physical gold, tokenized and auditable | Meld Gold |
-| **Silver (SILVER$)** | 17.5% | Precious metals diversification — physical silver, tokenized | Meld Gold |
-| **HOG** | 15% | DeFi market maker — grows with Algorand ecosystem liquidity | LiquiHog |
-| **xALGO** | 15% | Liquid-staked ALGO — ecosystem growth exposure plus native staking yield | Folks Finance |
+| Asset | Role | Provider |
+|-------|------|----------|
+| **USDC** | Dollar-denominated quote asset and primary price anchor | Circle |
+| **fUSDC** | Folks Finance interest-bearing USDC. Part of pool liquidity earns lending yield; no APY or yield is guaranteed | Folks Finance |
+| **HOG** | DeFi market-maker token that trades in public AETF/HOG pools | LiquiHog |
 
-**Total defensive allocation (USDC + Gold + Silver): 70%**
-**Total growth allocation (HOG + xALGO): 30%**
+Live pool-implied composition is displayed on [aetherisetf.com](https://aetherisetf.com). Actual pool-side weights can drift as markets trade and liquidity changes.
 
 ---
 
@@ -48,17 +44,15 @@ AETF solves this by packaging five distinct asset classes into one token:
 
 ### 3.1 Structure
 
-AETF is an Algorand Standard Asset (ASA) with a fixed supply of **10,000 AETF**. The token is paired with each of the five basket assets in separate liquidity pools on Tinyman DEX:
+AETF is an Algorand Standard Asset (ASA) with a fixed supply of **10,000 AETF**. The token is paired with USDC, fUSDC, and HOG in separate liquidity pools on Tinyman, Pact, and LiquiHog STAMM:
 
-- AETF / USDC
-- AETF / GOLD$
-- AETF / SILVER$
-- AETF / HOG
-- AETF / xALGO
+- AETF / USDC (Tinyman, Pact, LiquiHog STAMM)
+- AETF / fUSDC (Tinyman, Pact, LiquiHog STAMM)
+- AETF / HOG (Tinyman, Pact, LiquiHog STAMM)
 
-Each pool was seeded with liquidity based on launch targets. The combined value of the pools can be reported as pool-implied marked TVL, but it is not an independent NAV calculation or a fixed redemption reserve.
+The combined value of the pools can be reported as pool-implied marked TVL, but it is not an independent NAV calculation or a fixed redemption reserve. Current weights drift with market trades, liquidity operations, and market-making.
 
-### 3.2 Passive Rebalancing
+### 3.2 Market alignment
 
 AETF does not contain an allocation-rebalancing contract. Instead, public AMM activity may create cross-pool arbitrage:
 
@@ -67,28 +61,28 @@ AETF does not contain an allocation-rebalancing contract. Instead, public AMM ac
 3. That activity can align AETF prices, while reserves and economic weights drift with trading and liquidity flows
 4. Arbitrageurs optimize for trade profit; they are not required to enforce target allocations or buy an asset because it is fundamentally cheap
 
-This creates a market-alignment mechanism, not a guaranteed portfolio rebalancer. The system has no fixed-price protocol redemption mechanism.
+This describes a market-alignment mechanism, not a promised strategy or a guaranteed portfolio rebalancer. The system has no fixed-price protocol redemption mechanism.
 
 ### 3.3 Price Discovery
 
-AETF's observable price is determined by trading across the five pools. The primary price reference is the AETF/USDC pool because USDC supplies a dollar-denominated quote. A pool-implied marked value can be calculated from the pool states, but it is not an independent NAV or a fixed redemption price.
+AETF's observable price is determined by trading across the public pools. The primary price reference is the AETF/USDC pools, because USDC supplies a dollar-denominated quote. A pool-implied marked value can be calculated from the pool states, but it is not an independent NAV or a fixed redemption price.
 
 ---
 
 ## 4. Risk Architecture
 
-### Defensive launch targets
-- **35% USDC target at launch**: Provides a dollar-denominated trading counterparty and a defensive sleeve, not a guaranteed AETF price floor
-- **35% precious-metals target at launch**: Gold and Silver add different market exposures; their value and liquidity can vary
-- **Combined 70% defensive target at launch**: Actual pool-side weights can drift and do not constitute a guaranteed floor
+Allocations and pool-side weights change through market trades, liquidity flows, and market-making. None of the points below is a guaranteed floor or a current NAV statement.
 
-### Upside Capture
-- **15% HOG**: Captures Algorand DeFi ecosystem growth — as on-chain activity and liquidity increase, HOG benefits
-- **15% xALGO**: Liquid-staked ALGO exposure through Folks Finance; review the provider's current liquidity and redemption terms
+### Dollar and lending-market counterparties
+- **USDC pools**: Provide a dollar-denominated trading counterparty and the primary price mark. They are not a guaranteed AETF price floor.
+- **fUSDC pools**: fUSDC is Folks Finance interest-bearing USDC, so part of this liquidity earns lending yield. Yield can vary, is not guaranteed, and is not stated here as an APY. These pools also carry Folks Finance protocol risk.
+
+### DeFi exposure
+- **HOG pools**: Provide public AETF/HOG markets. HOG is a single DeFi project, so its failure would affect this sleeve of the basket.
 
 ### Risk separation
 - AETF is a standard ASA with no custom allocation contract
-- Liquidity pools are managed by third-party AMM smart contracts with their own protocol, implementation, and liquidity risks
+- Liquidity pools are managed by third-party AMM smart contracts (Tinyman, Pact, and LiquiHog STAMM) with their own protocol, implementation, and liquidity risks
 - The ASA's freeze and clawback fields are publicly observable; users should verify the current chain state rather than rely on a static document
 
 ---
@@ -109,7 +103,7 @@ AETF's observable price is determined by trading across the five pools. The prim
 | **Manager** | 5LEDUTOGIWSMD2MZW4FIYJ2W3KZU262H2K3F7R2BBQNMHUYNDFHEA77UJQ |
 
 ### Supply Distribution
-The entire supply of 10,000 AETF was initially deployed across five public liquidity pools. Current balances and pool-side weights change with swaps, arbitrage, and liquidity operations, so launch targets are not current allocation guarantees. There are no team allocations or vesting schedules in the stated launch design. Pool balances are publicly verifiable; that does not create fixed-price redemption.
+The entire supply of 10,000 AETF was initially deployed across public liquidity pools. Current balances and pool-side weights change with swaps, arbitrage, liquidity operations, and market-making, so earlier launch targets are not current allocation guarantees. AETF makes markets in USDC, fUSDC, and HOG. There are no team allocations or vesting schedules in the stated launch design. Pool balances are publicly verifiable; that does not create fixed-price redemption.
 
 ---
 
@@ -126,10 +120,8 @@ Every aspect of AETF is publicly auditable:
 | Asset | Verification Method |
 |-------|-------------------|
 | USDC | Circle reserve disclosures; AETF pool balance visible on-chain |
-| GOLD$ | Meld Gold asset; current provider backing and redemption terms should be verified separately |
-| SILVER$ | Meld Gold asset; current provider backing and redemption terms should be verified separately |
-| HOG | On-chain AETF/HOG liquidity market; LiquiHog project |
-| xALGO | Folks Finance liquid-staked ALGO asset; current provider liquidity and redemption terms should be verified separately |
+| fUSDC | Folks Finance interest-bearing USDC (ASA 971384592); current provider terms should be verified separately. Lending yield is not guaranteed. |
+| HOG | On-chain AETF/HOG liquidity markets; LiquiHog project |
 
 ---
 
@@ -166,8 +158,8 @@ Every aspect of AETF is publicly auditable:
 
 | Feature | AETF | Typical DeFi Token |
 |---------|------|-------------------|
-| Diversified backing | ✅ 5 assets | ❌ Single asset |
-| Defensive launch target | ✅ 70% defensive at launch | ❌ None |
+| Diversified markets | ✅ USDC, fUSDC, and HOG across nine public pools | ❌ Single asset |
+| Active venues | ✅ Tinyman, Pact, and LiquiHog STAMM | ⚠️ Varies |
 | LP fee exposure | ✅ Fees accrue to LP positions | ❌ None |
 | Custom allocation contract | ✅ None in AETF ASA | ⚠️ Varies |
 | Market alignment | ✅ Permissionless AMM arbitrage may align prices | ❌ Requires a separate policy |
@@ -182,7 +174,8 @@ Every aspect of AETF is publicly auditable:
 - **Market risk**: All basket assets are subject to price volatility
 - **Liquidity risk**: Thin pool depth may cause slippage on large trades
 - **Oracle/pricing risk**: Asset prices depend on DEX liquidity and market activity
-- **Concentration risk**: HOG represents a single DeFi project; its failure would impact 15% of the basket
+- **Concentration risk**: HOG represents a single DeFi project; its failure would affect the HOG sleeve of the basket
+- **Protocol risk**: fUSDC carries Folks Finance protocol and lending-market risk; yield is not guaranteed
 - **Regulatory risk**: Tokenized assets operate in an evolving regulatory landscape
 - **Impermanent loss**: Liquidity pool positions are subject to impermanent loss during volatile periods
 
@@ -195,10 +188,12 @@ AETF is not a registered security, investment fund, or financial product. It is 
 
 - **Website**: [aetherisetf.com](https://aetherisetf.com)
 - **Tinyman**: [Buy AETF](https://app.tinyman.org/analytics/assets/detail/3581842047)
+- **Pact**: [Buy AETF](https://app.pact.fi/swap?from=31566704&to=3581842047)
+- **LiquiHog**: [Buy AETF](https://app.liquihog.com/asset/3581842047)
 - **Vestige**: [Track AETF](https://vestige.fi/asset/3581842047)
 - **Twitter**: [@AetherisETF](https://x.com/AetherisETF)
 - **Algorand Explorer**: [ASA 3581842047](https://explorer.perawallet.app/asset/3581842047/)
 
 ---
 
-*© 2026 Aetheris. All rights reserved. AETF is a token pool, not a registered security or investment fund. Nothing herein is investment advice — DYOR.*
+*© 2026 Aetheris. All rights reserved. AETF is a token pool, not a registered security or investment fund. Nothing herein is investment advice. DYOR.*
