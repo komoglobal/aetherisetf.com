@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
     <title>Aetheris (AETF) | Diversified Token Pool on Algorand</title>
-    <meta name="description" content="Aetheris is a diversified token pool on Algorand. AETF trades against USDC, fUSDC, and HOG on Tinyman, Pact, and LiquiHog STAMM. Pool-implied marks and reserves are visible on-chain. Not a registered security.">
+    <meta name="description" content="Aetheris is a diversified token pool on Algorand. AETF trades against USDC, fUSDC, and HOG on LiquiHog STAMM, Pact, and Tinyman. Pool-implied marks and reserves are visible on-chain. Not a registered security.">
     <meta property="og:title" content="Aetheris ($AETF)">
-    <meta property="og:description" content="Diversified token pool on Algorand. AETF trades against USDC, fUSDC, and HOG on Tinyman, Pact, and LiquiHog STAMM.">
+    <meta property="og:description" content="Diversified token pool on Algorand. AETF trades against USDC, fUSDC, and HOG on LiquiHog STAMM, Pact, and Tinyman.">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@AetherisETF">
@@ -68,6 +68,14 @@
         .nav-cta.tinyman { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: var(--bg); }
         .nav-cta.liquihog { background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; }
         .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+        .nav-cta.liquihog {
+            position: relative;
+            isolation: isolate;
+            box-shadow: 0 0 10px rgba(212,168,67,0.4), 0 0 22px rgba(245,215,138,0.18);
+        }
+        .nav-cta.liquihog:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.25), 0 0 14px rgba(212,168,67,0.55), 0 0 28px rgba(245,215,138,0.22);
+        }
         .nav-buttons { display: flex; gap: 8px; }
         .hamburger {
             display: none; background: none; border: none; cursor: pointer;
@@ -128,6 +136,52 @@
             text-decoration: none; transition: all 0.2s; border: none; cursor: pointer;
         }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(212,168,67,0.3); }
+        .hero-buttons { overflow: visible; }
+        .hero-buttons .btn-primary {
+            position: relative;
+            isolation: isolate;
+            color: #fff;
+            box-shadow: 0 0 10px rgba(212,168,67,0.4), 0 0 22px rgba(245,215,138,0.18);
+        }
+        .hero-buttons .btn-primary.tinyman {
+            background: linear-gradient(135deg, #b8892e, #d4a843);
+            color: #fff;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.45);
+        }
+        .hero-buttons .btn-primary:hover {
+            transform: none;
+            box-shadow: 0 0 10px rgba(212,168,67,0.4), 0 0 22px rgba(245,215,138,0.18);
+        }
+        .hero-buttons .btn-primary::before,
+        .nav-cta.liquihog::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            padding: 2px;
+            background: linear-gradient(90deg, #d4a843, #f5d78a, #d4a843, #f5d78a, #d4a843);
+            background-size: 300% 100%;
+            animation: gold-shimmer 3s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+            -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor;
+            mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            mask-composite: exclude;
+        }
+        .hero-buttons .btn-primary::before { border-radius: 12px; }
+        .nav-cta.liquihog::before { border-radius: 10px; }
+        @keyframes gold-shimmer {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .hero-buttons .btn-primary::before,
+            .nav-cta.liquihog::before {
+                animation: none;
+                background: linear-gradient(135deg, #d4a843, #f5d78a, #d4a843);
+                background-size: auto;
+            }
+        }
         .btn-secondary {
             padding: 14px 32px; border-radius: 10px; font-weight: 600; font-size: 16px;
             background: transparent; color: var(--text); border: 1px solid var(--border);
@@ -506,11 +560,11 @@
             <img src="img/aetf_logo.png" alt="AETF" class="hero-logo">
             <div class="hero-badge"><span class="dot"></span> Live on Algorand</div>
             <h1><span>Diversified Token&nbsp;Pool</span><br>on Algorand</h1>
-            <p>One token. Public markets in USDC, fUSDC, and HOG. AETF trades on Tinyman, Pact, and LiquiHog STAMM, with pool balances and a pool-implied dollar mark visible on-chain.</p>
+            <p>One token. Public markets in USDC, fUSDC, and HOG. AETF trades on LiquiHog STAMM, Pact, and Tinyman, with pool balances and a pool-implied dollar mark visible on-chain.</p>
             <div class="hero-buttons">
                 <a href="https://app.liquihog.com/asset/3581842047" target="_blank" class="btn-primary" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);display:inline-flex;align-items:center;gap:8px;"><img src="img/hog.png" alt="" style="width:20px;height:20px;border-radius:4px;">Buy on LiquiHog</a>
                 <a href="https://app.pact.fi/analytics/tokens/3581842047" target="_blank" class="btn-primary" style="background:linear-gradient(135deg,#2563eb,#3b82f6);color:white;display:inline-flex;align-items:center;gap:8px;"><img src="img/pact.png" alt="" style="width:20px;height:20px;border-radius:4px;background:#fff;padding:1px;box-sizing:border-box;">Buy on Pact</a>
-                <a href="https://app.tinyman.org/analytics/assets/detail/3581842047" target="_blank" class="btn-primary" style="display:inline-flex;align-items:center;gap:8px;"><img src="img/tinyman.png" alt="" style="width:20px;height:20px;border-radius:4px;">Buy on Tinyman</a>
+                <a href="https://app.tinyman.org/analytics/assets/detail/3581842047" target="_blank" class="btn-primary tinyman" style="display:inline-flex;align-items:center;gap:8px;"><img src="img/tinyman.png" alt="" style="width:20px;height:20px;border-radius:4px;">Buy on Tinyman</a>
                 <a href="#basket" class="btn-secondary">Learn More</a>
             </div>
             <div class="contract-box" onclick="navigator.clipboard.writeText('3581842047');this.querySelector('.copy').textContent='Copied!'">
@@ -543,7 +597,7 @@
         <div class="section-inner" style="text-align:center;">
             <div class="section-label">Basket Composition</div>
             <div class="section-title">Three Markets. One Token.</div>
-            <div class="section-desc" style="margin-left:auto;margin-right:auto;">AETF trades against and makes markets in USDC, fUSDC, and HOG on Tinyman, Pact, and LiquiHog STAMM. The displayed composition is pool-implied and updates from on-chain data.</div>
+            <div class="section-desc" style="margin-left:auto;margin-right:auto;">AETF trades against and makes markets in USDC, fUSDC, and HOG on LiquiHog STAMM, Pact, and Tinyman. The displayed composition is pool-implied and updates from on-chain data.</div>
             <div style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--green);margin-bottom:32px;"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;display:inline-block;"></span>Live pool-implied composition</div>
             <div class="donut-wrapper">
                 <div class="donut-container">
@@ -559,7 +613,7 @@
                     <img src="img/usdc.png" alt="USDC" class="basket-logo">
                     <div class="basket-name">USDC</div>
                     <div class="basket-pct" id="pct-usdc">...</div>
-                    <div class="basket-desc">Dollar-denominated trading counterparty and primary price anchor. Pools on Tinyman, Pact, and LiquiHog STAMM.</div>
+                    <div class="basket-desc">Dollar-denominated trading counterparty and primary price anchor. Pools on LiquiHog STAMM, Pact, and Tinyman.</div>
                 </div>
                 <div class="basket-card" data-asset="fusdc">
                     <img src="img/fusdc.png" alt="fUSDC" class="basket-logo">
@@ -571,7 +625,7 @@
                     <img src="img/hog.png" alt="HOG" class="basket-logo">
                     <div class="basket-name">HOG</div>
                     <div class="basket-pct" id="pct-hog">...</div>
-                    <div class="basket-desc">Algorand DeFi exposure through public AETF/HOG markets on Tinyman, Pact, and LiquiHog STAMM.</div>
+                    <div class="basket-desc">Algorand DeFi exposure through public AETF/HOG markets on LiquiHog STAMM, Pact, and Tinyman.</div>
                 </div>
             </div>
         </div>
@@ -582,7 +636,7 @@
             <div style="text-align:center;">
                 <div class="section-label">AETF / HOG pools</div>
                 <div class="section-title">The stable side of HOG liquidity</div>
-                <div class="section-desc" style="margin-left:auto;margin-right:auto;">AETF provides the stable side of HOG liquidity. When HOG dips, the pools buy HOG with AETF. When it rises, they sell. The public AETF/HOG pools on Tinyman, Pact, and LiquiHog STAMM do this automatically as traders swap. Inventory also changes when liquidity is added or withdrawn. This is not a price-support promise, and it is not investment advice.</div>
+                <div class="section-desc" style="margin-left:auto;margin-right:auto;">AETF provides the stable side of HOG liquidity. When HOG dips, the pools buy HOG with AETF. When it rises, they sell. The public AETF/HOG pools on LiquiHog STAMM, Pact, and Tinyman do this automatically as traders swap. Inventory also changes when liquidity is added or withdrawn. This is not a price-support promise, and it is not investment advice.</div>
                 <div style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--green);margin-bottom:32px;"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;display:inline-block;"></span>Live HOG held in the three AETF/HOG pools</div>
             </div>
             <div class="hog-live-grid">
@@ -659,7 +713,7 @@
                 <div class="feature">
                     <div class="feature-icon">📊</div>
                     <h3>Multi-market basket</h3>
-                    <p>USDC, fUSDC, and HOG are connected through public AETF liquidity markets on Tinyman, Pact, and LiquiHog STAMM. Actual weights can drift.</p>
+                    <p>USDC, fUSDC, and HOG are connected through public AETF liquidity markets on LiquiHog STAMM, Pact, and Tinyman. Actual weights can drift.</p>
                 </div>
                 <div class="feature">
                     <div class="feature-icon">🤖</div>
@@ -835,7 +889,7 @@
                 return await getAccountBalances(pool.poolAddr, pool.backingId, pool.backingDecimals);
             } catch (e) {
                 console.warn('Pool fetch failed', pool.key, e);
-                return { aetf: 0, backing: 0 };
+                throw e;
             }
         }
 
@@ -1065,6 +1119,25 @@
             }
         }
 
+        const HOG_MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        function hogChartTickStyle() {
+            const narrow = window.innerWidth <= 768;
+            return {
+                maxRotation: 0,
+                minRotation: 0,
+                autoSkip: true,
+                maxTicksLimit: narrow ? 5 : 8,
+                callback: function(val) {
+                    const label = this.getLabelForValue(val);
+                    if (!label) return '';
+                    const p = String(label).split('-');
+                    const month = HOG_MONTHS[parseInt(p[1], 10) - 1] || p[1];
+                    if (narrow) return month;
+                    return month + ' ' + String(parseInt(p[2], 10));
+                }
+            };
+        }
+
         async function initHogChart() {
             const empty = document.getElementById('hogChartEmpty');
             const canvas = document.getElementById('hogHistoryChart');
@@ -1137,18 +1210,7 @@
                         },
                         scales: {
                             x: {
-                                ticks: {
-                                    color: tick,
-                                    maxRotation: 0,
-                                    autoSkip: true,
-                                    maxTicksLimit: 8,
-                                    callback: function(val) {
-                                        const label = this.getLabelForValue(val);
-                                        if (!label) return '';
-                                        const p = String(label).split('-');
-                                        return p[1] + '/' + p[2];
-                                    }
-                                },
+                                ticks: Object.assign({ color: tick }, hogChartTickStyle()),
                                 grid: { color: grid }
                             },
                             y: {
@@ -1172,6 +1234,16 @@
                         }
                     }
                 });
+            if (!window._hogChartResize) {
+                window._hogChartResize = true;
+                window.addEventListener('resize', function() {
+                    if (!hogChart) return;
+                    const style = hogChartTickStyle();
+                    hogChart.options.scales.x.ticks.maxTicksLimit = style.maxTicksLimit;
+                    hogChart.options.scales.x.ticks.callback = style.callback;
+                    hogChart.update('none');
+                });
+            }
             } catch (e) {
                 console.warn('HOG history chart failed', e);
                 if (empty) empty.style.display = 'block';

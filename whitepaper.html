@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Whitepaper: Aetheris (AETF)</title>
-    <meta name="description" content="Aetheris whitepaper: a diversified on-chain token pool on Algorand. AETF trades against USDC, fUSDC, and HOG on Tinyman, Pact, and LiquiHog STAMM. Not a registered security.">
+    <meta name="description" content="Aetheris whitepaper: a diversified on-chain token pool on Algorand. AETF trades against USDC, fUSDC, and HOG on LiquiHog STAMM, Pact, and Tinyman. Not a registered security.">
     <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
@@ -91,11 +91,11 @@
 
         <!-- Abstract -->
         <h2>Abstract</h2>
-        <p>Aetheris (AETF) is a diversified, on-chain token pool built on Algorand. AETF trades through public liquidity markets against USDC, Folks V2 USDC (fUSDC), and HOG on Tinyman, Pact, and LiquiHog STAMM.</p>
+        <p>Aetheris (AETF) is a diversified, on-chain token pool built on Algorand. AETF trades through public liquidity markets against USDC, Folks V2 USDC (fUSDC), and HOG on LiquiHog STAMM, Pact, and Tinyman.</p>
         <p>AETF is designed to offer diversified exposure through public markets. Permissionless arbitrage may align AETF prices across pools, but the pools do not enforce target weights, guarantee NAV tracking, or provide fixed-price redemption. The ASA itself is simple. The external AMM pools have their own smart-contract and liquidity risks.</p>
 
         <div class="callout" style="border-left-color: var(--accent);">
-            <p><strong>Market update (November 2026):</strong> AETF trades against and makes markets in USDC, fUSDC, and HOG pools on Tinyman, Pact, and LiquiHog. fUSDC is Folks Finance interest-bearing USDC, so part of the pool liquidity earns lending yield. No APY or yield is guaranteed.</p>
+            <p><strong>Market update (November 2026):</strong> AETF trades against and makes markets in USDC, fUSDC, and HOG pools on LiquiHog, Pact, and Tinyman. fUSDC is Folks Finance interest-bearing USDC, so part of the pool liquidity earns lending yield. No APY or yield is guaranteed.</p>
         </div>
 
         <!-- Problem -->
@@ -125,11 +125,11 @@
         <h2>3. How It Works</h2>
         
         <h3>3.1 Structure</h3>
-        <p>AETF is an Algorand Standard Asset (ASA) with a fixed supply of <strong>10,000 AETF</strong>. The token is paired with USDC, fUSDC, and HOG in separate liquidity pools on Tinyman, Pact, and LiquiHog STAMM:</p>
+        <p>AETF is an Algorand Standard Asset (ASA) with a fixed supply of <strong>10,000 AETF</strong>. The token is paired with USDC, fUSDC, and HOG in separate liquidity pools on LiquiHog STAMM, Pact, and Tinyman:</p>
         <ul>
-            <li>AETF / USDC (Tinyman, Pact, LiquiHog STAMM)</li>
-            <li>AETF / fUSDC (Tinyman, Pact, LiquiHog STAMM)</li>
-            <li>AETF / HOG (Tinyman, Pact, LiquiHog STAMM)</li>
+            <li>AETF / USDC (LiquiHog STAMM, Pact, Tinyman)</li>
+            <li>AETF / fUSDC (LiquiHog STAMM, Pact, Tinyman)</li>
+            <li>AETF / HOG (LiquiHog STAMM, Pact, Tinyman)</li>
         </ul>
         <p>The combined value can be reported as pool-implied marked TVL, but it is not an independent NAV calculation or a fixed redemption reserve. Current weights drift with market trades, liquidity operations, and market-making.</p>
 
@@ -166,7 +166,7 @@
         <h3>Risk separation</h3>
         <ul>
             <li>AETF is a standard ASA with no custom allocation contract</li>
-            <li>Liquidity pools are managed by third-party AMM smart contracts (Tinyman, Pact, and LiquiHog STAMM) with their own protocol, implementation, and liquidity risks</li>
+            <li>Liquidity pools are managed by third-party AMM smart contracts (LiquiHog STAMM, Pact, and Tinyman) with their own protocol, implementation, and liquidity risks</li>
             <li>The current ASA freeze and clawback fields should be verified from the live chain. The AMM pools remain separate third-party smart-contract systems</li>
         </ul>
 
@@ -214,7 +214,7 @@
         <ul>
             <li>Token creation and liquidity seeding</li>
             <li>Website launch (aetherisetf.com)</li>
-            <li>Tinyman, Pact and LiquiHog integration</li>
+            <li>LiquiHog, Pact, and Tinyman integration</li>
             <li>Community building and first communications</li>
         </ul>
 
@@ -248,7 +248,7 @@
         <table>
             <tr><th>Feature</th><th>AETF</th><th>Typical DeFi Token</th></tr>
             <tr><td>Diversified markets</td><td><strong>✅ USDC, fUSDC, and HOG across nine public pools</strong></td><td>❌ Single asset</td></tr>
-            <tr><td>Active venues</td><td><strong>✅ Tinyman, Pact, and LiquiHog STAMM</strong></td><td>⚠️ Varies</td></tr>
+            <tr><td>Active venues</td><td><strong>✅ LiquiHog STAMM, Pact, and Tinyman</strong></td><td>⚠️ Varies</td></tr>
             <tr><td>LP fee exposure</td><td><strong>✅ Fees accrue to LP positions</strong></td><td>❌ None</td></tr>
             <tr><td>Custom allocation contract</td><td><strong>✅ None in AETF ASA</strong></td><td>⚠️ Varies</td></tr>
             <tr><td>Market alignment</td><td><strong>✅ Permissionless AMM arbitrage may align prices</strong></td><td>❌ Requires a separate policy</td></tr>
