@@ -1,0 +1,2636 @@
+{
+  "generated_at": "2026-11-20T19:45:16+07:00",
+  "generated_at_timezone": "Asia/Bangkok (UTC+7)",
+  "date_basis": "UTC calendar dates. Each row is the end-of-day on-chain reserve state.",
+  "verified_replay_matches_live": true,
+  "current_round": 67134269,
+  "tokens": {
+    "AETF": 3581842047,
+    "HOG": 3178895177,
+    "USDC": 31566704
+  },
+  "sources": [
+    "Algorand indexer https://mainnet-idx.algonode.cloud account transactions for Tinyman and LiquiHog STAMM pool addresses, replayed to reconstruct reserves",
+    "Algorand indexer application transactions for Pact AETF/HOG app 3775943032 and Pact AETF/USDC app 3775940320, using global-state-delta reserve_a/reserve_b (absolute values)",
+    "Live reserves from indexer account and application endpoints (same method as aetherisetf.com)"
+  ],
+  "method": "Daily last observed reserves, with unchanged end-of-day balances carried through days that had no reserve-changing transaction. HOG USD is the pool-implied mark: (AETF/USDC liquidity-weighted dollar mark) * (AETF in AETF/HOG pools) / (HOG in those pools). No interpolated prices or invented inventory. Days before a venue's first reserve snapshot are recorded as zero at that venue.",
+  "range": {
+    "first": "2026-05-31",
+    "last": "2026-11-20"
+  },
+  "venue_start_notes": {
+    "tinyman": "AETF/HOG Tinyman pool account first funded around 2026-05-31 / 2026-06-01 UTC (created-at-round 61714945).",
+    "stamm": "AETF/HOG LiquiHog STAMM pool account first funded around 2026-06-15 / 2026-06-16 UTC (created-at-round 62182773).",
+    "pact": "AETF/HOG Pact pool (app 3775943032) created at round 67073289 (2026-11-18 13:33:46 UTC)."
+  },
+  "current": {
+    "as_of": "2026-11-20T19:45:16+07:00",
+    "hog_tinyman": 4980.318047,
+    "hog_pact": 4938.005494,
+    "hog_stamm": 10254.705034,
+    "hog_total": 20173.028575,
+    "aetf_usd": 1.6972953676598097,
+    "hog_usd": 0.16377309644327537
+  },
+  "daily": [
+    {
+      "date": "2026-05-31",
+      "hog_tinyman": 9259.167396,
+      "hog_pact": 0.0,
+      "hog_stamm": 0.0,
+      "hog_total": 9259.167396,
+      "aetf_in_hog_pools": 1399.349004,
+      "aetf_usd": 2.69373,
+      "hog_usd": 0.407107,
+      "venues": [
+        "tinyman"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-06-01",
+      "hog_tinyman": 9477.365806,
+      "hog_pact": 0.0,
+      "hog_stamm": 0.0,
+      "hog_total": 9477.365806,
+      "aetf_in_hog_pools": 1368.270932,
+      "aetf_usd": 2.642498,
+      "hog_usd": 0.381504,
+      "venues": [
+        "tinyman"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-06-02",
+      "hog_tinyman": 9600.809085,
+      "hog_pact": 0.0,
+      "hog_stamm": 0.0,
+      "hog_total": 9600.809085,
+      "aetf_in_hog_pools": 1350.755097,
+      "aetf_usd": 2.576976,
+      "hog_usd": 0.362559,
+      "venues": [
+        "tinyman"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-06-03",
+      "hog_tinyman": 12752.195085,
+      "hog_pact": 0.0,
+      "hog_stamm": 0.0,
+      "hog_total": 12752.195085,
+      "aetf_in_hog_pools": 1343.424348,
+      "aetf_usd": 3.503105,
+      "hog_usd": 0.369047,
+      "venues": [
+        "tinyman"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-06-04",
+      "hog_tinyman": 12907.137435,
+      "hog_pact": 0.0,
+      "hog_stamm": 0.0,
+      "hog_total": 12907.137435,
+      "aetf_in_hog_pools": 1327.377708,
+      "aetf_usd": 3.449866,
+      "hog_usd": 0.354786,
+      "venues": [
+        "tinyman"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-06-05",
+      "hog_tinyman": 13025.881151,
+      "hog_pact": 0.0,
+      "hog_stamm": 0.0,
+      "hog_total": 13025.881151,
+      "aetf_in_hog_pools": 1315.424606,
+      "aetf_usd": 3.34292,
+      "hog_usd": 0.337586,
+      "venues": [
+        "tinyman"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-06-06",
+      "hog_tinyman": 12927.636473,
+      "hog_pact": 0.0,
+      "hog_stamm": 0.0,
+      "hog_total": 12927.636473,
+      "aetf_in_hog_pools": 1325.495193,
+      "aetf_usd": 3.2653,
+      "hog_usd": 0.334797,
+      "venues": [
+        "tinyman"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-06-07",
+      "hog_tinyman": 12882.743933,
+      "hog_pact": 0.0,
+      "hog_stamm": 0.0,
+      "hog_total": 12882.743933,
+      "aetf_in_hog_pools": 1330.183977,
+      "aetf_usd": 3.29875,
+      "hog_usd": 0.340606,
+      "venues": [
+        "tinyman"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-06-08",
+      "hog_tinyman": 12974.100419,
+      "hog_pact": 0.0,
+      "hog_stamm": 0.0,
+      "hog_total": 12974.100419,
+      "aetf_in_hog_pools": 1320.944068,
+      "aetf_usd": 3.247033,
+      "hog_usd": 0.330593,
+      "venues": [
+        "tinyman"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-06-09",
+      "hog_tinyman": 13004.265393,
+      "hog_pact": 0.0,
+      "hog_stamm": 0.0,
+      "hog_total": 13004.265393,
+      "aetf_in_hog_pools": 1317.939198,
+      "aetf_usd": 3.20927,
+      "hog_usd": 0.325249,
+      "venues": [
+        "tinyman"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-06-10",
+      "hog_tinyman": 13196.445891,
+      "hog_pact": 0.0,
+      "hog_stamm": 0.0,
+      "hog_total": 13196.445891,
+      "aetf_in_hog_pools": 1298.930262,
+      "aetf_usd": 3.165466,
+      "hog_usd": 0.311578,
+      "venues": [
+        "tinyman"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-06-11",
+      "hog_tinyman": 13034.918099,
+      "hog_pact": 0.0,
+      "hog_stamm": 0.0,
+      "hog_total": 13034.918099,
+      "aetf_in_hog_pools": 1315.267133,
+      "aetf_usd": 3.077832,
+      "hog_usd": 0.310564,
+      "venues": [
+        "tinyman"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-06-12",
+      "hog_tinyman": 13001.484132,
+      "hog_pact": 0.0,
+      "hog_stamm": 0.0,
+      "hog_total": 13001.484132,
+      "aetf_in_hog_pools": 1318.753738,
+      "aetf_usd": 2.973443,
+      "hog_usd": 0.301599,
+      "venues": [
+        "tinyman"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-06-13",
+      "hog_tinyman": 7.766362,
+      "hog_pact": 0.0,
+      "hog_stamm": 0.0,
+      "hog_total": 7.766362,
+      "aetf_in_hog_pools": 0.637307,
+      "aetf_usd": 3.020218,
+      "hog_usd": 0.247839,
+      "venues": [
+        "tinyman"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-06-14",
+      "hog_tinyman": 7.647932,
+      "hog_pact": 0.0,
+      "hog_stamm": 0.0,
+      "hog_total": 7.647932,
+      "aetf_in_hog_pools": 0.647444,
+      "aetf_usd": 2.960767,
+      "hog_usd": 0.250647,
+      "venues": [
+        "tinyman"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-06-15",
+      "hog_tinyman": 16968.18251,
+      "hog_pact": 0.0,
+      "hog_stamm": 82.717321,
+      "hog_total": 17050.899831,
+      "aetf_in_hog_pools": 2198.515053,
+      "aetf_usd": 2.675445,
+      "hog_usd": 0.344968,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-06-16",
+      "hog_tinyman": 16924.531012,
+      "hog_pact": 0.0,
+      "hog_stamm": 87.613936,
+      "hog_total": 17012.144948,
+      "aetf_in_hog_pools": 2205.603176,
+      "aetf_usd": 2.718593,
+      "hog_usd": 0.352462,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-06-17",
+      "hog_tinyman": 17122.792769,
+      "hog_pact": 0.0,
+      "hog_stamm": 87.390195,
+      "hog_total": 17210.182964,
+      "aetf_in_hog_pools": 2180.956532,
+      "aetf_usd": 2.875963,
+      "hog_usd": 0.364456,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-06-18",
+      "hog_tinyman": 17129.074442,
+      "hog_pact": 0.0,
+      "hog_stamm": 93.677409,
+      "hog_total": 17222.751851,
+      "aetf_in_hog_pools": 2181.850864,
+      "aetf_usd": 2.95574,
+      "hog_usd": 0.374446,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-06-19",
+      "hog_tinyman": 17462.756195,
+      "hog_pact": 0.0,
+      "hog_stamm": 97.414643,
+      "hog_total": 17560.170838,
+      "aetf_in_hog_pools": 2140.707379,
+      "aetf_usd": 2.982861,
+      "hog_usd": 0.363632,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-06-20",
+      "hog_tinyman": 16936.437867,
+      "hog_pact": 0.0,
+      "hog_stamm": 94.883901,
+      "hog_total": 17031.321768,
+      "aetf_in_hog_pools": 2208.011685,
+      "aetf_usd": 2.588075,
+      "hog_usd": 0.335529,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-06-21",
+      "hog_tinyman": 16981.71507,
+      "hog_pact": 0.0,
+      "hog_stamm": 94.883392,
+      "hog_total": 17076.598462,
+      "aetf_in_hog_pools": 2202.337553,
+      "aetf_usd": 2.504279,
+      "hog_usd": 0.322972,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-06-22",
+      "hog_tinyman": 17184.723179,
+      "hog_pact": 0.0,
+      "hog_stamm": 98.658539,
+      "hog_total": 17283.381718,
+      "aetf_in_hog_pools": 2177.290848,
+      "aetf_usd": 2.476628,
+      "hog_usd": 0.311996,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-06-23",
+      "hog_tinyman": 17191.264002,
+      "hog_pact": 0.0,
+      "hog_stamm": 98.375219,
+      "hog_total": 17289.639221,
+      "aetf_in_hog_pools": 2177.106231,
+      "aetf_usd": 2.517309,
+      "hog_usd": 0.316979,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-06-24",
+      "hog_tinyman": 17318.072332,
+      "hog_pact": 0.0,
+      "hog_stamm": 98.76311,
+      "hog_total": 17416.835442,
+      "aetf_in_hog_pools": 2161.224227,
+      "aetf_usd": 2.402546,
+      "hog_usd": 0.298128,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-06-25",
+      "hog_tinyman": 17602.527825,
+      "hog_pact": 0.0,
+      "hog_stamm": 100.039466,
+      "hog_total": 17702.567291,
+      "aetf_in_hog_pools": 2126.518461,
+      "aetf_usd": 2.421519,
+      "hog_usd": 0.290885,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-06-26",
+      "hog_tinyman": 17673.345822,
+      "hog_pact": 0.0,
+      "hog_stamm": 100.430538,
+      "hog_total": 17773.77636,
+      "aetf_in_hog_pools": 2118.08592,
+      "aetf_usd": 2.410853,
+      "hog_usd": 0.287299,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-06-27",
+      "hog_tinyman": 17575.159601,
+      "hog_pact": 0.0,
+      "hog_stamm": 100.430538,
+      "hog_total": 17675.590139,
+      "aetf_in_hog_pools": 2130.047621,
+      "aetf_usd": 2.436748,
+      "hog_usd": 0.293647,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-06-28",
+      "hog_tinyman": 17841.615535,
+      "hog_pact": 0.0,
+      "hog_stamm": 100.95457,
+      "hog_total": 17942.570105,
+      "aetf_in_hog_pools": 2098.555351,
+      "aetf_usd": 2.439488,
+      "hog_usd": 0.285321,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-06-29",
+      "hog_tinyman": 17751.911742,
+      "hog_pact": 0.0,
+      "hog_stamm": 100.95457,
+      "hog_total": 17852.866312,
+      "aetf_in_hog_pools": 2109.203323,
+      "aetf_usd": 2.417176,
+      "hog_usd": 0.285574,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-06-30",
+      "hog_tinyman": 17956.558824,
+      "hog_pact": 0.0,
+      "hog_stamm": 101.770657,
+      "hog_total": 18058.329481,
+      "aetf_in_hog_pools": 2085.277653,
+      "aetf_usd": 2.38172,
+      "hog_usd": 0.275028,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-07-01",
+      "hog_tinyman": 17896.984011,
+      "hog_pact": 0.0,
+      "hog_stamm": 101.770657,
+      "hog_total": 17998.754668,
+      "aetf_in_hog_pools": 2092.214908,
+      "aetf_usd": 2.409361,
+      "hog_usd": 0.280069,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-07-02",
+      "hog_tinyman": 17912.308434,
+      "hog_pact": 0.0,
+      "hog_stamm": 101.770657,
+      "hog_total": 18014.079091,
+      "aetf_in_hog_pools": 2090.505332,
+      "aetf_usd": 2.415168,
+      "hog_usd": 0.280276,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-07-03",
+      "hog_tinyman": 17805.865039,
+      "hog_pact": 0.0,
+      "hog_stamm": 101.770657,
+      "hog_total": 17907.635696,
+      "aetf_in_hog_pools": 2103.065539,
+      "aetf_usd": 2.487853,
+      "hog_usd": 0.292172,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-07-04",
+      "hog_tinyman": 17900.818606,
+      "hog_pact": 0.0,
+      "hog_stamm": 101.770657,
+      "hog_total": 18002.589263,
+      "aetf_in_hog_pools": 2092.211754,
+      "aetf_usd": 2.460425,
+      "hog_usd": 0.285944,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-07-05",
+      "hog_tinyman": 17734.094992,
+      "hog_pact": 0.0,
+      "hog_stamm": 101.770657,
+      "hog_total": 17835.865649,
+      "aetf_in_hog_pools": 2111.949425,
+      "aetf_usd": 2.471028,
+      "hog_usd": 0.292595,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-07-06",
+      "hog_tinyman": 17739.902763,
+      "hog_pact": 0.0,
+      "hog_stamm": 101.279188,
+      "hog_total": 17841.181951,
+      "aetf_in_hog_pools": 2111.531461,
+      "aetf_usd": 2.474645,
+      "hog_usd": 0.292878,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-07-07",
+      "hog_tinyman": 17902.801453,
+      "hog_pact": 0.0,
+      "hog_stamm": 101.683802,
+      "hog_total": 18004.485255,
+      "aetf_in_hog_pools": 2092.43765,
+      "aetf_usd": 2.436928,
+      "hog_usd": 0.283214,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-07-08",
+      "hog_tinyman": 17962.086047,
+      "hog_pact": 0.0,
+      "hog_stamm": 101.683802,
+      "hog_total": 18063.769849,
+      "aetf_in_hog_pools": 2085.591008,
+      "aetf_usd": 2.407108,
+      "hog_usd": 0.277918,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-07-09",
+      "hog_tinyman": 18000.629658,
+      "hog_pact": 0.0,
+      "hog_stamm": 102.213833,
+      "hog_total": 18102.843491,
+      "aetf_in_hog_pools": 2081.112347,
+      "aetf_usd": 2.429196,
+      "hog_usd": 0.279262,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-07-10",
+      "hog_tinyman": 17980.464635,
+      "hog_pact": 0.0,
+      "hog_stamm": 102.213833,
+      "hog_total": 18082.678468,
+      "aetf_in_hog_pools": 2083.460157,
+      "aetf_usd": 2.45619,
+      "hog_usd": 0.282999,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-07-11",
+      "hog_tinyman": 17867.290951,
+      "hog_pact": 0.0,
+      "hog_stamm": 102.213833,
+      "hog_total": 17969.504784,
+      "aetf_in_hog_pools": 2096.631202,
+      "aetf_usd": 2.450796,
+      "hog_usd": 0.285952,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-07-12",
+      "hog_tinyman": 17863.44306,
+      "hog_pact": 0.0,
+      "hog_stamm": 102.213833,
+      "hog_total": 17965.656893,
+      "aetf_in_hog_pools": 2097.082783,
+      "aetf_usd": 2.431726,
+      "hog_usd": 0.283849,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-07-13",
+      "hog_tinyman": 18025.604403,
+      "hog_pact": 0.0,
+      "hog_stamm": 98.528169,
+      "hog_total": 18124.132572,
+      "aetf_in_hog_pools": 2077.980721,
+      "aetf_usd": 2.405174,
+      "hog_usd": 0.27576,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-07-14",
+      "hog_tinyman": 18118.120798,
+      "hog_pact": 0.0,
+      "hog_stamm": 99.334518,
+      "hog_total": 18217.455316,
+      "aetf_in_hog_pools": 2067.435698,
+      "aetf_usd": 2.405084,
+      "hog_usd": 0.272945,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-07-15",
+      "hog_tinyman": 18118.702407,
+      "hog_pact": 0.0,
+      "hog_stamm": 99.334518,
+      "hog_total": 18218.036925,
+      "aetf_in_hog_pools": 2067.379427,
+      "aetf_usd": 2.394775,
+      "hog_usd": 0.271759,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-07-16",
+      "hog_tinyman": 18178.015205,
+      "hog_pact": 0.0,
+      "hog_stamm": 99.334499,
+      "hog_total": 18277.349704,
+      "aetf_in_hog_pools": 2060.70972,
+      "aetf_usd": 2.381617,
+      "hog_usd": 0.268519,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-07-17",
+      "hog_tinyman": 18245.245727,
+      "hog_pact": 0.0,
+      "hog_stamm": 99.838375,
+      "hog_total": 18345.084102,
+      "aetf_in_hog_pools": 2053.204147,
+      "aetf_usd": 2.318563,
+      "hog_usd": 0.259496,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-07-18",
+      "hog_tinyman": 18194.527671,
+      "hog_pact": 0.0,
+      "hog_stamm": 99.838375,
+      "hog_total": 18294.366046,
+      "aetf_in_hog_pools": 2058.920719,
+      "aetf_usd": 2.34019,
+      "hog_usd": 0.263374,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-07-19",
+      "hog_tinyman": 18278.491482,
+      "hog_pact": 0.0,
+      "hog_stamm": 99.838375,
+      "hog_total": 18378.329857,
+      "aetf_in_hog_pools": 2049.542449,
+      "aetf_usd": 2.33093,
+      "hog_usd": 0.259944,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-07-20",
+      "hog_tinyman": 18304.699079,
+      "hog_pact": 0.0,
+      "hog_stamm": 99.838375,
+      "hog_total": 18404.537454,
+      "aetf_in_hog_pools": 2046.636179,
+      "aetf_usd": 2.321897,
+      "hog_usd": 0.258201,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-07-21",
+      "hog_tinyman": 18210.756604,
+      "hog_pact": 0.0,
+      "hog_stamm": 99.838366,
+      "hog_total": 18310.59497,
+      "aetf_in_hog_pools": 2057.221272,
+      "aetf_usd": 2.343726,
+      "hog_usd": 0.263321,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-07-22",
+      "hog_tinyman": 18238.045824,
+      "hog_pact": 0.0,
+      "hog_stamm": 99.838366,
+      "hog_total": 18337.88419,
+      "aetf_in_hog_pools": 2054.198143,
+      "aetf_usd": 2.341131,
+      "hog_usd": 0.262252,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-07-23",
+      "hog_tinyman": 18200.674267,
+      "hog_pact": 0.0,
+      "hog_stamm": 99.838366,
+      "hog_total": 18300.512633,
+      "aetf_in_hog_pools": 2058.437983,
+      "aetf_usd": 2.343613,
+      "hog_usd": 0.263609,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-07-24",
+      "hog_tinyman": 18225.128811,
+      "hog_pact": 0.0,
+      "hog_stamm": 99.838366,
+      "hog_total": 18324.967177,
+      "aetf_in_hog_pools": 2055.800986,
+      "aetf_usd": 2.366881,
+      "hog_usd": 0.26553,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-07-25",
+      "hog_tinyman": 18265.131364,
+      "hog_pact": 0.0,
+      "hog_stamm": 100.265214,
+      "hog_total": 18365.396578,
+      "aetf_in_hog_pools": 2051.392037,
+      "aetf_usd": 2.359063,
+      "hog_usd": 0.263504,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-07-26",
+      "hog_tinyman": 18399.135447,
+      "hog_pact": 0.0,
+      "hog_stamm": 100.265214,
+      "hog_total": 18499.400661,
+      "aetf_in_hog_pools": 2036.596057,
+      "aetf_usd": 2.374772,
+      "hog_usd": 0.261438,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-07-27",
+      "hog_tinyman": 18417.16685,
+      "hog_pact": 0.0,
+      "hog_stamm": 101.178563,
+      "hog_total": 18518.345413,
+      "aetf_in_hog_pools": 2034.587171,
+      "aetf_usd": 2.312867,
+      "hog_usd": 0.254112,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-07-28",
+      "hog_tinyman": 18560.141707,
+      "hog_pact": 0.0,
+      "hog_stamm": 101.178563,
+      "hog_total": 18661.32027,
+      "aetf_in_hog_pools": 2019.061311,
+      "aetf_usd": 2.276225,
+      "hog_usd": 0.246276,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-07-29",
+      "hog_tinyman": 18968.771143,
+      "hog_pact": 0.0,
+      "hog_stamm": 103.953282,
+      "hog_total": 19072.724425,
+      "aetf_in_hog_pools": 1975.651471,
+      "aetf_usd": 2.251995,
+      "hog_usd": 0.233273,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-07-30",
+      "hog_tinyman": 18900.009144,
+      "hog_pact": 0.0,
+      "hog_stamm": 103.953282,
+      "hog_total": 19003.962426,
+      "aetf_in_hog_pools": 1982.821549,
+      "aetf_usd": 2.283343,
+      "hog_usd": 0.238238,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-07-31",
+      "hog_tinyman": 19240.272756,
+      "hog_pact": 0.0,
+      "hog_stamm": 104.874384,
+      "hog_total": 19345.14714,
+      "aetf_in_hog_pools": 1947.966272,
+      "aetf_usd": 2.252704,
+      "hog_usd": 0.226837,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-08-01",
+      "hog_tinyman": 19260.983564,
+      "hog_pact": 0.0,
+      "hog_stamm": 105.31255,
+      "hog_total": 19366.296114,
+      "aetf_in_hog_pools": 1945.960012,
+      "aetf_usd": 2.257957,
+      "hog_usd": 0.226884,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-08-02",
+      "hog_tinyman": 19080.11474,
+      "hog_pact": 0.0,
+      "hog_stamm": 105.013349,
+      "hog_total": 19185.128089,
+      "aetf_in_hog_pools": 1964.405192,
+      "aetf_usd": 2.3114,
+      "hog_usd": 0.236669,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-08-03",
+      "hog_tinyman": 18948.159731,
+      "hog_pact": 0.0,
+      "hog_stamm": 105.013349,
+      "hog_total": 19053.17308,
+      "aetf_in_hog_pools": 1978.146064,
+      "aetf_usd": 2.346157,
+      "hog_usd": 0.243584,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-08-04",
+      "hog_tinyman": 19040.955585,
+      "hog_pact": 0.0,
+      "hog_stamm": 105.013349,
+      "hog_total": 19145.968934,
+      "aetf_in_hog_pools": 1968.612088,
+      "aetf_usd": 2.333668,
+      "hog_usd": 0.239951,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-08-05",
+      "hog_tinyman": 18855.017069,
+      "hog_pact": 0.0,
+      "hog_stamm": 105.013349,
+      "hog_total": 18960.030418,
+      "aetf_in_hog_pools": 1988.051859,
+      "aetf_usd": 2.336549,
+      "hog_usd": 0.244999,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-08-06",
+      "hog_tinyman": 19129.96503,
+      "hog_pact": 0.0,
+      "hog_stamm": 105.013344,
+      "hog_total": 19234.978374,
+      "aetf_in_hog_pools": 1959.752529,
+      "aetf_usd": 2.326171,
+      "hog_usd": 0.237002,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-08-07",
+      "hog_tinyman": 19286.8073,
+      "hog_pact": 0.0,
+      "hog_stamm": 105.013344,
+      "hog_total": 19391.820644,
+      "aetf_in_hog_pools": 1943.972739,
+      "aetf_usd": 2.364275,
+      "hog_usd": 0.237012,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-08-08",
+      "hog_tinyman": 19438.824651,
+      "hog_pact": 0.0,
+      "hog_stamm": 106.340042,
+      "hog_total": 19545.164693,
+      "aetf_in_hog_pools": 1928.766068,
+      "aetf_usd": 2.349298,
+      "hog_usd": 0.231835,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-08-09",
+      "hog_tinyman": 19758.758841,
+      "hog_pact": 0.0,
+      "hog_stamm": 107.6314,
+      "hog_total": 19866.390241,
+      "aetf_in_hog_pools": 1897.698654,
+      "aetf_usd": 2.29656,
+      "hog_usd": 0.219374,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-08-10",
+      "hog_tinyman": 19640.408286,
+      "hog_pact": 0.0,
+      "hog_stamm": 107.6314,
+      "hog_total": 19748.039686,
+      "aetf_in_hog_pools": 1909.131156,
+      "aetf_usd": 2.243012,
+      "hog_usd": 0.216842,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-08-11",
+      "hog_tinyman": 19465.601491,
+      "hog_pact": 0.0,
+      "hog_stamm": 107.631344,
+      "hog_total": 19573.232835,
+      "aetf_in_hog_pools": 1926.332983,
+      "aetf_usd": 2.248365,
+      "hog_usd": 0.221277,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-08-12",
+      "hog_tinyman": 19604.243528,
+      "hog_pact": 0.0,
+      "hog_stamm": 107.631344,
+      "hog_total": 19711.874872,
+      "aetf_in_hog_pools": 1912.833724,
+      "aetf_usd": 2.242547,
+      "hog_usd": 0.217616,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-08-13",
+      "hog_tinyman": 19586.906306,
+      "hog_pact": 0.0,
+      "hog_stamm": 107.631344,
+      "hog_total": 19694.53765,
+      "aetf_in_hog_pools": 1914.540073,
+      "aetf_usd": 2.215964,
+      "hog_usd": 0.215418,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-08-14",
+      "hog_tinyman": 19636.554258,
+      "hog_pact": 0.0,
+      "hog_stamm": 107.631344,
+      "hog_total": 19744.185602,
+      "aetf_in_hog_pools": 1909.83785,
+      "aetf_usd": 2.237647,
+      "hog_usd": 0.216446,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-08-15",
+      "hog_tinyman": 19730.56643,
+      "hog_pact": 0.0,
+      "hog_stamm": 107.631344,
+      "hog_total": 19838.197774,
+      "aetf_in_hog_pools": 1900.833929,
+      "aetf_usd": 2.227591,
+      "hog_usd": 0.213441,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-08-16",
+      "hog_tinyman": 19750.2829,
+      "hog_pact": 0.0,
+      "hog_stamm": 108.405926,
+      "hog_total": 19858.688826,
+      "aetf_in_hog_pools": 1898.904842,
+      "aetf_usd": 2.222012,
+      "hog_usd": 0.212471,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-08-17",
+      "hog_tinyman": 19729.389394,
+      "hog_pact": 0.0,
+      "hog_stamm": 108.405926,
+      "hog_total": 19837.79532,
+      "aetf_in_hog_pools": 1900.910815,
+      "aetf_usd": 2.232262,
+      "hog_usd": 0.213901,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-08-18",
+      "hog_tinyman": 19862.566547,
+      "hog_pact": 0.0,
+      "hog_stamm": 108.405896,
+      "hog_total": 19970.972443,
+      "aetf_in_hog_pools": 1888.320237,
+      "aetf_usd": 2.183647,
+      "hog_usd": 0.206471,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-08-19",
+      "hog_tinyman": 19621.949925,
+      "hog_pact": 0.0,
+      "hog_stamm": 108.405896,
+      "hog_total": 19730.355821,
+      "aetf_in_hog_pools": 1911.503858,
+      "aetf_usd": 2.191322,
+      "hog_usd": 0.212298,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-08-20",
+      "hog_tinyman": 19323.612644,
+      "hog_pact": 0.0,
+      "hog_stamm": 105.944379,
+      "hog_total": 19429.557023,
+      "aetf_in_hog_pools": 1941.280651,
+      "aetf_usd": 2.210908,
+      "hog_usd": 0.2209,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-08-21",
+      "hog_tinyman": 19246.797879,
+      "hog_pact": 0.0,
+      "hog_stamm": 106.049394,
+      "hog_total": 19352.847273,
+      "aetf_in_hog_pools": 1949.390907,
+      "aetf_usd": 2.342868,
+      "hog_usd": 0.235995,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-08-22",
+      "hog_tinyman": 19175.156957,
+      "hog_pact": 0.0,
+      "hog_stamm": 105.441527,
+      "hog_total": 19280.598484,
+      "aetf_in_hog_pools": 1956.986694,
+      "aetf_usd": 2.271875,
+      "hog_usd": 0.230596,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-08-23",
+      "hog_tinyman": 19951.953091,
+      "hog_pact": 0.0,
+      "hog_stamm": 108.681114,
+      "hog_total": 20060.634205,
+      "aetf_in_hog_pools": 1881.137157,
+      "aetf_usd": 2.484726,
+      "hog_usd": 0.232999,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-08-24",
+      "hog_tinyman": 20100.304457,
+      "hog_pact": 0.0,
+      "hog_stamm": 110.164887,
+      "hog_total": 20210.469344,
+      "aetf_in_hog_pools": 1867.431095,
+      "aetf_usd": 2.466641,
+      "hog_usd": 0.227916,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-08-25",
+      "hog_tinyman": 19867.378473,
+      "hog_pact": 0.0,
+      "hog_stamm": 110.164887,
+      "hog_total": 19977.54336,
+      "aetf_in_hog_pools": 1889.451647,
+      "aetf_usd": 2.468742,
+      "hog_usd": 0.233491,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-08-26",
+      "hog_tinyman": 19729.093296,
+      "hog_pact": 0.0,
+      "hog_stamm": 110.164842,
+      "hog_total": 19839.258138,
+      "aetf_in_hog_pools": 1902.736309,
+      "aetf_usd": 2.402227,
+      "hog_usd": 0.230392,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-08-27",
+      "hog_tinyman": 19588.91033,
+      "hog_pact": 0.0,
+      "hog_stamm": 110.164842,
+      "hog_total": 19699.075172,
+      "aetf_in_hog_pools": 1916.343444,
+      "aetf_usd": 2.403226,
+      "hog_usd": 0.233788,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-08-28",
+      "hog_tinyman": 19457.353879,
+      "hog_pact": 0.0,
+      "hog_stamm": 110.164842,
+      "hog_total": 19567.518721,
+      "aetf_in_hog_pools": 1929.546751,
+      "aetf_usd": 2.408433,
+      "hog_usd": 0.237495,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-08-29",
+      "hog_tinyman": 19416.839557,
+      "hog_pact": 0.0,
+      "hog_stamm": 106.639132,
+      "hog_total": 19523.478689,
+      "aetf_in_hog_pools": 1933.907927,
+      "aetf_usd": 2.418415,
+      "hog_usd": 0.239557,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-08-30",
+      "hog_tinyman": 19401.155385,
+      "hog_pact": 0.0,
+      "hog_stamm": 106.669263,
+      "hog_total": 19507.824648,
+      "aetf_in_hog_pools": 1935.561774,
+      "aetf_usd": 2.407695,
+      "hog_usd": 0.238891,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-08-31",
+      "hog_tinyman": 19351.024705,
+      "hog_pact": 0.0,
+      "hog_stamm": 106.669242,
+      "hog_total": 19457.693947,
+      "aetf_in_hog_pools": 1940.593407,
+      "aetf_usd": 2.405112,
+      "hog_usd": 0.239871,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-09-01",
+      "hog_tinyman": 19174.064211,
+      "hog_pact": 0.0,
+      "hog_stamm": 105.934101,
+      "hog_total": 19279.998312,
+      "aetf_in_hog_pools": 1958.545782,
+      "aetf_usd": 2.40798,
+      "hog_usd": 0.244613,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-09-02",
+      "hog_tinyman": 19005.387628,
+      "hog_pact": 0.0,
+      "hog_stamm": 104.289401,
+      "hog_total": 19109.677029,
+      "aetf_in_hog_pools": 1976.076206,
+      "aetf_usd": 2.433318,
+      "hog_usd": 0.251622,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-09-03",
+      "hog_tinyman": 18862.125456,
+      "hog_pact": 0.0,
+      "hog_stamm": 104.289401,
+      "hog_total": 18966.414857,
+      "aetf_in_hog_pools": 1991.051973,
+      "aetf_usd": 2.435398,
+      "hog_usd": 0.255663,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-09-04",
+      "hog_tinyman": 19001.451485,
+      "hog_pact": 0.0,
+      "hog_stamm": 104.289401,
+      "hog_total": 19105.740886,
+      "aetf_in_hog_pools": 1976.575014,
+      "aetf_usd": 2.413537,
+      "hog_usd": 0.249691,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-09-05",
+      "hog_tinyman": 18600.609503,
+      "hog_pact": 0.0,
+      "hog_stamm": 102.040031,
+      "hog_total": 18702.649534,
+      "aetf_in_hog_pools": 2019.41057,
+      "aetf_usd": 2.431643,
+      "hog_usd": 0.262556,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-09-06",
+      "hog_tinyman": 18575.006122,
+      "hog_pact": 0.0,
+      "hog_stamm": 102.040025,
+      "hog_total": 18677.046147,
+      "aetf_in_hog_pools": 2022.202541,
+      "aetf_usd": 2.450085,
+      "hog_usd": 0.265276,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-09-07",
+      "hog_tinyman": 18749.745049,
+      "hog_pact": 0.0,
+      "hog_stamm": 102.838504,
+      "hog_total": 18852.583553,
+      "aetf_in_hog_pools": 2003.472709,
+      "aetf_usd": 2.514509,
+      "hog_usd": 0.267218,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-09-08",
+      "hog_tinyman": 18519.041973,
+      "hog_pact": 0.0,
+      "hog_stamm": 102.838504,
+      "hog_total": 18621.880477,
+      "aetf_in_hog_pools": 2028.394252,
+      "aetf_usd": 2.500985,
+      "hog_usd": 0.272421,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-09-09",
+      "hog_tinyman": 18512.846887,
+      "hog_pact": 0.0,
+      "hog_stamm": 102.075854,
+      "hog_total": 18614.922741,
+      "aetf_in_hog_pools": 2029.255777,
+      "aetf_usd": 2.480324,
+      "hog_usd": 0.270386,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-09-10",
+      "hog_tinyman": 18564.375152,
+      "hog_pact": 0.0,
+      "hog_stamm": 102.075854,
+      "hog_total": 18666.451006,
+      "aetf_in_hog_pools": 2023.752144,
+      "aetf_usd": 2.427654,
+      "hog_usd": 0.263198,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-09-11",
+      "hog_tinyman": 18586.21254,
+      "hog_pact": 0.0,
+      "hog_stamm": 102.782712,
+      "hog_total": 18688.995252,
+      "aetf_in_hog_pools": 2021.414632,
+      "aetf_usd": 2.441416,
+      "hog_usd": 0.264065,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-09-12",
+      "hog_tinyman": 18678.750251,
+      "hog_pact": 0.0,
+      "hog_stamm": 102.782712,
+      "hog_total": 18781.532963,
+      "aetf_in_hog_pools": 2011.498568,
+      "aetf_usd": 2.434271,
+      "hog_usd": 0.26071,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-09-13",
+      "hog_tinyman": 18397.213749,
+      "hog_pact": 0.0,
+      "hog_stamm": 102.782712,
+      "hog_total": 18499.996461,
+      "aetf_in_hog_pools": 2042.395842,
+      "aetf_usd": 2.392914,
+      "hog_usd": 0.264177,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-09-14",
+      "hog_tinyman": 18515.306578,
+      "hog_pact": 0.0,
+      "hog_stamm": 102.782712,
+      "hog_total": 18618.08929,
+      "aetf_in_hog_pools": 2029.513364,
+      "aetf_usd": 2.432027,
+      "hog_usd": 0.265109,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-09-15",
+      "hog_tinyman": 18855.830007,
+      "hog_pact": 0.0,
+      "hog_stamm": 103.605867,
+      "hog_total": 18959.435874,
+      "aetf_in_hog_pools": 1993.09772,
+      "aetf_usd": 2.356483,
+      "hog_usd": 0.247724,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-09-16",
+      "hog_tinyman": 19001.141431,
+      "hog_pact": 0.0,
+      "hog_stamm": 104.439147,
+      "hog_total": 19105.580578,
+      "aetf_in_hog_pools": 1977.912087,
+      "aetf_usd": 2.352313,
+      "hog_usd": 0.243524,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-09-17",
+      "hog_tinyman": 18778.619118,
+      "hog_pact": 0.0,
+      "hog_stamm": 104.439147,
+      "hog_total": 18883.058265,
+      "aetf_in_hog_pools": 2001.502683,
+      "aetf_usd": 2.375686,
+      "hog_usd": 0.25181,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-09-18",
+      "hog_tinyman": 18399.815646,
+      "hog_pact": 0.0,
+      "hog_stamm": 101.175624,
+      "hog_total": 18500.99127,
+      "aetf_in_hog_pools": 2043.087422,
+      "aetf_usd": 2.459575,
+      "hog_usd": 0.271614,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-09-19",
+      "hog_tinyman": 18166.053862,
+      "hog_pact": 0.0,
+      "hog_stamm": 100.337865,
+      "hog_total": 18266.391727,
+      "aetf_in_hog_pools": 2069.453228,
+      "aetf_usd": 2.494797,
+      "hog_usd": 0.282643,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-09-20",
+      "hog_tinyman": 17953.380733,
+      "hog_pact": 0.0,
+      "hog_stamm": 100.337865,
+      "hog_total": 18053.718598,
+      "aetf_in_hog_pools": 2094.073883,
+      "aetf_usd": 2.48728,
+      "hog_usd": 0.288503,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-09-21",
+      "hog_tinyman": 17692.616905,
+      "hog_pact": 0.0,
+      "hog_stamm": 97.734938,
+      "hog_total": 17790.351843,
+      "aetf_in_hog_pools": 2125.238709,
+      "aetf_usd": 2.456437,
+      "hog_usd": 0.293446,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-09-22",
+      "hog_tinyman": 17634.637121,
+      "hog_pact": 0.0,
+      "hog_stamm": 96.484123,
+      "hog_total": 17731.121244,
+      "aetf_in_hog_pools": 2132.668105,
+      "aetf_usd": 2.475614,
+      "hog_usd": 0.297762,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-09-23",
+      "hog_tinyman": 17928.87755,
+      "hog_pact": 0.0,
+      "hog_stamm": 97.922297,
+      "hog_total": 18026.799847,
+      "aetf_in_hog_pools": 2097.856004,
+      "aetf_usd": 2.427033,
+      "hog_usd": 0.282444,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-09-24",
+      "hog_tinyman": 17743.060468,
+      "hog_pact": 0.0,
+      "hog_stamm": 97.922297,
+      "hog_total": 17840.982765,
+      "aetf_in_hog_pools": 2119.840721,
+      "aetf_usd": 2.481007,
+      "hog_usd": 0.29479,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-09-25",
+      "hog_tinyman": 17621.899343,
+      "hog_pact": 0.0,
+      "hog_stamm": 97.053844,
+      "hog_total": 17718.953187,
+      "aetf_in_hog_pools": 2134.533287,
+      "aetf_usd": 2.472368,
+      "hog_usd": 0.297837,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-09-26",
+      "hog_tinyman": 17498.540268,
+      "hog_pact": 0.0,
+      "hog_stamm": 96.158902,
+      "hog_total": 17594.69917,
+      "aetf_in_hog_pools": 2149.716372,
+      "aetf_usd": 2.453034,
+      "hog_usd": 0.299711,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-09-27",
+      "hog_tinyman": 17547.779758,
+      "hog_pact": 0.0,
+      "hog_stamm": 96.158891,
+      "hog_total": 17643.938649,
+      "aetf_in_hog_pools": 2143.82055,
+      "aetf_usd": 2.471837,
+      "hog_usd": 0.30034,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-09-28",
+      "hog_tinyman": 16951.025739,
+      "hog_pact": 0.0,
+      "hog_stamm": 93.396907,
+      "hog_total": 17044.422646,
+      "aetf_in_hog_pools": 2220.0669,
+      "aetf_usd": 2.52436,
+      "hog_usd": 0.328802,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-09-29",
+      "hog_tinyman": 17109.241642,
+      "hog_pact": 0.0,
+      "hog_stamm": 93.522012,
+      "hog_total": 17202.763654,
+      "aetf_in_hog_pools": 2199.857642,
+      "aetf_usd": 2.445067,
+      "hog_usd": 0.312671,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-09-30",
+      "hog_tinyman": 17279.801211,
+      "hog_pact": 0.0,
+      "hog_stamm": 94.429985,
+      "hog_total": 17374.231196,
+      "aetf_in_hog_pools": 2178.211318,
+      "aetf_usd": 2.446759,
+      "hog_usd": 0.306751,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-10-01",
+      "hog_tinyman": 17226.070515,
+      "hog_pact": 0.0,
+      "hog_stamm": 94.429981,
+      "hog_total": 17320.500496,
+      "aetf_in_hog_pools": 2188.433345,
+      "aetf_usd": 2.441805,
+      "hog_usd": 0.30852,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-10-02",
+      "hog_tinyman": 17207.543654,
+      "hog_pact": 0.0,
+      "hog_stamm": 94.429981,
+      "hog_total": 17301.973635,
+      "aetf_in_hog_pools": 2190.90501,
+      "aetf_usd": 2.457418,
+      "hog_usd": 0.311177,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-10-03",
+      "hog_tinyman": 17223.893202,
+      "hog_pact": 0.0,
+      "hog_stamm": 94.429981,
+      "hog_total": 17318.323183,
+      "aetf_in_hog_pools": 2188.944977,
+      "aetf_usd": 2.499262,
+      "hog_usd": 0.315894,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-10-04",
+      "hog_tinyman": 17218.252015,
+      "hog_pact": 0.0,
+      "hog_stamm": 94.429981,
+      "hog_total": 17312.681996,
+      "aetf_in_hog_pools": 2189.756116,
+      "aetf_usd": 2.50062,
+      "hog_usd": 0.316285,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-10-05",
+      "hog_tinyman": 17266.220278,
+      "hog_pact": 0.0,
+      "hog_stamm": 94.429981,
+      "hog_total": 17360.650259,
+      "aetf_in_hog_pools": 2183.796416,
+      "aetf_usd": 2.445104,
+      "hog_usd": 0.30757,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-10-06",
+      "hog_tinyman": 17436.906204,
+      "hog_pact": 0.0,
+      "hog_stamm": 95.066458,
+      "hog_total": 17531.972662,
+      "aetf_in_hog_pools": 2162.708368,
+      "aetf_usd": 2.431162,
+      "hog_usd": 0.299903,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-10-07",
+      "hog_tinyman": 17837.94354,
+      "hog_pact": 0.0,
+      "hog_stamm": 97.35617,
+      "hog_total": 17935.29971,
+      "aetf_in_hog_pools": 2114.260506,
+      "aetf_usd": 2.42288,
+      "hog_usd": 0.285616,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-10-08",
+      "hog_tinyman": 17716.134831,
+      "hog_pact": 0.0,
+      "hog_stamm": 96.919506,
+      "hog_total": 17813.054337,
+      "aetf_in_hog_pools": 2129.475452,
+      "aetf_usd": 2.388285,
+      "hog_usd": 0.285509,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-10-09",
+      "hog_tinyman": 17964.429017,
+      "hog_pact": 0.0,
+      "hog_stamm": 97.708224,
+      "hog_total": 18062.137241,
+      "aetf_in_hog_pools": 2100.261471,
+      "aetf_usd": 2.398805,
+      "hog_usd": 0.278933,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-10-10",
+      "hog_tinyman": 17972.675785,
+      "hog_pact": 0.0,
+      "hog_stamm": 98.508844,
+      "hog_total": 18071.184629,
+      "aetf_in_hog_pools": 2099.262543,
+      "aetf_usd": 2.421995,
+      "hog_usd": 0.281354,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-10-11",
+      "hog_tinyman": 17924.620031,
+      "hog_pact": 0.0,
+      "hog_stamm": 97.664892,
+      "hog_total": 18022.284923,
+      "aetf_in_hog_pools": 2105.098516,
+      "aetf_usd": 2.440298,
+      "hog_usd": 0.28504,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-10-12",
+      "hog_tinyman": 18083.071081,
+      "hog_pact": 0.0,
+      "hog_stamm": 98.916438,
+      "hog_total": 18181.987519,
+      "aetf_in_hog_pools": 2086.817503,
+      "aetf_usd": 2.378092,
+      "hog_usd": 0.272943,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-10-13",
+      "hog_tinyman": 18363.919589,
+      "hog_pact": 0.0,
+      "hog_stamm": 100.425869,
+      "hog_total": 18464.345458,
+      "aetf_in_hog_pools": 2055.124159,
+      "aetf_usd": 2.416652,
+      "hog_usd": 0.268979,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-10-14",
+      "hog_tinyman": 18379.854206,
+      "hog_pact": 0.0,
+      "hog_stamm": 100.425858,
+      "hog_total": 18480.280064,
+      "aetf_in_hog_pools": 2053.430441,
+      "aetf_usd": 2.351637,
+      "hog_usd": 0.261301,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-10-15",
+      "hog_tinyman": 18549.184508,
+      "hog_pact": 0.0,
+      "hog_stamm": 101.675553,
+      "hog_total": 18650.860061,
+      "aetf_in_hog_pools": 2031.933317,
+      "aetf_usd": 2.349924,
+      "hog_usd": 0.256014,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-10-16",
+      "hog_tinyman": 18497.91631,
+      "hog_pact": 0.0,
+      "hog_stamm": 101.675507,
+      "hog_total": 18599.591817,
+      "aetf_in_hog_pools": 2037.664546,
+      "aetf_usd": 2.329047,
+      "hog_usd": 0.255157,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-10-17",
+      "hog_tinyman": 18850.674195,
+      "hog_pact": 0.0,
+      "hog_stamm": 103.389577,
+      "hog_total": 18954.063772,
+      "aetf_in_hog_pools": 1999.726053,
+      "aetf_usd": 2.314373,
+      "hog_usd": 0.244175,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-10-18",
+      "hog_tinyman": 18907.392834,
+      "hog_pact": 0.0,
+      "hog_stamm": 104.229026,
+      "hog_total": 19011.62186,
+      "aetf_in_hog_pools": 1993.747873,
+      "aetf_usd": 2.296577,
+      "hog_usd": 0.240842,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-10-19",
+      "hog_tinyman": 18910.552586,
+      "hog_pact": 0.0,
+      "hog_stamm": 103.272558,
+      "hog_total": 19013.825144,
+      "aetf_in_hog_pools": 1993.614799,
+      "aetf_usd": 2.295258,
+      "hog_usd": 0.24066,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-10-20",
+      "hog_tinyman": 18890.296326,
+      "hog_pact": 0.0,
+      "hog_stamm": 103.272558,
+      "hog_total": 18993.568884,
+      "aetf_in_hog_pools": 1995.787393,
+      "aetf_usd": 2.354307,
+      "hog_usd": 0.247384,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-10-21",
+      "hog_tinyman": 18859.35682,
+      "hog_pact": 0.0,
+      "hog_stamm": 103.272558,
+      "hog_total": 18962.629378,
+      "aetf_in_hog_pools": 1999.078691,
+      "aetf_usd": 2.347215,
+      "hog_usd": 0.247448,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-10-22",
+      "hog_tinyman": 19128.524384,
+      "hog_pact": 0.0,
+      "hog_stamm": 104.845977,
+      "hog_total": 19233.370361,
+      "aetf_in_hog_pools": 1971.022269,
+      "aetf_usd": 2.288226,
+      "hog_usd": 0.234496,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-10-23",
+      "hog_tinyman": 19154.215621,
+      "hog_pact": 0.0,
+      "hog_stamm": 104.845977,
+      "hog_total": 19259.061598,
+      "aetf_in_hog_pools": 1968.424773,
+      "aetf_usd": 2.273519,
+      "hog_usd": 0.232371,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-10-24",
+      "hog_tinyman": 19309.212893,
+      "hog_pact": 0.0,
+      "hog_stamm": 105.74689,
+      "hog_total": 19414.959783,
+      "aetf_in_hog_pools": 1952.700441,
+      "aetf_usd": 2.257534,
+      "hog_usd": 0.227056,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-10-25",
+      "hog_tinyman": 19314.376593,
+      "hog_pact": 0.0,
+      "hog_stamm": 105.74689,
+      "hog_total": 19420.123483,
+      "aetf_in_hog_pools": 1952.214716,
+      "aetf_usd": 2.258744,
+      "hog_usd": 0.227061,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-10-26",
+      "hog_tinyman": 19354.228217,
+      "hog_pact": 0.0,
+      "hog_stamm": 105.74689,
+      "hog_total": 19459.975107,
+      "aetf_in_hog_pools": 1948.229064,
+      "aetf_usd": 2.264501,
+      "hog_usd": 0.22671,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-10-27",
+      "hog_tinyman": 19403.612161,
+      "hog_pact": 0.0,
+      "hog_stamm": 105.746876,
+      "hog_total": 19509.359037,
+      "aetf_in_hog_pools": 1943.319933,
+      "aetf_usd": 2.260037,
+      "hog_usd": 0.225121,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-10-28",
+      "hog_tinyman": 19420.950992,
+      "hog_pact": 0.0,
+      "hog_stamm": 106.70258,
+      "hog_total": 19527.653572,
+      "aetf_in_hog_pools": 1941.547859,
+      "aetf_usd": 2.26891,
+      "hog_usd": 0.225588,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-10-29",
+      "hog_tinyman": 19875.491769,
+      "hog_pact": 0.0,
+      "hog_stamm": 109.501487,
+      "hog_total": 19984.993256,
+      "aetf_in_hog_pools": 1897.375162,
+      "aetf_usd": 2.175207,
+      "hog_usd": 0.206514,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-10-30",
+      "hog_tinyman": 19900.923972,
+      "hog_pact": 0.0,
+      "hog_stamm": 109.627611,
+      "hog_total": 20010.551583,
+      "aetf_in_hog_pools": 1895.107868,
+      "aetf_usd": 2.166541,
+      "hog_usd": 0.205183,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-10-31",
+      "hog_tinyman": 19883.325814,
+      "hog_pact": 0.0,
+      "hog_stamm": 108.620069,
+      "hog_total": 19991.945883,
+      "aetf_in_hog_pools": 1896.911415,
+      "aetf_usd": 2.174839,
+      "hog_usd": 0.206357,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-11-01",
+      "hog_tinyman": 19955.586711,
+      "hog_pact": 0.0,
+      "hog_stamm": 108.620069,
+      "hog_total": 20064.20678,
+      "aetf_in_hog_pools": 1892.332925,
+      "aetf_usd": 2.154897,
+      "hog_usd": 0.203237,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-11-02",
+      "hog_tinyman": 20022.856311,
+      "hog_pact": 0.0,
+      "hog_stamm": 109.500403,
+      "hog_total": 20132.356714,
+      "aetf_in_hog_pools": 1885.97266,
+      "aetf_usd": 2.137525,
+      "hog_usd": 0.200241,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-11-03",
+      "hog_tinyman": 19987.27111,
+      "hog_pact": 0.0,
+      "hog_stamm": 110.400482,
+      "hog_total": 20097.671592,
+      "aetf_in_hog_pools": 1889.325738,
+      "aetf_usd": 2.188787,
+      "hog_usd": 0.205762,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-11-04",
+      "hog_tinyman": 20005.950278,
+      "hog_pact": 0.0,
+      "hog_stamm": 108.996422,
+      "hog_total": 20114.9467,
+      "aetf_in_hog_pools": 1888.272398,
+      "aetf_usd": 2.228662,
+      "hog_usd": 0.209214,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-11-05",
+      "hog_tinyman": 20187.332058,
+      "hog_pact": 0.0,
+      "hog_stamm": 109.88647,
+      "hog_total": 20297.218528,
+      "aetf_in_hog_pools": 1871.436624,
+      "aetf_usd": 2.177166,
+      "hog_usd": 0.200738,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-11-06",
+      "hog_tinyman": 20132.717366,
+      "hog_pact": 0.0,
+      "hog_stamm": 109.88647,
+      "hog_total": 20242.603836,
+      "aetf_in_hog_pools": 1876.546863,
+      "aetf_usd": 2.211623,
+      "hog_usd": 0.205024,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-11-07",
+      "hog_tinyman": 20094.987722,
+      "hog_pact": 0.0,
+      "hog_stamm": 110.780372,
+      "hog_total": 20205.768094,
+      "aetf_in_hog_pools": 1880.057914,
+      "aetf_usd": 2.23101,
+      "hog_usd": 0.207586,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-11-08",
+      "hog_tinyman": 20237.423262,
+      "hog_pact": 0.0,
+      "hog_stamm": 111.216568,
+      "hog_total": 20348.63983,
+      "aetf_in_hog_pools": 1867.005371,
+      "aetf_usd": 2.185072,
+      "hog_usd": 0.200482,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-11-09",
+      "hog_tinyman": 20222.958162,
+      "hog_pact": 0.0,
+      "hog_stamm": 111.216568,
+      "hog_total": 20334.17473,
+      "aetf_in_hog_pools": 1868.496975,
+      "aetf_usd": 2.218412,
+      "hog_usd": 0.203849,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-11-10",
+      "hog_tinyman": 20375.97421,
+      "hog_pact": 0.0,
+      "hog_stamm": 111.572176,
+      "hog_total": 20487.546386,
+      "aetf_in_hog_pools": 1854.711322,
+      "aetf_usd": 2.18474,
+      "hog_usd": 0.197782,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-11-11",
+      "hog_tinyman": 20399.078384,
+      "hog_pact": 0.0,
+      "hog_stamm": 111.572176,
+      "hog_total": 20510.65056,
+      "aetf_in_hog_pools": 1852.7265,
+      "aetf_usd": 2.180636,
+      "hog_usd": 0.196977,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-11-12",
+      "hog_tinyman": 20429.650961,
+      "hog_pact": 0.0,
+      "hog_stamm": 111.572044,
+      "hog_total": 20541.223005,
+      "aetf_in_hog_pools": 1850.009214,
+      "aetf_usd": 2.166822,
+      "hog_usd": 0.195151,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-11-13",
+      "hog_tinyman": 20438.033713,
+      "hog_pact": 0.0,
+      "hog_stamm": 111.223858,
+      "hog_total": 20549.257571,
+      "aetf_in_hog_pools": 1849.47055,
+      "aetf_usd": 2.144665,
+      "hog_usd": 0.193024,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-11-14",
+      "hog_tinyman": 21102.030023,
+      "hog_pact": 0.0,
+      "hog_stamm": 115.441133,
+      "hog_total": 21217.471156,
+      "aetf_in_hog_pools": 1791.578962,
+      "aetf_usd": 2.125961,
+      "hog_usd": 0.179514,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-11-15",
+      "hog_tinyman": 21106.614406,
+      "hog_pact": 0.0,
+      "hog_stamm": 115.441133,
+      "hog_total": 21222.055539,
+      "aetf_in_hog_pools": 1791.266259,
+      "aetf_usd": 2.109222,
+      "hog_usd": 0.178031,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-11-16",
+      "hog_tinyman": 21115.298705,
+      "hog_pact": 0.0,
+      "hog_stamm": 115.441133,
+      "hog_total": 21230.739838,
+      "aetf_in_hog_pools": 1790.615779,
+      "aetf_usd": 2.096555,
+      "hog_usd": 0.176825,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-11-17",
+      "hog_tinyman": 21240.261813,
+      "hog_pact": 0.0,
+      "hog_stamm": 116.680207,
+      "hog_total": 21356.94202,
+      "aetf_in_hog_pools": 1780.170654,
+      "aetf_usd": 2.085122,
+      "hog_usd": 0.173802,
+      "venues": [
+        "tinyman",
+        "stamm"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-11-18",
+      "hog_tinyman": 4996.466658,
+      "hog_pact": 4947.004247,
+      "hog_stamm": 10267.197657,
+      "hog_total": 20210.668562,
+      "aetf_in_hog_pools": 1941.883906,
+      "aetf_usd": 1.702947,
+      "hog_usd": 0.163623,
+      "venues": [
+        "tinyman",
+        "stamm",
+        "pact"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-11-19",
+      "hog_tinyman": 4980.241863,
+      "hog_pact": 4930.287048,
+      "hog_stamm": 10231.072351,
+      "hog_total": 20141.601262,
+      "aetf_in_hog_pools": 1949.496716,
+      "aetf_usd": 1.695615,
+      "hog_usd": 0.164118,
+      "venues": [
+        "tinyman",
+        "stamm",
+        "pact"
+      ],
+      "observed": true
+    },
+    {
+      "date": "2026-11-20",
+      "hog_tinyman": 4980.318047,
+      "hog_pact": 4938.005494,
+      "hog_stamm": 10254.705034,
+      "hog_total": 20173.028575,
+      "aetf_in_hog_pools": 1946.508202,
+      "aetf_usd": 1.697295,
+      "hog_usd": 0.163773,
+      "venues": [
+        "tinyman",
+        "stamm",
+        "pact"
+      ],
+      "observed": true
+    }
+  ]
+}

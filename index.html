@@ -259,6 +259,108 @@
         .donut-legend { display: none; }
         .data-error { font-size: 12px; color: var(--text3); text-align: center; margin-top: 8px; font-style: italic; }
 
+
+        /* HOG liquidity */
+        .hog-live-grid {
+            display: grid;
+            grid-template-columns: 1.1fr repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .hog-stat, .hog-venue {
+            background: #1a2540;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px 20px;
+        }
+        .hog-stat {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .hog-stat-kicker {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        .hog-stat-value {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--text);
+        }
+        .hog-stat-value.loading, .hog-venue-amt.loading {
+            opacity: 0.4;
+            animation: pulse 1.5s infinite;
+        }
+        .hog-stat-sub {
+            font-size: 14px;
+            color: var(--text2);
+            margin-top: 8px;
+        }
+        .hog-venue { text-align: center; }
+        .hog-venue img {
+            width: 36px; height: 36px; border-radius: 8px;
+            object-fit: cover; margin-bottom: 10px;
+        }
+        .hog-venue-name { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+        .hog-venue-amt { font-size: 22px; font-weight: 800; color: var(--accent); }
+        .hog-venue-share { font-size: 12px; color: var(--text3); margin-top: 4px; }
+        .hog-pact-mark {
+            width: 36px; height: 36px; border-radius: 8px; margin: 0 auto 10px;
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 16px; color: #fff;
+        }
+        .hog-chart-card {
+            background: #1a2540;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px 24px 16px;
+            margin-bottom: 32px;
+        }
+        .hog-chart-head {
+            display: flex; align-items: baseline; justify-content: space-between;
+            gap: 12px; flex-wrap: wrap; margin-bottom: 16px;
+        }
+        .hog-chart-head h3 { font-size: 16px; font-weight: 700; }
+        .hog-chart-legend {
+            display: flex; flex-wrap: wrap; gap: 14px;
+            font-size: 12px; color: var(--text2);
+        }
+        .hog-chart-legend span { display: inline-flex; align-items: center; gap: 6px; }
+        .hog-swatch {
+            width: 10px; height: 10px; border-radius: 2px; display: inline-block;
+        }
+        .hog-chart-wrap { position: relative; height: 360px; }
+        .hog-chart-empty {
+            display: none; text-align: center; color: var(--text3);
+            font-size: 14px; padding: 48px 16px;
+        }
+        .hog-chart-note, .hog-foot {
+            font-size: 13px; color: var(--text3); line-height: 1.55; margin-top: 14px;
+        }
+        .hog-explain {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+        }
+        .hog-explain-card {
+            background: #1a2540; border: 1px solid var(--border);
+            border-radius: 16px; padding: 28px 24px;
+        }
+        .hog-explain-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+        .hog-explain-card p { font-size: 14px; color: var(--text2); line-height: 1.6; }
+        .hog-explain-tag {
+            display: inline-block; font-size: 11px; font-weight: 700;
+            letter-spacing: 0.6px; text-transform: uppercase;
+            color: var(--bg); background: var(--accent);
+            border-radius: 999px; padding: 3px 10px; margin-bottom: 12px;
+        }
+        .hog-explain-card.rise .hog-explain-tag { background: var(--blue); color: #061018; }
+        .price-bar .change.liq { color: var(--text2); font-weight: 600; }
+
         @media (max-width: 768px) {
             .nav-title { display: none; }
             .hero h1 { font-size: 32px; letter-spacing: -1px; }
@@ -297,6 +399,13 @@
             .nav-links a { padding: 12px 0; border-bottom: 1px solid var(--border); }
             .nav-buttons { gap: 6px; }
             .nav-cta { padding: 6px 12px; font-size: 12px; }
+
+            .hog-live-grid { grid-template-columns: 1fr 1fr; }
+            .hog-stat { grid-column: 1 / -1; }
+            .hog-stat-value { font-size: 26px; }
+            .hog-chart-wrap { height: 280px; }
+            .hog-explain { grid-template-columns: 1fr; }
+            .hog-chart-card, .hog-stat, .hog-venue, .hog-explain-card { border-color: var(--accent); }
             .footer-links { flex-wrap: wrap; gap: 16px; }
         }
     </style>
@@ -313,6 +422,7 @@
             </button>
             <div class="nav-links">
                 <a href="#basket" onclick="document.querySelector('.hamburger').classList.remove('active');document.querySelector('.nav-links').classList.remove('open')">Basket</a>
+                <a href="#hog-liquidity" onclick="document.querySelector('.hamburger').classList.remove('active');document.querySelector('.nav-links').classList.remove('open')">HOG liquidity</a>
                 <a href="#features" onclick="document.querySelector('.hamburger').classList.remove('active');document.querySelector('.nav-links').classList.remove('open')">Features</a>
                 <a href="#buy" onclick="document.querySelector('.hamburger').classList.remove('active');document.querySelector('.nav-links').classList.remove('open')">How to Buy</a>
                 <a href="whitepaper.html">Whitepaper</a>
@@ -326,7 +436,7 @@
     <div class="price-bar">
         <span>$AETF</span>
         <span class="price" id="livePrice">—</span>
-        <span class="change" id="liveChange">Pool-implied mark loading</span>
+        <span class="change liq" id="liveChange"></span>
         <span style="color:var(--text)">•</span>
         <span style="color:var(--text)">ASA 3581842047</span>
     </div>
@@ -413,6 +523,71 @@
         </div>
     </section>
 
+    <section id="hog-liquidity" style="background: var(--bg2); border-bottom: 1px solid var(--border);">
+        <div class="section-inner">
+            <div style="text-align:center;">
+                <div class="section-label">AETF / HOG pools</div>
+                <div class="section-title">The stable side of HOG liquidity</div>
+                <div class="section-desc" style="margin-left:auto;margin-right:auto;">AETF provides the stable side of HOG liquidity: when HOG dips, the pools buy HOG with USDC-backed AETF; when it rises, they sell. The public AETF/HOG pools on Tinyman, Pact, and LiquiHog STAMM do this automatically as traders swap. Inventory also changes when liquidity is added or withdrawn. This is not a price-support promise, and it is not investment advice.</div>
+                <div style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--green);margin-bottom:32px;"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;display:inline-block;"></span>Live HOG held in the three AETF/HOG pools</div>
+            </div>
+            <div class="hog-live-grid">
+                <div class="hog-stat">
+                    <div class="hog-stat-kicker">Total HOG held</div>
+                    <div class="hog-stat-value loading" id="hogTotalHeld">--</div>
+                    <div class="hog-stat-sub" id="hogPriceLine">Pool-implied HOG mark loading</div>
+                </div>
+                <div class="hog-venue">
+                    <img src="img/tinyman.png" alt="">
+                    <div class="hog-venue-name">Tinyman</div>
+                    <div class="hog-venue-amt loading" id="hogVenueTinyman">--</div>
+                    <div class="hog-venue-share" id="hogShareTinyman"></div>
+                </div>
+                <div class="hog-venue">
+                    <div class="hog-pact-mark" aria-hidden="true">P</div>
+                    <div class="hog-venue-name">Pact</div>
+                    <div class="hog-venue-amt loading" id="hogVenuePact">--</div>
+                    <div class="hog-venue-share" id="hogSharePact"></div>
+                </div>
+                <div class="hog-venue">
+                    <img src="img/hog.png" alt="">
+                    <div class="hog-venue-name">LiquiHog STAMM</div>
+                    <div class="hog-venue-amt loading" id="hogVenueStamm">--</div>
+                    <div class="hog-venue-share" id="hogShareStamm"></div>
+                </div>
+            </div>
+            <div class="hog-chart-card">
+                <div class="hog-chart-head">
+                    <h3>HOG held vs pool-implied HOG mark</h3>
+                    <div class="hog-chart-legend">
+                        <span><i class="hog-swatch" style="background:#2dd4bf"></i>Tinyman</span>
+                        <span><i class="hog-swatch" style="background:#60a5fa"></i>Pact</span>
+                        <span><i class="hog-swatch" style="background:#ff6b8a"></i>LiquiHog STAMM</span>
+                        <span><i class="hog-swatch" style="background:#d4a843"></i>HOG mark (right axis)</span>
+                    </div>
+                </div>
+                <div class="hog-chart-wrap">
+                    <canvas id="hogHistoryChart" aria-label="Daily HOG held in AETF/HOG pools and the pool-implied HOG dollar mark"></canvas>
+                    <div class="hog-chart-empty" id="hogChartEmpty">Historical chart could not be loaded. Live pool figures above are still fetched on-chain when available.</div>
+                </div>
+                <p class="hog-chart-note">Daily end-of-day reserves, UTC, reconstructed from Algorand indexer records of the pool accounts and Pact application state. The series starts on 31 May 2026, when the Tinyman AETF/HOG pool was created. Replay was checked against live balances on 20 Nov 2026 (Asia/Bangkok). No points were interpolated. The near-empty print on 13-14 Jun 2026 is a liquidity withdrawal; most of that liquidity was re-added on 15 Jun, when the LiquiHog STAMM pool also opened. On 18 Nov 2026, liquidity was split across Tinyman, LiquiHog STAMM, and a new Pact pool.</p>
+            </div>
+            <div class="hog-explain">
+                <div class="hog-explain-card">
+                    <div class="hog-explain-tag">When HOG dips</div>
+                    <h3>The pools buy HOG</h3>
+                    <p>Traders sell HOG into the AETF/HOG pools. The pools pay with USDC‑backed AETF and are left holding more HOG.</p>
+                </div>
+                <div class="hog-explain-card rise">
+                    <div class="hog-explain-tag">When HOG rises</div>
+                    <h3>The pools sell HOG</h3>
+                    <p>Traders buy HOG from the pools, paying with AETF. The pools are left holding less HOG.</p>
+                </div>
+            </div>
+            <p class="hog-foot">The pool-implied HOG mark is AETF's USDC pool mark multiplied by the AETF/HOG reserve ratio across these venues. AETF's own dollar mark can move. Past inventory changes do not guarantee future results.</p>
+        </div>
+    </section>
+
     <section id="features" style="background: var(--bg2);">
         <div class="section-inner" style="text-align:center;">
             <div class="section-label">Why AETF</div>
@@ -490,6 +665,7 @@
         <p style="margin-top: 8px; font-size: 11px; color: var(--text3);">AETF is not a registered security or financial advice. This is a decentralized token on the Algorand blockchain. Do your own research. Past performance does not guarantee future results.</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
     <script>
         const INDEXER = 'https://mainnet-idx.algonode.cloud';
         const AETF_ID = 3581842047;
@@ -629,19 +805,12 @@
                 const aetfPrice = usdcAetf > 0 ? usdcUsd / usdcAetf : LAUNCH_PRICE;
 
                 document.getElementById('livePrice').textContent = '$' + aetfPrice.toFixed(4);
-                const change = ((aetfPrice - LAUNCH_PRICE) / LAUNCH_PRICE * 100).toFixed(1);
-                const changeEl = document.getElementById('liveChange');
-                if (change >= 0) {
-                    changeEl.textContent = `+${change}% from launch`;
-                    changeEl.className = 'change up';
-                } else {
-                    changeEl.textContent = `${change}% from launch`;
-                    changeEl.className = 'change';
-                    changeEl.style.color = '#ef4444';
-                }
 
                 let totalTvl = 0;
                 const pairTvl = { usdc: 0, fusdc: 0, hog: 0 };
+                const hogHeld = { tinyman: 0, pact: 0, stamm: 0 };
+                let hogAetf = 0;
+                let hogQty = 0;
 
                 BASKET_POOLS.forEach((pool, i) => {
                     const bal = allBalances[i];
@@ -651,7 +820,24 @@
                     const tvl = (bal.aetf * aetfPrice) + (bal.backing * backingPriceUsd);
                     totalTvl += tvl;
                     if (pairTvl[pool.pair] !== undefined) pairTvl[pool.pair] += tvl;
+                    if (pool.pair === 'hog') {
+                        hogAetf += bal.aetf;
+                        hogQty += bal.backing;
+                        if (pool.dex === 'Tinyman') hogHeld.tinyman = bal.backing;
+                        else if (pool.dex === 'Pact') hogHeld.pact = bal.backing;
+                        else if (pool.dex === 'STAMM') hogHeld.stamm = bal.backing;
+                    }
                 });
+
+                const changeEl = document.getElementById('liveChange');
+                if (changeEl) {
+                    changeEl.style.color = '';
+                    changeEl.className = 'change liq';
+                    changeEl.textContent = '\u2022 Total liquidity $' + Math.round(totalTvl).toLocaleString('en-US');
+                }
+
+                const hogUsd = (usdcAetf > 0 && hogQty > 0) ? (aetfPrice * hogAetf / hogQty) : null;
+                updateHogLive({ tinyman: hogHeld.tinyman, pact: hogHeld.pact, stamm: hogHeld.stamm, total: hogQty, hogUsd, aetfPrice, usdcOk: usdcAetf > 0 });
 
                 const circumference = 2 * Math.PI * 52;
                 let donutSegments = '';
@@ -716,6 +902,12 @@
                 setStatValue('statHolders', externalHolders.length.toLocaleString());
             } catch(e) {
                 console.warn('Live data fetch failed', e);
+                const changeEl = document.getElementById('liveChange');
+                if (changeEl) {
+                    changeEl.textContent = '';
+                    changeEl.className = 'change liq';
+                    changeEl.style.color = '';
+                }
                 const errEl = document.getElementById('dataError');
                 if (!errEl) {
                     const msg = document.createElement('div');
@@ -726,8 +918,221 @@
                 }
             }
         }
+        function formatHogAmt(n) {
+            if (n >= 100) return Math.round(n).toLocaleString('en-US');
+            if (n >= 10) return n.toLocaleString('en-US', { maximumFractionDigits: 1 });
+            return n.toLocaleString('en-US', { maximumFractionDigits: 2 });
+        }
+
+        let hogChart = null;
+        let hogHistoryPayload = null;
+
+        function utcToday() {
+            return new Date().toISOString().slice(0, 10);
+        }
+
+        function upsertToday(daily, live) {
+            if (!daily.length) return daily;
+            const today = utcToday();
+            const row = {
+                date: today,
+                hog_tinyman: live.tinyman,
+                hog_pact: live.pact,
+                hog_stamm: live.stamm,
+                hog_total: live.total,
+                hog_usd: live.hogUsd,
+                venues: ['tinyman', 'stamm', 'pact'],
+                observed: true
+            };
+            const last = daily[daily.length - 1];
+            if (last.date === today) {
+                daily[daily.length - 1] = Object.assign({}, last, row);
+            } else if (last.date < today) {
+                daily.push(row);
+            }
+            return daily;
+        }
+
+        function updateHogLive(live) {
+            const totalEl = document.getElementById('hogTotalHeld');
+            const priceEl = document.getElementById('hogPriceLine');
+            const setVenue = (id, shareId, amt, total) => {
+                const el = document.getElementById(id);
+                const sh = document.getElementById(shareId);
+                if (el) {
+                    el.classList.remove('loading');
+                    el.textContent = formatHogAmt(amt) + ' HOG';
+                }
+                if (sh) sh.textContent = total > 0 ? ((amt / total) * 100).toFixed(1) + '% of the AETF/HOG pools' : '';
+            };
+            if (totalEl) {
+                totalEl.classList.remove('loading');
+                totalEl.textContent = formatHogAmt(live.total) + ' HOG';
+            }
+            if (priceEl) {
+                priceEl.textContent = (live.usdcOk && live.hogUsd != null)
+                    ? ('Pool-implied HOG mark $' + live.hogUsd.toFixed(4))
+                    : '';
+            }
+            setVenue('hogVenueTinyman', 'hogShareTinyman', live.tinyman, live.total);
+            setVenue('hogVenuePact', 'hogSharePact', live.pact, live.total);
+            setVenue('hogVenueStamm', 'hogShareStamm', live.stamm, live.total);
+
+            if (hogChart && hogHistoryPayload && live.hogUsd != null) {
+                const daily = upsertToday(hogHistoryPayload.daily.slice(), live);
+                hogChart.data.labels = daily.map(r => r.date);
+                hogChart.data.datasets[0].data = daily.map(r => r.hog_tinyman);
+                hogChart.data.datasets[1].data = daily.map(r => r.hog_pact);
+                hogChart.data.datasets[2].data = daily.map(r => r.hog_stamm);
+                hogChart.data.datasets[3].data = daily.map(r => r.hog_usd);
+                hogChart.update('none');
+            }
+        }
+
+        async function initHogChart() {
+            const empty = document.getElementById('hogChartEmpty');
+            const canvas = document.getElementById('hogHistoryChart');
+            if (typeof Chart === 'undefined') {
+                if (empty) empty.style.display = 'block';
+                if (canvas) canvas.style.display = 'none';
+                console.warn('Chart.js failed to load');
+                return;
+            }
+            try {
+                const res = await fetch('data/hog-history.json');
+                if (!res.ok) throw new Error('history ' + res.status);
+                hogHistoryPayload = await res.json();
+                const daily = (hogHistoryPayload.daily || []).filter(r => r.hog_usd != null);
+                if (!daily.length) throw new Error('no daily points');
+                const ctx = canvas.getContext('2d');
+                const grid = 'rgba(136,153,187,0.12)';
+                const tick = '#8899bb';
+                hogChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: daily.map(r => r.date),
+                        datasets: [
+                            {
+                                label: 'Tinyman HOG',
+                                data: daily.map(r => r.hog_tinyman),
+                                borderColor: '#2dd4bf',
+                                backgroundColor: 'rgba(45,212,191,0.35)',
+                                fill: true,
+                                stack: 'hog',
+                                yAxisID: 'y',
+                                tension: 0.15,
+                                pointRadius: 0,
+                                borderWidth: 1.5
+                            },
+                            {
+                                label: 'Pact HOG',
+                                data: daily.map(r => r.hog_pact),
+                                borderColor: '#60a5fa',
+                                backgroundColor: 'rgba(96,165,250,0.35)',
+                                fill: true,
+                                stack: 'hog',
+                                yAxisID: 'y',
+                                tension: 0.15,
+                                pointRadius: 0,
+                                borderWidth: 1.5
+                            },
+                            {
+                                label: 'LiquiHog STAMM HOG',
+                                data: daily.map(r => r.hog_stamm),
+                                borderColor: '#ff6b8a',
+                                backgroundColor: 'rgba(255,107,138,0.40)',
+                                fill: true,
+                                stack: 'hog',
+                                yAxisID: 'y',
+                                tension: 0.15,
+                                pointRadius: 0,
+                                borderWidth: 1.5
+                            },
+                            {
+                                label: 'HOG mark (USD)',
+                                data: daily.map(r => r.hog_usd),
+                                borderColor: '#d4a843',
+                                backgroundColor: 'transparent',
+                                fill: false,
+                                stack: undefined,
+                                yAxisID: 'y1',
+                                tension: 0.15,
+                                pointRadius: 0,
+                                borderWidth: 2
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        interaction: { mode: 'index', intersect: false },
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                backgroundColor: '#0d1220',
+                                titleColor: '#f0f4ff',
+                                bodyColor: '#c5d0e6',
+                                borderColor: '#1e2d4a',
+                                borderWidth: 1,
+                                callbacks: {
+                                    label: function(item) {
+                                        const v = item.parsed.y;
+                                        if (item.dataset.yAxisID === 'y1') {
+                                            return ' HOG mark $' + (v == null ? 'n/a' : v.toFixed(4));
+                                        }
+                                        return ' ' + item.dataset.label.replace(' HOG', '') + ': ' + formatHogAmt(v || 0) + ' HOG';
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                ticks: {
+                                    color: tick,
+                                    maxRotation: 0,
+                                    autoSkip: true,
+                                    maxTicksLimit: 8,
+                                    callback: function(val) {
+                                        const label = this.getLabelForValue(val);
+                                        if (!label) return '';
+                                        const p = String(label).split('-');
+                                        return p[1] + '/' + p[2];
+                                    }
+                                },
+                                grid: { color: grid }
+                            },
+                            y: {
+                                stacked: true,
+                                position: 'left',
+                                title: { display: true, text: 'HOG held', color: tick, font: { size: 11 } },
+                                ticks: {
+                                    color: tick,
+                                    callback: function(v) { return v === 0 ? '0' : (Math.abs(v) >= 1000 ? (v/1000).toLocaleString('en-US') + 'k' : Math.round(v).toLocaleString('en-US')); }
+                                },
+                                grid: { color: grid }
+                            },
+                            y1: {
+                                position: 'right',
+                                title: { display: true, text: 'HOG mark (USD)', color: '#d4a843', font: { size: 11 } },
+                                ticks: {
+                                    color: '#d4a843',
+                                    callback: function(v) { return '$' + Number(v).toFixed(2); }
+                                },
+                                grid: { drawOnChartArea: false }
+                            }
+                        }
+                    }
+                });
+            } catch (e) {
+                console.warn('HOG history chart failed', e);
+                if (empty) empty.style.display = 'block';
+                if (canvas) canvas.style.display = 'none';
+            }
+        }
+
         updateLiveData();
         setInterval(updateLiveData, 60000);
+        initHogChart();
     </script>
 </body>
 </html>
