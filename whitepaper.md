@@ -83,7 +83,7 @@ Allocations and pool-side weights change through market trades, liquidity flows,
 ### Risk separation
 - AETF is a standard ASA with no custom allocation contract
 - Liquidity pools are managed by third-party AMM smart contracts (Tinyman, Pact, and LiquiHog STAMM) with their own protocol, implementation, and liquidity risks
-- The ASA's clawback and other authority fields are publicly observable; users should verify the current chain state rather than rely on a static document
+- The ASA's freeze and clawback fields are publicly observable; users should verify the current chain state rather than rely on a static document
 
 ---
 
@@ -98,7 +98,7 @@ Allocations and pool-side weights change through market trades, liquidity flows,
 | **Decimals** | 6 |
 | **Blockchain** | Algorand |
 | **Launch Price** | $2.44 |
-| **Clawback and authority fields** | Verify current zeroed state from the live ASA record |
+| **Freeze / clawback fields** | Verify current zeroed state from the live ASA record |
 | **Creator** | T77MFFTY4IUNMMJ47NS4C5RBWZFRE3UVPU7KVHCDPVJGHZVUDAKB7DCNRM |
 | **Manager** | 5LEDUTOGIWSMD2MZW4FIYJ2W3KZU262H2K3F7R2BBQNMHUYNDFHEA77UJQ |
 
